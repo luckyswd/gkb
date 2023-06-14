@@ -7,8 +7,8 @@
 /**
  * Wrapper function of WPCF7_ContactForm::get_instance().
  *
- * @param int|WP_Post $post Post ID or post object.
- * @return WPCF7_ContactForm Contact form object.
+ * @param WPCF7_ContactForm|WP_Post|int $post Object or post ID.
+ * @return WPCF7_ContactForm|null Contact form object. Null if unset.
  */
 function wpcf7_contact_form( $post ) {
 	return WPCF7_ContactForm::get_instance( $post );
@@ -50,7 +50,7 @@ function wpcf7_get_contact_form_by_title( $title ) {
 	) );
 
 	if ( $contact_forms ) {
-		return reset( $contact_forms );
+		return wpcf7_contact_form( reset( $contact_forms ) );
 	}
 }
 
@@ -231,7 +231,7 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 		);
 	}
 
-	$callback = function ( $contact_form, $atts ) {
+	$callback = static function ( $contact_form, $atts ) {
 		return $contact_form->form_html( $atts );
 	};
 
