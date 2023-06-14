@@ -1,0 +1,10 @@
+db
+.idea
+
+!wp-app/
+wp-app/*
+
+!wp-app/wp-content/
+wp-app/wp-content/*
+!wp-app/wp-content/themes
+!wp-app/wp-content/plugins

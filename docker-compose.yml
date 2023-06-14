@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: ${APP_NAME}-nginx
+    ports:
+      - ${IP}:80:80
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./wp-app:/var/www/html
+    links:
+      - wp
+    restart: always
+
+  wp:
+    image: wordpress:6.1.1-fpm
+    container_name: ${APP_NAME}-wp
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./wp-app:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: ${APP_NAME}-mysql
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DEBUG: ${WP_DEBUG}
+      WP_DEBUG_DISPLAY: ${WP_DEBUG_DISPLAY}
+      WP_DEBUG_LOG: ${WP_DEBUG_LOG}
+    links:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    container_name: ${APP_NAME}-mysql
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - "./db:/var/lib/mysql"

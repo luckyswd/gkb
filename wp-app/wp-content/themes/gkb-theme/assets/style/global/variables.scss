@@ -1,0 +1,43 @@
+$c-dark-black: #000000;
+$c-white: #fff;
+
+$font: 'Manrope', sans-serif;
+
+$transition: all .3s ease-in-out;
+
+@mixin _1440 {
+    @media (max-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin _1280 {
+    @media (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin _992 {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin _768 {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+
+@mixin _480 {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin _375 {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
