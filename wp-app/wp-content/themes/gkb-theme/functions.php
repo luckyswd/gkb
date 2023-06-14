@@ -1,4 +1,5 @@
 <?php
+require_once sprintf('%s/vendor/autoload.php', __DIR__);
 include 'hooks_filters/register_styles_scripts.php';
 include 'hooks_filters/postTypes_taxonomies.php';
 include 'hooks_filters/webp_upload.php';

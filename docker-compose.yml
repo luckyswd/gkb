@@ -14,7 +14,7 @@ services:
     restart: always
 
   wp:
-    image: wordpress:6.1.1-fpm
+    image: wordpress:6.2.2-php8.2-fpm
     container_name: ${APP_NAME}-wp
     ports:
       - '9000:9000'
