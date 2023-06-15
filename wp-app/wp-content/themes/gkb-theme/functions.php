@@ -64,3 +64,10 @@ function my_acf_block_render_callback($block)
         include(get_theme_file_path("modules/" . $slug . '/' . $slug . ".php"));
     }
 }
+
+function hide_menu_items() {
+    remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+}
+
+add_action('admin_menu', 'hide_menu_items');
