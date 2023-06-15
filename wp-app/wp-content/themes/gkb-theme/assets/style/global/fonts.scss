@@ -1,38 +1,38 @@
 @font-face {
-  font-family: 'Manrope';
-  src: url('../fonts/Manrope/Manrope-Medium.ttf');
-  src: local('Roboto Medium'), local('Roboto-Medium'),
-  url('../fonts/Manrope/Manrope-Medium.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('../fonts/Manrope/Manrope-Light.ttf');
+  font-family: 'Roboto Light';
+  src: url('../fonts/Roboto/Roboto-Light.woff2');
   src: local('Roboto Light'), local('Roboto-Light'),
-  url('../fonts/Manrope/Manrope-Light.ttf') format('truetype');
+  url('../fonts/Roboto/Roboto-Light.woff2') format('truetype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('../fonts/Manrope/Manrope-Bold.ttf');
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-  url('../fonts/Manrope/Manrope-Bold.ttf') format('truetype');
-  font-weight: 800;
+  font-family: 'Roboto Regular';
+  src: url('../fonts/Roboto/Roboto-Regular.woff2');
+  src: local('Roboto Regular'), local('Roboto-Regular'),
+  url('../fonts/Roboto/Roboto-Regular.woff2') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('../fonts/Manrope/Manrope-SemiBold.ttf');
-  src: local('Roboto SemiBold'), local('Roboto-SemiBold'),
-  url('../fonts/Manrope/Manrope-SemiBold.ttf') format('truetype');
+  font-family: 'Roboto Medium';
+  src: url('../fonts/Roboto/Roboto-Medium.woff2');
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+  url('../fonts/Roboto/Roboto-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url('../fonts/Roboto/Roboto-Bold.woff2');
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+  url('../fonts/Roboto/Roboto-Bold.woff2') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
