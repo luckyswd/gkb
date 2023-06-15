@@ -12,10 +12,27 @@
 <?php
 
 
+$args = array(
+    'menu' => 'header_menu_desktop',
+    'container' => 'nav',
+    'container_class' => 'menu-container',
+    'menu_class' => 'header-menu',
+);
+$logo = get_field('logo', 'option');
 ?>
 
 <body>
 <header id="header">
+    <div class="header__wrapper">
+        <?php if (!empty($logo)) :?>
+            <div class="header__logo">
+                <img src="<?= $logo['url'] ?>" alt="<?= $logo['title'] ?>">
+            </div>
+        <?php endif; ?>
+        <?= wp_nav_menu($args); ?>
+        <div>
 
+        </div>
+    </div>
 </header>
 <main id="main" class="main" data-page-id="<?= get_queried_object_id() ?>">

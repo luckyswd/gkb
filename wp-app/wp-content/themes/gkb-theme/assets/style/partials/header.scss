@@ -1,0 +1,15 @@
+header {
+  .header__logo {
+    width: 100px;
+  }
+
+  .header__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-menu {
+    display: flex;
+    gap: 5px;
+  }
+}
