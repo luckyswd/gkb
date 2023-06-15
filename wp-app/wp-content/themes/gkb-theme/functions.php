@@ -70,3 +70,9 @@ function allow_svg_upload($mimes) {
     return $mimes;
 }
 add_filter('upload_mimes', 'allow_svg_upload');
+function hide_menu_items() {
+    remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+}
+
+add_action('admin_menu', 'hide_menu_items');
