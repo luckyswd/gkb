@@ -1,0 +1,87 @@
+#wppb_register_pre_form_message {
+  display: none;
+}
+
+#wppb_form_general_message {
+  display: none;
+}
+
+.wppb-required {
+  display: none;
+}
+
+#wppb-register-user {
+  width: 100%;
+  max-width: 400px;
+  background: $c-white;
+  border: 1px solid $c-focus-border;
+  border-radius: 4px;
+  padding: 15px;
+
+  ul li {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    padding-bottom: 12px;
+
+    label, input {
+      width: 100%;
+    }
+
+    label {
+      font-size: 15px;
+      line-height: 18px;
+      font-weight: 500;
+      padding-bottom: 8px;
+
+      img {
+        display: none;
+      }
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px 12px;
+      line-height: 18px;
+      border-radius: 4px;
+      border: 1px solid $c-gray-input-border;
+      color: $c-main-black;
+
+      &:focus {
+        outline: none;
+        border: 1px solid $c-main-green-light;
+        box-shadow: $c-focus-border;
+      }
+    }
+
+    .wppb-toggle-pw {
+      position: absolute;
+      bottom: 13px;
+      right: 0;
+    }
+  }
+
+  .form-submit {
+    margin-top: 4px;
+    width: 100%;
+
+    input {
+      @extend .btn;
+      border: unset;
+    }
+  }
+}
+
+.wppb-description-delimiter {
+  display: none!important;
+}
+
+.registration-page {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $c-background-auth;
+}
+

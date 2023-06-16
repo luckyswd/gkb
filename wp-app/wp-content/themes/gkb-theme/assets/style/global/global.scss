@@ -1,5 +1,6 @@
 html, body {
     position: relative;
+    height: 100%;
 }
 
 .container {
@@ -14,8 +15,27 @@ html, body {
 }
 
 .main {
-    min-height: 100vh;
     font-weight: 400;
     font-size: 16px;
+    height: 100%;
+    color: $c-main-black;
 }
 
+.btn {
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    background: $c-main-green;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    transition: $transition;
+
+    &:hover {
+        background: $c-main-green-strong;
+    }
+}
