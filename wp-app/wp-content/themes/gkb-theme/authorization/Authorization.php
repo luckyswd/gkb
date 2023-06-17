@@ -10,6 +10,7 @@ class Authorization
     {
         add_action('wp_ajax_registration_user', [$this, 'registrationUser']);
         add_action('wp_ajax_nopriv_registratio_user', [$this, 'registrationUser']);
+        add_action('admin_init', [$this, 'adminAccess']);
     }
 
     public function registrationUser(): void {
@@ -152,6 +153,14 @@ class Authorization
     public function isLoginUser(): void
     {
         if (is_user_logged_in()) {
+            wp_redirect(home_url());
+            exit;
+        }
+    }
+
+    public function adminAccess(): void
+    {
+        if (current_user_can('subscriber') && !(defined('DOING_AJAX') && DOING_AJAX)) {
             wp_redirect(home_url());
             exit;
         }
