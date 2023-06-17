@@ -117,6 +117,7 @@ class Authorization {
     form = null,
   ) {
     const formData = form ? new FormData(form) : new FormData();
+    console.log(action)
     formData.append('action', action);
     const response = await fetch(window.ajaxUrl,
       {

@@ -9,7 +9,7 @@ class Authorization
     public function register(): void
     {
         add_action('wp_ajax_registration_user', [$this, 'registrationUser']);
-        add_action('wp_ajax_nopriv_registratio_user', [$this, 'registrationUser']);
+        add_action('wp_ajax_nopriv_registration_user', [$this, 'registrationUser']);
         add_action('wp_ajax_login_user', [$this, 'login']);
         add_action('wp_ajax_nopriv_login_user', [$this, 'login']);
         add_action('wp_ajax_password_recovery', [$this, 'passwordRecovery']);
@@ -23,6 +23,18 @@ class Authorization
         $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
         $usernameAndEmail = $request->get_param('usernameAndEmail');
         $password = $request->get_param('password');
+
+        $user = get_user_by('login', $usernameAndEmail);
+        $statusVerifiedEmail = get_user_meta($user->ID, 'email_confirmation_status', 'verified');
+        if ($user && $statusVerifiedEmail !== 'verified' && $user->ID !== 1) {
+            wp_send_json([
+                'status' => false,
+                'message' => 'Подтвердите адрес электронной почты, чтобы войти.',
+            ]);
+
+            exit();
+        }
+
         $user = wp_authenticate($usernameAndEmail, $password);
 
         if (is_wp_error($user)) {
@@ -75,6 +87,7 @@ class Authorization
         }
 
         $userId = wp_create_user($username, $password, $email);
+        wp_logout();
         update_user_meta($userId, 'email_confirmation_status', 'pending');
 
         if (is_wp_error($userId)) {
