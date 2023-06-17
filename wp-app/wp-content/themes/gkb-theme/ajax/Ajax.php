@@ -1,28 +1,27 @@
 <?php
 
+namespace ajax;
+
 use helpers\Helpers;
 
 class Ajax
 {
-    public string $ajax_blocks_path;
-
-    public function __construct()
-    {
-        $this->ajax_blocks_path = get_template_directory() . '/ajax-blocks/';
-    }
-
     public function register(): void
     {
-//        add_action('wp_ajax_example_kitchens', [$this, 'example_kitchens']);
-//        add_action('wp_ajax_nopriv_example_kitchens', [$this, 'example_kitchens']);
+        add_action('wp_ajax_select_lang', [$this, 'selectLang']);
+        add_action('wp_ajax_nopriv_select_lang', [$this, 'selectLang']);
     }
 
-//    public function example_kitchens()
-//    {
-//        $format = $_POST['format'];
-//        $entities = $this->get_example_kitchens($format);
-//
-//        include $this->ajax_blocks_path . 'example-kitchens-ajax.php';
-//        wp_die();
-//    }
+    public function selectLang(): never
+    {
+        $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
+        $lang = $request->get_param('lang');
+        setcookie('lang', $lang, time() + 3600, COOKIEPATH, COOKIE_DOMAIN);
+
+        wp_send_json([
+            'status' => true,
+        ]);
+
+        wp_die();
+    }
 }

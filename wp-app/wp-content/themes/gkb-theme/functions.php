@@ -12,7 +12,7 @@ require_once 'authorization/Authorization.php';
 require_once 'ajax/Ajax.php';
 $authorization = new \authorization\Authorization();
 $authorization->register();
-$ajax = new Ajax();
+$ajax = new \ajax\Ajax();
 $ajax->register();
 
 add_filter('show_admin_bar', '__return_false');
