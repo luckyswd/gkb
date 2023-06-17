@@ -1,16 +1,12 @@
-#wppb_register_pre_form_message {
-  display: none;
+.registration-page {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $c-background-auth;
 }
 
-#wppb_form_general_message {
-  display: none;
-}
-
-.wppb-required {
-  display: none;
-}
-
-#wppb-register-user {
+.auth-form {
   width: 100%;
   max-width: 400px;
   background: $c-white;
@@ -18,11 +14,8 @@
   border-radius: 4px;
   padding: 15px;
 
-  ul li {
-    display: flex;
-    flex-direction: column;
+  .container-input {
     width: 100%;
-    position: relative;
     padding-bottom: 12px;
 
     label, input {
@@ -34,10 +27,6 @@
       line-height: 18px;
       font-weight: 500;
       padding-bottom: 8px;
-
-      img {
-        display: none;
-      }
     }
 
     input {
@@ -55,33 +44,18 @@
       }
     }
 
-    .wppb-toggle-pw {
-      position: absolute;
-      bottom: 13px;
-      right: 0;
+    &.error-input {
+      input {
+        border: 1px solid $c-main-red;
+        box-shadow: $c-focus-border;
+      }
+
+      .message-error {
+        color: $c-main-red;
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 2px;
+      }
     }
   }
-
-  .form-submit {
-    margin-top: 4px;
-    width: 100%;
-
-    input {
-      @extend .btn;
-      border: unset;
-    }
-  }
 }
-
-.wppb-description-delimiter {
-  display: none!important;
-}
-
-.registration-page {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: $c-background-auth;
-}
-
