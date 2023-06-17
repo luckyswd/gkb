@@ -68,3 +68,10 @@ function my_acf_block_render_callback($block)
         include(get_theme_file_path("modules/" . $slug . '/' . $slug . ".php"));
     }
 }
+function set_custom_cookie() {
+    if (!isset($_COOKIE['lang'])) {
+        $month = time() + (30 * 24 * 60 * 60);
+        setcookie('lang', 'ru', $month, COOKIEPATH, COOKIE_DOMAIN);
+    }
+}
+add_action('wp_loaded', 'set_custom_cookie');

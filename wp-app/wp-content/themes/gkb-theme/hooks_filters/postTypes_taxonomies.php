@@ -7,6 +7,13 @@ if (function_exists('acf_add_options_page')) {
         'capability' => 'edit_posts',
         'redirect' => false
     ));
+    acf_add_options_page(array(
+        'page_title' => 'All fields',
+        'menu_title' => 'All fields',
+        'menu_slug' => 'all-fields',
+        'capability' => 'edit_posts',
+        'redirect' => false
+    ));
 }
 
 function create_taxonomy()

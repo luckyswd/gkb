@@ -19,4 +19,29 @@ class Helpers
 
         return $request;
     }
+
+    public function get_field_multi_lang(
+        string      $lang,
+        string      $field = null,
+        bool|string $postId = false,
+    ): array|object|null
+    {
+        if ($field) {
+            $field = get_field($field, $postId);
+            return match ($lang) {
+                'ru' => $field['ru_language'] ?? null,
+                'en' => $field['en_language'] ?? null,
+            };
+        }
+
+        return match ($lang) {
+            'ru' => get_field('ru_language', $postId ?? ''),
+            'en' => get_field('en_language', $postId ?? ''),
+        };
+    }
+
+    public function getLang()
+    {
+        return $_COOKIE['lang'];
+    }
 }
