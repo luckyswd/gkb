@@ -48,12 +48,14 @@ class Authorization
         }
 
         $this->sendConfirmEmail($userId, $email);
+
+        $messageAfterRegister = 'Спасибо за регистрацию! Для активации вашего аккаунта, пожалуйста, проверьте вашу электронную почту и следуйте инструкциям, указанным в письме активации.';
         wp_send_json([
             'status' => true,
             'username' => $existUserName,
             'email' => $existEmail,
             'password' => $validPassword,
-            'redirectUrl' => sprintf('%s/registration-confirm-email', get_home_url()),
+            'messageAfterRegister' => '<div class="message-after-register">' . $messageAfterRegister . '</div>',
         ]);
 
         exit();

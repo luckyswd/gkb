@@ -8,6 +8,7 @@ class Authorization {
   }
 
   registration() {
+    const registerPage = document.querySelector('.registration-page');
     const registrationForm = document.querySelector('.registration-page form');
     if (!registrationForm) {
       return;
@@ -28,7 +29,7 @@ class Authorization {
       );
       const resp = await response.json();
       if (resp.status) {
-        window.location.href = resp.redirectUrl;
+        registerPage.innerHTML = resp.messageAfterRegister;
       }
 
       this.validInput(containerUserName, resp.username);

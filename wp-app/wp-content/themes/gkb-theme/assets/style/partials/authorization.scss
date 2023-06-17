@@ -4,13 +4,23 @@
   align-items: center;
   justify-content: center;
   background: $c-background-auth;
+
+  .message-after-register {
+    width: 100%;
+    max-width: 400px;
+    background: $c-white;
+    border: 1px solid $c-gray-form-border;
+    border-radius: 4px;
+    padding: 15px;
+    text-align: center;
+  }
 }
 
 .auth-form {
   width: 100%;
   max-width: 400px;
   background: $c-white;
-  border: 1px solid $c-focus-border;
+  border: 1px solid $c-gray-form-border;
   border-radius: 4px;
   padding: 15px;
 
