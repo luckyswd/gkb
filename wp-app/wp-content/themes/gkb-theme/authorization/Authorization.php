@@ -6,6 +6,15 @@ use helpers\Helpers;
 
 class Authorization
 {
+    private Helpers $helpers;
+    private string $language;
+
+    public function __construct()
+    {
+        $this->helpers = new Helpers();
+        $this->language = $this->helpers->getLang();
+    }
+
     public function register(): void
     {
         add_action('wp_ajax_registration_user', [$this, 'registrationUser']);
@@ -23,16 +32,17 @@ class Authorization
         $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
         $usernameAndEmail = $request->get_param('usernameAndEmail');
         $password = $request->get_param('password');
+        $messages = $this->getMessages('login');
 
         $user = get_user_by('login', $usernameAndEmail);
         $statusVerifiedEmail = get_user_meta($user->ID, 'email_confirmation_status', 'verified');
         if ($user && $statusVerifiedEmail !== 'verified' && $user->ID !== 1) {
             wp_send_json([
                 'status' => false,
-                'message' => 'Подтвердите адрес электронной почты, чтобы войти.',
+                'message' => $messages['email_confirm_text'],
             ]);
 
-            exit();
+            wp_die();
         }
 
         $user = wp_authenticate($usernameAndEmail, $password);
@@ -40,10 +50,10 @@ class Authorization
         if (is_wp_error($user)) {
             wp_send_json([
                 'status' => false,
-                'message' => 'Неправильное имя пользователя или email или пароль.',
+                'message' => $messages['login_error_text'],
             ]);
 
-            exit();
+            wp_die();
         }
 
         wp_set_auth_cookie( $user->ID );
@@ -52,7 +62,7 @@ class Authorization
             'redirectAfterLogin' => home_url(),
         ]);
 
-        exit();
+        wp_die();
     }
 
     public function logout(): never {
@@ -62,7 +72,7 @@ class Authorization
             'status' => true,
         ]);
 
-        exit();
+        wp_die();
     }
 
     public function registrationUser(): never {
@@ -83,7 +93,7 @@ class Authorization
                 'password' => $validPassword,
             ]);
 
-            exit();
+            wp_die();
         }
 
         $userId = wp_create_user($username, $password, $email);
@@ -98,21 +108,21 @@ class Authorization
                 'password' => $validPassword,
             ]);
 
-            exit();
+            wp_die();
         }
 
         $this->sendConfirmEmail($userId, $email);
+        $messages = $this->getMessages('registration');
 
-        $messageAfterRegister = 'Спасибо за регистрацию! Для активации вашего аккаунта, пожалуйста, проверьте вашу электронную почту и следуйте инструкциям, указанным в письме активации.';
         wp_send_json([
             'status' => true,
             'username' => $existUserName,
             'email' => $existEmail,
             'password' => $validPassword,
-            'messageAfterRegister' => '<div class="message-after-register">' . $messageAfterRegister . '</div>',
+            'messageAfterRegister' => '<div class="message-after-register">' . $messages['success_registration'] . '</div>',
         ]);
 
-        exit();
+        wp_die();
     }
 
     public function passwordRecovery(): never {
@@ -123,60 +133,63 @@ class Authorization
         if (!$user) {
             $user = get_user_by('email', $usernameAndEmail);
         }
+        $messages = $this->getMessages('password_recovery');
 
         if (!$user) {
             wp_send_json([
                 'status' => false,
-                'message' => 'Пользователь с указанным логином или email не существует.',
+                'message' => $messages['user_not_exist'],
             ]);
-            exit();
+            wp_die();
         }
 
         $resetPasswordUrl = wp_lostpassword_url();
         $resetPasswordEmailSent = wp_mail(
             $user->user_email,
-            'Сброс пароля',
-            'Для сброса пароля пройдите по ссылке: ' . $resetPasswordUrl
+            $messages['subject_email_password'],
+            $messages['email_password_text'] . $resetPasswordUrl
         );
 
         if ($resetPasswordEmailSent) {
             wp_send_json([
                 'status' => true,
-                'message' => 'Письмо с инструкциями по сбросу пароля отправлено на ваш email.',
+                'message' => $messages['email_password_success'],
             ]);
 
-            exit();
+            wp_die();
         }
 
         wp_send_json([
             'status' => false,
-            'message' => 'Ошибка при отправке письма с инструкциями по сбросу пароля.',
+            'message' => $messages['email_error'],
         ]);
 
-        exit();
+        wp_die();
     }
 
     private function existUserName(
         string $username,
     ): array {
+        $messages = $this->getMessages('registration');
+
         if (empty($username)) {
             return [
                 'status' => false,
-                'message' => 'Поля не может быть пустым.',
+                'message' =>  $messages['empty_field'],
             ];
         }
 
         if (!validate_username($username)) {
             return [
                 'status' => false,
-                'message' => 'Имя пользователя должно содержать только латинские буквы или цифры.',
+                'message' => $messages['validate_username'],
             ];
         }
 
         if (username_exists($username)) {
             return [
                 'status' => false,
-                'message' => 'Пользователь с таким именем уже существует.',
+                'message' => $messages['username_exists'],
             ];
         }
 
@@ -188,24 +201,26 @@ class Authorization
     private function existEmail(
         string $email,
     ): array {
+        $messages = $this->getMessages('registration');
+
         if (empty($email)) {
             return [
                 'status' => false,
-                'message' => 'Поля не может быть пустым.',
+                'message' =>  $messages['empty_field'],
             ];
         }
 
         if (!is_email($email)) {
             return [
                 'status' => false,
-                'message' => 'Неправильный формат email.',
+                'message' => $messages['email_invalid'],
             ];
         }
 
         if (email_exists($email)) {
             return [
                 'status' => false,
-                'message' => 'Пользователь с таким email уже существует.',
+                'message' => $messages['email_exists'],
             ];
         }
 
@@ -217,10 +232,12 @@ class Authorization
     private function checkValidPassword(
         string $password,
     ): array {
+        $messages = $this->getMessages('registration');
+
         if (strlen($password) < 6) {
             return [
                 'status' => false,
-                'message' => 'Пароль должен содержать не менее 6 символов.',
+                'message' => $messages['invalid_long_password'],
             ];
         }
 
@@ -233,14 +250,21 @@ class Authorization
         int $userId,
         string $email,
     ): void {
+        $messages = $this->getMessages('registration');
         $activation_key = wp_generate_password(20, false);
         update_user_meta($userId, 'activation_key', $activation_key);
         $activation_link = add_query_arg([
             'key' => $activation_key,
             'user' => $userId
         ], wp_login_url());
-        $message = "Добро пожаловать!\n\nПожалуйста, активируйте ваш аккаунт, перейдя по следующей ссылке:\n\n$activation_link";
-        wp_mail($email, 'Активация аккаунта', $message);
+
+        wp_mail($email, $messages['subject_email_active'], sprintf('%s %s', $messages['email_body_active_text'], $activation_link));
+    }
+
+    private function getMessages(
+        string $field,
+    ): array {
+       return $this->helpers->get_field_multi_lang($this->language, $field, 'option');
     }
 
     public static function isLogin(): void
