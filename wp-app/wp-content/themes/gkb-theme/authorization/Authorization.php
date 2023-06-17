@@ -10,10 +10,50 @@ class Authorization
     {
         add_action('wp_ajax_registration_user', [$this, 'registrationUser']);
         add_action('wp_ajax_nopriv_registratio_user', [$this, 'registrationUser']);
+        add_action('wp_ajax_login_user', [$this, 'login']);
+        add_action('wp_ajax_nopriv_login_user', [$this, 'login']);
+        add_action('wp_ajax_password_recovery', [$this, 'passwordRecovery']);
+        add_action('wp_ajax_nopriv_password_recovery', [$this, 'passwordRecovery']);
+        add_action('wp_ajax_logout_user', [$this, 'logout']);
+        add_action('wp_ajax_nopriv_logout_user', [$this, 'logout']);
         add_action('admin_init', [$this, 'adminAccess']);
     }
 
-    public function registrationUser(): void {
+    public function login(): never  {
+        $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
+        $usernameAndEmail = $request->get_param('usernameAndEmail');
+        $password = $request->get_param('password');
+        $user = wp_authenticate($usernameAndEmail, $password);
+
+        if (is_wp_error($user)) {
+            wp_send_json([
+                'status' => false,
+                'message' => 'Неправильное имя пользователя или email или пароль.',
+            ]);
+
+            exit();
+        }
+
+        wp_set_auth_cookie( $user->ID );
+        wp_send_json([
+            'status' => true,
+            'redirectAfterLogin' => home_url(),
+        ]);
+
+        exit();
+    }
+
+    public function logout(): never {
+        wp_logout();
+
+        wp_send_json([
+            'status' => true,
+        ]);
+
+        exit();
+    }
+
+    public function registrationUser(): never {
         $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
         $username = $request->get_param('username');
         $email = $request->get_param('email');
@@ -57,6 +97,47 @@ class Authorization
             'email' => $existEmail,
             'password' => $validPassword,
             'messageAfterRegister' => '<div class="message-after-register">' . $messageAfterRegister . '</div>',
+        ]);
+
+        exit();
+    }
+
+    public function passwordRecovery(): never {
+        $request = Helpers::getRequest(Helpers::METHOD_POST, $_POST);
+        $usernameAndEmail = $request->get_param('usernameAndEmail');
+
+        $user = get_user_by('login', $usernameAndEmail);
+        if (!$user) {
+            $user = get_user_by('email', $usernameAndEmail);
+        }
+
+        if (!$user) {
+            wp_send_json([
+                'status' => false,
+                'message' => 'Пользователь с указанным логином или email не существует.',
+            ]);
+            exit();
+        }
+
+        $resetPasswordUrl = wp_lostpassword_url();
+        $resetPasswordEmailSent = wp_mail(
+            $user->user_email,
+            'Сброс пароля',
+            'Для сброса пароля пройдите по ссылке: ' . $resetPasswordUrl
+        );
+
+        if ($resetPasswordEmailSent) {
+            wp_send_json([
+                'status' => true,
+                'message' => 'Письмо с инструкциями по сбросу пароля отправлено на ваш email.',
+            ]);
+
+            exit();
+        }
+
+        wp_send_json([
+            'status' => false,
+            'message' => 'Ошибка при отправке письма с инструкциями по сбросу пароля.',
         ]);
 
         exit();
@@ -149,8 +230,7 @@ class Authorization
         wp_mail($email, 'Активация аккаунта', $message);
     }
 
-
-    public function isLoginUser(): void
+    public static function isLogin(): void
     {
         if (is_user_logged_in()) {
             wp_redirect(home_url());

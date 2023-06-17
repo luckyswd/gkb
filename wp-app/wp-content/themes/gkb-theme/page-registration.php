@@ -1,11 +1,11 @@
 <?php
-//$helpers = new \helpers\Helpers();
-//$helpers->isLoginUser();
+\authorization\Authorization::isLogin();
 get_header();
 ?>
 
 <div class="registration-page">
     <form class="auth-form" id="auth-form">
+        <span class="alert-message"></span>
         <ul>
             <li class="container-input container-username">
                 <label for="username">Имя пользователя</label>

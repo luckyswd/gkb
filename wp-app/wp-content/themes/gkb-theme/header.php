@@ -10,8 +10,6 @@
 </head>
 
 <?php
-
-
 $args = array(
     'menu' => 'header_menu_desktop',
     'container' => 'nav',
@@ -34,5 +32,7 @@ $logo = get_field('logo', 'option');
 
         </div>
     </div>
+
+    <button class="btn user-logout">logout</button>
 </header>
 <main id="main" class="main" data-page-id="<?= get_queried_object_id() ?>">
