@@ -11,8 +11,9 @@ class Helpers
 
     public static function getRequest(
         string $method,
-        array $params,
-    ): WP_REST_Request {
+        array  $params,
+    ): WP_REST_Request
+    {
         $request = new WP_REST_Request();
         $request->set_method($method);
         $request->set_body_params($params);
@@ -43,5 +44,30 @@ class Helpers
     public function getLang()
     {
         return $_COOKIE['lang'];
+    }
+
+    public function getProductTitle(
+        object $product
+    )
+    {
+        $data = $this->getProductData($product);
+        return match ((new Helpers)->getLang()) {
+            'ru' => $data['ru_language_title'] ?? '',
+            'en' => $data['en_language_title'] ?? '',
+        };
+    }
+
+    private function getProductData(
+        object $product
+    )
+    {
+        $content = $product->post_content;
+
+        $blocks = parse_blocks($content);
+        foreach ($blocks as $block) {
+            if ($block['blockName'] === 'acf/product') {
+                return $block['attrs']['data'] ?? '';
+            }
+        }
     }
 }

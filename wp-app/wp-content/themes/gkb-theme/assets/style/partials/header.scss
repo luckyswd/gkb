@@ -1,43 +1,369 @@
 header {
-  .header__logo {
-    width: 100px;
+  padding-bottom: 10px;
+
+  .container.mobile {
+    padding: 0;
   }
 
-  .header__wrapper {
+  .header__short-logo {
+    width: 100px;
+    @include _1280 {
+      display: none;
+    }
+  }
+
+  .header__logo-mobile {
+    width: 200px;
+    display: none;
+    @include _1280 {
+      display: block;
+    }
+  }
+
+  .header__logo-mobile.disable {
+    display: none;
+  }
+
+  .header__main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
+
+    @include _1280 {
+      align-items: end;
+    }
+  }
+
+  .header__main.mobile {
+    gap: 0;
   }
 
   .header__menu {
+    background-color: $c-white;
     display: flex;
     gap: 5px;
     font-size: 14px;
     padding: 3px;
-    border: 2px solid $c-gray-form-border;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
     border-radius: 50px;
+    font-weight: 700;
+    transition: $transition;
+
     a {
       color: $c-main-black;
       border-radius: 50px;
       padding: 10px 20px;
+
       &:hover {
         color: $c-white;
         background-color: $c-main-green-strong;
       }
     }
-  }
 
-  .header__socials {
-    display: flex;
-    gap: 5px;
-  }
-
-  .header__social {
-    width: 32px;
-    transition: $transition;
-    &:hover {
-      transform: scale(1.15);
+    @include _1280 {
+      display: none;
     }
+  }
+
+  .header__menu.disable {
+    display: none;
+  }
+
+  .header__right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header__search {
+    position: relative;
+    display: none;
+  }
+
+  .header__search.active {
+    display: block;
+    @include _1280 {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .header__search-close {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      transition: $transition;
+    }
+
+    &:hover {
+      svg {
+        fill: $c-main-green-strong;
+      }
+    }
+  }
+
+  .header__search-icon {
+    width: 28px;
+    display: flex;
+    cursor: pointer;
+
+    svg {
+      transition: $transition;
+    }
+
+    &:hover {
+      svg {
+        fill: $c-main-green-strong;
+      }
+    }
+
+    @include _1280 {
+      padding-bottom: 11px;
+    }
+  }
+
+  .header__search-icon.disable {
+    display: none;
+  }
+
+  .header__search-input {
+    font-size: 14px;
+    height: 54px;
+    padding: 10px 20px;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
+    border-radius: 50px;
+    min-width: 650px;
+
+    @include _1280 {
+      min-width: 100%;
+      border-radius:0;
+      font-size: 24px;
+      height: 90px;
+    }
+
+    @include _768 {
+      font-size: 14px;
+    }
+  }
+
+  .header__search-input:focus {
+    border: none;
+    outline: none;
+  }
+
+  .header__login {
+    display: flex;
+    font-size: 14px;
+    padding: 3px;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
+    background-color: $c-white;
+    border-radius: 50px;
+
+    div, a {
+      font-weight: 700;
+      color: $c-main-black;
+      border-radius: 50px;
+      padding: 10px 20px;
+      min-width: 100px;
+      text-align: center;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        color: $c-white;
+        background-color: $c-main-green-strong;
+      }
+    }
+
+    @include _1280 {
+      display: none;
+    }
+  }
+
+
+  .header__categories {
+    gap: 15px;
+    justify-content: space-between;
+    min-height: 54px;
+    align-items: center;
+  }
+
+  .header__category {
+    position: relative;
+
+    a {
+      display: flex;
+      align-items: center;
+
+    }
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    &:hover {
+      .header__category-products {
+        opacity: 1;
+        z-index: 10;
+      }
+    }
+  }
+
+  .header__category-products {
+    transition: $transition;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    background-color: $c-white;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    box-shadow: $c-focus-border;
+    z-index: -10;
+
+    a {
+      transition: $transition;
+    }
+
+    a:hover {
+      color: $c-main-green-strong;
+      background-color: unset;
+    }
+  }
+
+  .header__burger-icon {
+    display: none;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    @include _1280 {
+      display: block;
+      padding-bottom: 11px;
+    }
+  }
+
+  .header__burger-icon.disable {
+    display: none;
+  }
+
+  .header__mobile {
+    display: none;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    padding: 0 10px;
+    background-color: $c-main-black;
+
+    h3 {
+      font-size: 32px;
+      text-align: center;
+      color: $c-gray;
+      padding-top: 25px;
+    }
+  }
+
+  .header__mobile.active {
+    display: block;
+  }
+
+  .header__mobile-categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+
+
+    a {
+      color: $c-main-black;
+      text-align: center;
+    }
+  }
+
+  .header__mobile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+
+    a {
+      text-align: center;
+      color: $c-main-black;
+      display: flex;
+      justify-content: center;
+      background-color: $c-white;
+      border: 1px solid $c-gray-form-border;
+      padding: 5px 10px;
+      border-radius: 20px;
+      width: 50vw;
+      @include _768 {
+        width: 100%;
+      }
+    }
+  }
+
+  .header__burger-close {
+    display: none;
+    svg {
+      width: 28px;
+    }
+    padding-bottom: 13px;
+  }
+
+  .header__burger-close.active {
+    display: flex;
+  }
+
+  .header__mobile-category {
+    display: flex;
+    justify-content: center;
+    background-color: $c-white;
+    border: 1px solid $c-gray-form-border;
+    padding: 5px 10px;
+    border-radius: 20px;
+    width: 50vw;
+    @include _768 {
+      width: 100%;
+    }
+
+  }
+}
+body.mobile {
+  overflow: hidden;
+}
+.section-socials {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  z-index: 100;
+}
+
+.section-social {
+  width: 32px;
+  transition: $transition;
+
+  &:hover {
+    transform: scale(1.15);
   }
 }
 
@@ -46,6 +372,7 @@ header {
   bottom: 10px;
   right: 10px;
   z-index: 100;
+
   svg {
     width: 40px;
     cursor: pointer;
