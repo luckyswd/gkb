@@ -5,9 +5,13 @@ include 'hooks_filters/postTypes_taxonomies.php';
 include 'hooks_filters/webp_upload.php';
 include 'hooks_filters/after_setup_theme.php';
 include 'hooks_filters/reset_default_css_js.php';
+include 'hooks_filters/additional.php';
 
 require_once 'helpers/Helpers.php';
+require_once 'authorization/Authorization.php';
 require_once 'ajax/Ajax.php';
+$authorization = new \authorization\Authorization();
+$authorization->register();
 $ajax = new Ajax();
 $ajax->register();
 
@@ -64,15 +68,3 @@ function my_acf_block_render_callback($block)
         include(get_theme_file_path("modules/" . $slug . '/' . $slug . ".php"));
     }
 }
-
-function allow_svg_upload($mimes) {
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
-}
-add_filter('upload_mimes', 'allow_svg_upload');
-function hide_menu_items() {
-    remove_menu_page('edit.php');
-    remove_menu_page('edit-comments.php');
-}
-
-add_action('admin_menu', 'hide_menu_items');

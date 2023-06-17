@@ -1,0 +1,1 @@
+window.ajaxUrl = '/wp-admin/admin-ajax.php';

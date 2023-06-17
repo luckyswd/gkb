@@ -34,6 +34,7 @@ html, body {
     font-weight: 700;
     text-align: center;
     transition: $transition;
+    display: block;
 
     &:hover {
         background: $c-main-green-strong;
