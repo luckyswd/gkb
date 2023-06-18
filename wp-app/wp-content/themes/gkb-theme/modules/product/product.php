@@ -17,16 +17,32 @@ $countTabs = count($nameTabs);
     <section class="product">
         <div class="container">
             <div class="product__header">
-                <?php if (!empty($fields['image_slider'])) : ?>
-                    <div class="product__slider">
-                        <?php foreach ($fields['image_slider'] as $key => $slide) : ?>
-                            <div class="product__slide <?= $key === 0 ? 'first' : '' ?>">
-                                <img src="<?= $slide['image']['url'] ?>" alt="<?= $slide['image']['title'] ?>">
+                <div class="product__slider-wrapper">
+                    <?php if (!empty($fields['image_slider'])) : ?>
+                        <div class="swiper product__slider-2">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($fields['image_slider'] as $key => $slide) : ?>
+                                    <div class="swiper-slide">
+                                        <img src="<?= $slide['image']['url'] ?>" alt="<?= $slide['image']['title'] ?>">
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($fields['image_slider'])) : ?>
+                        <div thumbsSlider="" class="swiper product__slider">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($fields['image_slider'] as $key => $slide) : ?>
+                                    <div class="swiper-slide">
+                                        <img src="<?= $slide['image']['url'] ?>" alt="<?= $slide['image']['title'] ?>">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
                 <div class="product__info">
                     <?php if (!empty($fields['title'])) : ?>
                         <h2 class="product__title">

@@ -8,6 +8,7 @@ class Product {
             3: document.querySelector('.product__body-content-documentations')
         };
         this.init();
+        this.initSlider();
     }
 
     init() {
@@ -24,6 +25,25 @@ class Product {
                 const contentElement = this.contentElements[index];
                 contentElement && contentElement.classList.add('active');
             });
+        });
+    }
+
+    initSlider() {
+        const swiper = new Swiper(".product__slider", {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+        const swiper2 = new Swiper(".product__slider-2", {
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
         });
     }
 }
