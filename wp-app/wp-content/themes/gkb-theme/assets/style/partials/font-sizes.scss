@@ -3,6 +3,9 @@ h2 {
     font-size: 50px;
     line-height: 90%;
     color: $c-dark-black;
+    @include _1280 {
+        font-size: 32px;
+    }
 }
 
 p {

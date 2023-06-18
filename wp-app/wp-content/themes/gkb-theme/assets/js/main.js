@@ -8,3 +8,4 @@
 
 /**** MODULES ****/
 //=include ../../modules/slider/slider.js
+//=include ../../modules/product/product.js

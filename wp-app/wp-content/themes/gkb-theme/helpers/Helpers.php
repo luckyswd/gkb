@@ -35,7 +35,6 @@ class Helpers
                 'en' => $field['en_language'] ?? null,
             };
         }
-
         return match ($lang) {
             'ru' => get_field('ru_language', $postId ?? ''),
             'en' => get_field('en_language', $postId ?? ''),
