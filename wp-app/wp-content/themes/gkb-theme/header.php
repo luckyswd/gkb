@@ -253,7 +253,7 @@ $categories = get_terms([
             <div class="header__mobile-links">
                 <?php foreach ($fields['links'] as $link) : ?>
                     <?php if ($link['link']['url'] && $link['link']['title']) : ?>
-                        <a href="<?= $link['link']['url'] ?>" target="<?= $link['link']['target'] ?>">
+                        <a class="btn" href="<?= $link['link']['url'] ?>" target="<?= $link['link']['target'] ?>">
                             <?= $link['link']['title'] ?>
                         </a>
                     <?php endif; ?>
@@ -266,13 +266,13 @@ $categories = get_terms([
         <?php if (!empty($categories)) : ?>
             <div class="header__mobile-categories">
                 <div class="header__mobile-category">
-                    <a href="">
+                    <a class="btn" href="">
                         <?= $fields['all_products'] ?? '' ?>
                     </a>
                 </div>
                 <?php foreach ($categories as $category) : ?>
                     <div class="header__mobile-category">
-                        <a href="<?= get_term_link($category) ?>">
+                        <a class="btn" href="<?= get_term_link($category) ?>">
                             <?php if ((new Helpers)->getLang() == 'ru') : ?>
                                 <?= $category->name ?>
                             <?php elseif ((new Helpers)->getLang() == 'en') : ?>
@@ -283,6 +283,17 @@ $categories = get_terms([
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+        <div class="header__mobile-login">
+            <?php if (!is_user_logged_in()) : ?>
+                <a class="btn " href="/login">
+                    <?= $fields['login'] ?? '' ?>
+                </a>
+            <?php else: ?>
+                <div class=" btn user-logout">
+                    <?= $fields['logout'] ?? '' ?>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </header>
 <main id="main" class="main" data-page-id="<?= get_queried_object_id() ?>">

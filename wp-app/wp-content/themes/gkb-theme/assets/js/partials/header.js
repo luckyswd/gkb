@@ -19,7 +19,6 @@ class Header {
         this.openSearch()
         this.closeSearch()
         this.openBurger()
-        this.closeBurger()
     }
 
     selectLang() {
@@ -81,16 +80,9 @@ class Header {
 
     openBurger() {
         this.headerBurgerIcon && this.headerBurgerIcon.addEventListener('click', () => {
-                this.headerMobile && this.headerMobile.classList.add('active')
-                this.body && this.body.classList.add('mobile')
-        })
-    }
-
-    closeBurger() {
-        this.headerMobile && this.headerMobile.addEventListener('click', () => {
-            this.headerMobile && this.headerMobile.classList.remove('active')
-            this.body && this.body.classList.remove('mobile')
-        })
+            this.headerMobile && this.headerMobile.classList.toggle('active');
+            this.body && this.body.classList.toggle('mobile');
+        });
     }
 }
 

@@ -8,6 +8,7 @@ class Helpers
 {
     public const METHOD_GET = 'GET';
     public const METHOD_POST = 'POST';
+    private ?array $dataProduct = null;
 
     public static function getRequest(
         string $method,
@@ -48,12 +49,73 @@ class Helpers
 
     public function getProductTitle(
         object $product
+    ) // Заголовок
+    {
+        return $this->getProductDataValue($product, 'language_title');
+    }
+
+    public function getProductSubtitle(
+        object $product
+    ) // Подзаголовок
+    {
+        return $this->getProductDataValue($product, 'language_subtitle');
+    }
+
+    public function getProductDescription(
+        object $product
+    ) // Описание
+    {
+        return $this->getProductDataValue($product, 'language_description');
+    }
+
+    public function getProductDescriptionCatalog(
+        object $product
+    ) // Описание для каталога
+    {
+        return $this->getProductDataValue($product, 'language_description_catalog');
+    }
+
+    public function getProductButtonName(
+        object $product
+    ) // Название кнопки
+    {
+        return $this->getProductDataValue($product, 'language_button_name');
+    }
+
+    public function getProductSliderImage(
+        object $product
+    ): false|string // Картинки для товара
+    {
+        return wp_get_attachment_image_url($this->getProductDataValue($product, 'language_image_slider_0_image'), 'full');
+    }
+
+    public function getProductIconFunctionality(
+        object $product
+    ): array //Иконки функциональности
+    {
+        $data = $this->getProductData($product);
+        $count = $this->getProductDataValue($product, 'language_functionality_icons');
+        $fields = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $fields[] = match ((new Helpers)->getLang()) {
+                'ru' => wp_get_attachment_image_url($data['ru_language_image_slider_'. $i .'_image'], 'full') ?? '',
+                'en' => wp_get_attachment_image_url($data['en_language_image_slider_'. $i .'_image'], 'full') ?? '',
+            };
+        }
+        return $fields;
+    }
+
+
+    private function getProductDataValue(
+        object $product,
+        string $fieldName,
     )
     {
         $data = $this->getProductData($product);
         return match ((new Helpers)->getLang()) {
-            'ru' => $data['ru_language_title'] ?? '',
-            'en' => $data['en_language_title'] ?? '',
+            'ru' => $data['ru_' . $fieldName] ?? '',
+            'en' => $data['en_' . $fieldName] ?? '',
         };
     }
 
@@ -61,12 +123,17 @@ class Helpers
         object $product
     )
     {
-        $content = $product->post_content;
+        if ($this->dataProduct) {
+            return $this->dataProduct;
+        }
 
+        $content = $product->post_content;
         $blocks = parse_blocks($content);
         foreach ($blocks as $block) {
             if ($block['blockName'] === 'acf/product') {
-                return $block['attrs']['data'] ?? '';
+                $this->dataProduct = $block['attrs']['data'] ?? '';
+
+                return $this->dataProduct;
             }
         }
     }

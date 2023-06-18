@@ -274,10 +274,10 @@ header {
     background-color: $c-main-black;
 
     h3 {
-      font-size: 32px;
+      font-size: 24px;
       text-align: center;
-      color: $c-gray;
-      padding-top: 25px;
+      color: $c-white;
+      padding-top: 15px;
     }
   }
 
@@ -294,7 +294,6 @@ header {
 
 
     a {
-      color: $c-main-black;
       text-align: center;
     }
   }
@@ -308,13 +307,8 @@ header {
 
     a {
       text-align: center;
-      color: $c-main-black;
       display: flex;
       justify-content: center;
-      background-color: $c-white;
-      border: 1px solid $c-gray-form-border;
-      padding: 5px 10px;
-      border-radius: 20px;
       width: 50vw;
       @include _768 {
         width: 100%;
@@ -337,15 +331,22 @@ header {
   .header__mobile-category {
     display: flex;
     justify-content: center;
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    padding: 5px 10px;
-    border-radius: 20px;
     width: 50vw;
     @include _768 {
       width: 100%;
     }
+  }
 
+  .header__mobile-login {
+    display: flex;
+    justify-content: center;
+    max-width: 240px;
+    width: 100%;
+    margin: 20px auto 0;
+  }
+
+  .btn {
+    padding: 10px;
   }
 }
 body.mobile {
