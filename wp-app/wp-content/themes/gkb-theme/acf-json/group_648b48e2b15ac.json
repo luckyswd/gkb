@@ -830,6 +830,31 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "field_648ef16c41802",
+            "label": "Иконка для пдф файлов",
+            "name": "icon_pdf",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -850,5 +875,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687085080
+    "modified": 1687089650
 }

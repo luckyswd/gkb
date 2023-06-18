@@ -64,7 +64,7 @@
 
   .product__title {
     padding-bottom: 10px;
-    color: $c-main-green;
+    color: $c-main-red;
     font-weight: 700;
   }
 
@@ -111,31 +111,53 @@
 
   .product__body-content {
     position: relative;
-    z-index: 5;
     border-top: 1px solid $c-main-green-strong;
     margin-left: 1px;
     padding: 20px 0;
+    overflow: hidden;
   }
 
 
   .product__body-content-benefits, .product__body-content-specifications, .product__body-content-equipment, .product__body-content-documentations {
-    display: none;
+    opacity: 0;
+    height: 100%;
+    max-height: 0;
+    transition: $transition;
+    z-index: -5;
+    position: relative;
   }
 
   .product__body-content-benefits.active, .product__body-content-specifications.active, .product__body-content-equipment.active, .product__body-content-documentations.active {
-    display: block;
+    opacity: 1;
+    max-height: 10000000px;
+    z-index: 1;
   }
 
+  .product__body-content-documentations.active {
+    opacity: 1;
+    max-height: 10000000px;
+    z-index: 1;
+  }
   .product__body-content-documentations {
-    display: flex!important;
+    display: flex;
     flex-direction: column;
     gap: 10px;
-    a {
-      color: $c-main-black;
+  }
+
+  .product__body-content-documentation {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: $transition;
+    color: $c-main-black;
+    img {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      color: $c-main-green-strong;
     }
   }
+
 }
-
-
-
-

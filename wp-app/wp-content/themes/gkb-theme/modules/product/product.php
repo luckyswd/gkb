@@ -9,6 +9,7 @@ use helpers\Helpers;
 
 $fields = (new Helpers)->get_field_multi_lang((new Helpers)->getLang());
 $nameTabs = (new Helpers)->get_field_multi_lang((new Helpers)->getLang(), 'name_tabs', 'option');
+$iconPDF = get_field('icon_pdf', 'option');
 $countTabs = count($nameTabs);
 ?>
 
@@ -81,6 +82,7 @@ $countTabs = count($nameTabs);
                             <?php foreach ($fields['documentation'] as $documentation) : ?>
                                 <a href="<?= $documentation['file']['url'] ?>"
                                    class="product__body-content-documentation">
+                                    <img src="<?= $iconPDF['url'] ?>" alt="<?= $iconPDF['title'] ?>">
                                     <?= ($documentation['name_file']) ?? '' ?>
                                 </a>
                             <?php endforeach; ?>
