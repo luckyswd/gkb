@@ -43,7 +43,7 @@ class Helpers
 
     public function getLang()
     {
-        return $_COOKIE['lang'];
+        return $_COOKIE['lang'] ?? 'ru';
     }
 
     public function getProductTitle(
@@ -69,5 +69,14 @@ class Helpers
                 return $block['attrs']['data'] ?? '';
             }
         }
+    }
+
+    public static function getPictureImage(
+        ?array $image = null,
+        ?int   $width = null,
+        ?int   $height = null,
+    ): void
+    {
+        include get_template_directory() . '/components/picture.php';
     }
 }

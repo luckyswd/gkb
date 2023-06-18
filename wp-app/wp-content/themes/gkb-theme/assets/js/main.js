@@ -7,4 +7,4 @@
 //=include partials/authorization.js
 
 /**** MODULES ****/
-//=include ../../modules/hero/hero.js
+//=include ../../modules/slider/slider.js

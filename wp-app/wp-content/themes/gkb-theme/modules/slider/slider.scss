@@ -1,0 +1,18 @@
+.slider {
+  .gallery-swiper {
+    overflow: hidden;
+    border-radius: 20px;
+
+    @include _992 {
+      border-radius: 10px;
+    }
+  }
+
+  img {
+    border-radius: 20px;
+
+    @include _992 {
+      border-radius: 10px;
+    }
+  }
+}
