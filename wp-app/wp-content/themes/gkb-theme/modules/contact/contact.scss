@@ -1,0 +1,63 @@
+.contact {
+  padding: 50px 0;
+
+  .contact__title {
+    color: $c-main-red;
+    padding-bottom: 10px;
+  }
+
+  .contact__sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    @include _992 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .contact__section {
+    padding: 20px;
+    background-color: $c-white;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .contact__caption {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .contact__section-title {
+    font-weight: 700;
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+
+  .contact__description {
+    padding-bottom: 10px;
+  }
+
+  .contact__link {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: $transition;
+
+    img {
+      max-width: 48px;
+      max-height: 48px;
+    }
+
+    p {
+      color: $c-main-red;
+    }
+
+    &:hover {
+      padding-left: 10px;
+    }
+  }
+}
