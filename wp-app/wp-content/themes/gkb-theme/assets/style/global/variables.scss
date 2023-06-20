@@ -44,6 +44,11 @@ $transition: all .100s ease-in-out;
     }
 }
 
+@mixin _650 {
+    @media (max-width: 650px) {
+        @content;
+    }
+}
 
 @mixin _480 {
     @media (max-width: 480px) {

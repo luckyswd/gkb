@@ -1,0 +1,48 @@
+.scramble {
+  margin: 40px 0;
+
+  @include _768 {
+    margin: 20px 0;
+  }
+
+  .scramble_wrapper {
+    background: $c-white;
+    border-radius: 20px;
+    padding: 24px 8px;
+
+    @include _992 {
+      border-radius: 10px;
+    }
+  }
+
+  .headline {
+    font-weight: 700;
+    margin-bottom: 8px;
+
+    a {
+      color: $c-main-red;
+
+      &:hover {
+        color: $c-main-green;
+      }
+    }
+  }
+
+  .subheadline {
+    margin-bottom: 16px;
+  }
+
+  .scramble__products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @include _992 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include _650 {
+      grid-template-columns: 1fr;
+    }
+  }
+}

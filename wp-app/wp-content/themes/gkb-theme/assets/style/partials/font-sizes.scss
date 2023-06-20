@@ -1,10 +1,11 @@
 h2 {
-    font-weight: 200;
-    font-size: 50px;
-    line-height: 90%;
+    font-size: 28px;
+    line-height: 36px;
     color: $c-dark-black;
+
     @include _1280 {
-        font-size: 32px;
+        font-size: 24px;
+        line-height: 28px;
     }
 }
 

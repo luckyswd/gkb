@@ -199,6 +199,27 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "parent_repeater": "field_648eafd827cc7"
+                },
+                {
+                    "key": "field_648f18305604e",
+                    "label": "Подпись к картинки",
+                    "name": "caption",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_648eafd827cc7"
                 }
             ]
         },
@@ -347,5 +368,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687076950
+    "modified": 1687099492
 }
