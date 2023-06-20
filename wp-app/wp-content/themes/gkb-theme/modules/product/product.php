@@ -109,5 +109,5 @@ $countTabs = count($nameTabs);
         </div>
     </section>
 <?php else: ?>
-    <h2 style="font-family: 'Mark', sans-serif;">Product module</h2>
+    <h2 style="font-family: 'Mark', sans-serif;">Модуль продукта</h2>
 <?php endif; ?>
