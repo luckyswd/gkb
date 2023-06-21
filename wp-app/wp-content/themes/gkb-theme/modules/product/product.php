@@ -1,7 +1,7 @@
 <?php
 
 /*
-Title: Product module
+Title: Модуль продуктов
 Mode: preview
 */
 
