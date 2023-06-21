@@ -39,6 +39,11 @@
 
   .contact__description {
     padding-bottom: 10px;
+
+    a {
+      transition: $transition;
+      color: $c-main-red;
+    }
   }
 
   .contact__link {
