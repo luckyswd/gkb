@@ -7,8 +7,7 @@ Mode: preview
 
 use helpers\Helpers;
 
-$helpers = new Helpers();
-$fields = $helpers->get_field_multi_lang($helpers->getLang());
+$fields = (new Helpers)->get_field_multi_lang();
 
 ?>
 

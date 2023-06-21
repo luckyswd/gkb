@@ -7,10 +7,10 @@ Mode: preview
 
 use helpers\Helpers;
 
-$fields = (new Helpers)->get_field_multi_lang((new Helpers)->getLang());
-$nameTabs = (new Helpers)->get_field_multi_lang((new Helpers)->getLang(), 'name_tabs', 'option');
+$fields = (new Helpers)->get_field_multi_lang();
+$nameTabs = (new Helpers)->get_field_multi_lang('name_tabs', 'option');
 $iconPDF = get_field('icon_pdf', 'option');
-$countTabs = count($nameTabs);
+$countTabs = $nameTabs ? count($nameTabs) : 0;
 ?>
 
 <?php if (!is_admin()) : ?>

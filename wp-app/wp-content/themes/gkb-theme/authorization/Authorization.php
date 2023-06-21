@@ -7,12 +7,10 @@ use helpers\Helpers;
 class Authorization
 {
     private Helpers $helpers;
-    private string $language;
 
     public function __construct()
     {
         $this->helpers = new Helpers();
-        $this->language = $this->helpers->getLang();
     }
 
     public function register(): void
@@ -264,7 +262,7 @@ class Authorization
     private function getMessages(
         string $field,
     ): array {
-       return $this->helpers->get_field_multi_lang($this->language, $field, 'option');
+       return $this->helpers->get_field_multi_lang($field, 'option');
     }
 
     public static function isLogin(): void
