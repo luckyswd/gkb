@@ -3,8 +3,8 @@
 
 use helpers\Helpers;
 
-$fields = (new Helpers)->get_field_multi_lang((new Helpers)->getLang(), 'footer_section', 'option');
-$fieldsHeader = (new Helpers)->get_field_multi_lang((new Helpers)->getLang(), 'header_links', 'option');
+$fields = (new Helpers)->get_field_multi_lang('footer_section', 'option');
+$fieldsHeader = (new Helpers)->get_field_multi_lang('header_links', 'option');
 $categories = get_terms([
     'taxonomy' => 'product-category',
     'object_ids' => get_posts([

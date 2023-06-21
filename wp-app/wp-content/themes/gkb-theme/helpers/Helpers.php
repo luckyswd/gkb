@@ -118,6 +118,28 @@ class Helpers
         return $fields;
     }
 
+    public function getProductDocumentation(
+        object $product
+    ): array
+    {
+        $data = $this->getProductData($product);
+        $count = $this->getProductDataValue($product, 'language_documentation');
+        $fields = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $fields[] = match ((new Helpers)->getLang()) {
+                'ru' => [
+                    'name_file' => $data['ru_language_documentation_'. $i .'_name_file'] ?? '',
+                    'file' => wp_get_attachment_url($data['ru_language_documentation_'. $i .'_file']),
+                ],
+                'en' => [
+                    'name_file' => $data['en_language_documentation_'. $i .'_name_file'] ?? '',
+                    'file' => wp_get_attachment_url($data['en_language_documentation_'. $i .'_file']),
+                ],
+            };
+        }
+        return $fields;
+    }
 
     private function getProductDataValue(
         object $product,

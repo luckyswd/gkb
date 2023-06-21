@@ -6,7 +6,7 @@ Mode: preview
 */
 
 use helpers\Helpers;
-$fields = (new Helpers)->get_field_multi_lang((new Helpers)->getLang());
+$fields = (new Helpers)->get_field_multi_lang();
 ?>
 <?php if (!is_admin()) : ?>
     <section class="hero">
