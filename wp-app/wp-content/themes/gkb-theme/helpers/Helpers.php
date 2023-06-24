@@ -3,12 +3,12 @@
 namespace helpers;
 
 use WP_REST_Request;
+use WP_Term;
 
 class Helpers
 {
     public const METHOD_GET = 'GET';
     public const METHOD_POST = 'POST';
-    private ?array $dataProduct = null;
 
     public static function getRequest(
         string $method,
@@ -147,6 +147,7 @@ class Helpers
     )
     {
         $data = $this->getProductData($product);
+
         return match ((new Helpers)->getLang()) {
             'ru' => $data['ru_' . $fieldName] ?? '',
             'en' => $data['en_' . $fieldName] ?? '',
@@ -157,19 +158,15 @@ class Helpers
         object $product
     )
     {
-        if ($this->dataProduct) {
-            return $this->dataProduct;
-        }
-
         $content = $product->post_content;
         $blocks = parse_blocks($content);
         foreach ($blocks as $block) {
             if ($block['blockName'] === 'acf/product') {
-                $this->dataProduct = $block['attrs']['data'] ?? '';
-
-                return $this->dataProduct;
+               return $block['attrs']['data'] ?? '';
             }
         }
+
+        return '';
     }
 
     public static function getPictureImage(
@@ -179,5 +176,31 @@ class Helpers
     ): void
     {
         include get_template_directory() . '/components/picture.php';
+    }
+
+    public static function getProductsByCategory(
+        ?WP_Term $term = null,
+    ): array {
+
+        if ($term) {
+            $taxQuery = [
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'product-category',
+                        'field' => 'term_id',
+                        'terms' => $term->term_id,
+                    ]
+                ]
+            ];
+        }
+
+        $args = [
+            'post_type' => 'products',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+            'order' => 'ASC',
+        ];
+
+        return get_posts(array_merge($args, $taxQuery ?? []));
     }
 }

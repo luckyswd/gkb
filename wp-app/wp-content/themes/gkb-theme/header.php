@@ -19,12 +19,9 @@ $socials = get_field('socials', 'option');
 $fields = (new Helpers)->get_field_multi_lang('header_links', 'option');
 $categories = get_terms([
     'taxonomy' => 'product-category',
-    'object_ids' => get_posts([
-        'post_type' => 'products',
-        'post_status' => 'publish',
-        'fields' => 'ids',
-        'posts_per_page' => -1,
-    ]),
+    'orderby' => 'term_id',
+    'order' => 'ASC',
+    'hide_empty' => true,
 ]);
 ?>
 
