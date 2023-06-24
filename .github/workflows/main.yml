@@ -17,7 +17,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: 178.172.164.22
-          username: ${{ secrets.FTP_HOSTNAME_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: ftpgkb
+          password: Ufprjn`k,tk
           local-dir: ./wp-app/
           server-dir: "./public_html/"
