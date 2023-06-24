@@ -246,7 +246,7 @@ class Authorization
     }
 
     private function sendConfirmEmail(
-        int $username,
+        string $username,
         string $to,
     ): void {
         $messages = $this->getMessages('registration');
