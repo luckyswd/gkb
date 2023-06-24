@@ -1,0 +1,23 @@
+name: 🚀 Deploy website
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📩 Get latest code
+        uses: actions/checkout@v3
+
+      - name: npm install && build
+        run: cd wp-app/wp-content/themes/gkb-theme/ && npm install && gulp build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: gazkotelbel.com
+          username: ${{ secrets.FTP_HOSTNAME_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./wp-app/
+          server-dir: "./public_html/"
