@@ -24,6 +24,7 @@ class Authorization
         add_action('wp_ajax_logout_user', [$this, 'logout']);
         add_action('wp_ajax_nopriv_logout_user', [$this, 'logout']);
         add_action('admin_init', [$this, 'adminAccess']);
+        add_action('rest_api_init', [$this, 'confirmEmailEndpoint']);
     }
 
     public function login(): never  {
@@ -109,7 +110,7 @@ class Authorization
             wp_die();
         }
 
-        $this->sendConfirmEmail($userId, $email);
+        $this->sendConfirmEmail($username, $email);
         $messages = $this->getMessages('registration');
 
         wp_send_json([
@@ -245,18 +246,23 @@ class Authorization
     }
 
     private function sendConfirmEmail(
-        int $userId,
-        string $email,
+        int $username,
+        string $to,
     ): void {
         $messages = $this->getMessages('registration');
-        $activation_key = wp_generate_password(20, false);
-        update_user_meta($userId, 'activation_key', $activation_key);
-        $activation_link = add_query_arg([
-            'key' => $activation_key,
-            'user' => $userId
-        ], wp_login_url());
+        $subject = $messages['subject_email_active'];
+        $link = sprintf('%s/wp-json/confirm/v2/email?login=%s', home_url(), $username);
+        $message = sprintf('%s %s', $messages['email_body_active_text'], $link);
+        $adminEmail = get_option('admin_email');
+        $site_name = get_bloginfo('name');
 
-        wp_mail($email, $messages['subject_email_active'], sprintf('%s %s', $messages['email_body_active_text'], $activation_link));
+        $headers = [
+            'Content-Type: text/html; charset=UTF-8',
+            "From: $site_name <$$adminEmail>",
+            "Reply-To: $site_name <$adminEmail>",
+        ];
+
+        wp_mail($to, $subject, $message, $headers);
     }
 
     private function getMessages(
@@ -279,5 +285,20 @@ class Authorization
             wp_redirect(home_url());
             exit;
         }
+    }
+
+    public function confirmEmailEndpoint(): void
+    {
+        register_rest_route('confirm/v2', '/email', [
+            'methods' => 'GET',
+            'callback' => function () {
+                $request = Helpers::getRequest(Helpers::METHOD_GET, $_GET);
+                $username = $request->get_param('login');
+                $user = get_user_by('login', $username);
+                update_user_meta($user->ID, 'email_confirmation_status', 'verified');
+                wp_redirect(home_url());
+                exit;
+            },
+        ]);
     }
 }

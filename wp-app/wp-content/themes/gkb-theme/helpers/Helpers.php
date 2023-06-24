@@ -17,7 +17,11 @@ class Helpers
     {
         $request = new WP_REST_Request();
         $request->set_method($method);
-        $request->set_body_params($params);
+        if (!empty($params)) {
+            foreach ($params as $key => $param) {
+                $request->set_param($key, $param);
+            }
+        }
 
         return $request;
     }
