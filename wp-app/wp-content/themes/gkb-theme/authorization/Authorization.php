@@ -258,7 +258,7 @@ class Authorization
 
         $headers = [
             'Content-Type: text/html; charset=UTF-8',
-            "From: $site_name <$$adminEmail>",
+            "From: $site_name <$adminEmail>",
             "Reply-To: $site_name <$adminEmail>",
         ];
 
