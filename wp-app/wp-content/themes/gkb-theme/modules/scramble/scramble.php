@@ -1,7 +1,7 @@
 <?php
 
 /*
-Title: Модуль продуктов
+Title: Модуль выбор продуктов
 Mode: preview
 */
 
@@ -32,5 +32,5 @@ $fields = (new Helpers)->get_field_multi_lang();
         </div>
     </section>
 <?php else: ?>
-    <h2 style="font-family: 'Mark', sans-serif;">Модуль продуктов</h2>
+    <h2 style="font-family: 'Mark', sans-serif;">Модуль выбор продуктов</h2>
 <?php endif; ?>
