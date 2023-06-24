@@ -16,7 +16,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: gazkotelbel.com
+          server: 178.172.164.22
           username: ${{ secrets.FTP_HOSTNAME_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wp-app/
