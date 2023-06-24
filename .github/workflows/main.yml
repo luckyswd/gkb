@@ -10,7 +10,7 @@ jobs:
       - name: 📩 Get latest code
         uses: actions/checkout@v3
 
-      - name: npm install && build
+      - name: npm install && build && composer install
         run: cd wp-app/wp-content/themes/gkb-theme/ && npm install && gulp build && composer i
 
       - name: 📂 Sync files
