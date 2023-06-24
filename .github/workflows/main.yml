@@ -11,13 +11,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: npm install && build
-        run: cd wp-app/wp-content/themes/gkb-theme/ && npm install && gulp build
+        run: cd wp-app/wp-content/themes/gkb-theme/ && npm install && gulp build && composer i
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: 178.172.164.22
-          username: ftpgkb@gazkotelbel.com
-          password: Ufprjn`k,tk
+          username: ${{ secrets.FTP_HOSTNAME_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wp-app/
           server-dir: "./public_html/"
