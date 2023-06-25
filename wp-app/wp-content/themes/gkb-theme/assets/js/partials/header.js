@@ -22,24 +22,32 @@ class Header {
     }
 
     selectLang() {
-        const selectLang = document.querySelector('.select-lang .select-lang__item')
-        selectLang.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const formData = new FormData();
-            formData.append('lang', selectLang.getAttribute('data-lang'))
-            formData.append('action', 'select_lang')
-            const response = await fetch(window.ajaxUrl,
-              {
-                  method: 'POST',
-                  body: formData
-              }
-            );
+        const selectLang = document.querySelector('.select-lang');
+        const languages = document.querySelectorAll('.lang-wrapper .select-lang__item')
 
-            const resp = await response.json();
+        selectLang && selectLang.addEventListener('click', () => {
+            selectLang.classList.toggle('js-active')
+        })
 
-            if (resp.status) {
-                location.reload();
-            }
+        languages.forEach((lang) => {
+            lang.addEventListener('click', async (event) => {
+                event.preventDefault();
+                const formData = new FormData();
+                formData.append('lang', lang.getAttribute('data-lang'))
+                formData.append('action', 'select_lang')
+                const response = await fetch(window.ajaxUrl,
+                  {
+                      method: 'POST',
+                      body: formData
+                  }
+                );
+
+                const resp = await response.json();
+
+                if (resp.status) {
+                    location.reload();
+                }
+            })
         })
     }
 

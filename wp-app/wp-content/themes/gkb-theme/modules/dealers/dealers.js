@@ -3,7 +3,6 @@ class Dealers {
         this.regions = document.querySelectorAll('.dealers__region');
 
         this.init();
-        console.log('qw')
     }
 
     init() {
