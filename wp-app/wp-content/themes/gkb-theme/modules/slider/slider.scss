@@ -2,6 +2,7 @@
   .gallery-swiper {
     overflow: hidden;
     border-radius: 20px;
+    position: relative;
 
     @include _992 {
       border-radius: 10px;
@@ -14,5 +15,15 @@
     @include _992 {
       border-radius: 10px;
     }
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    transform:translateY(-50%);
+    color:$c-main-red;
+  }
+
+  .swiper-pagination-bullet {
+    background:$c-main-red;
+
   }
 }

@@ -21,7 +21,7 @@ $fields = (new Helpers)->get_field_multi_lang();
                             <?php
                             $product = $slide['product'];
                             if ($product) {
-                                $link = sprintf('%s/%s',$product->post_type, $product->post_name);
+                                $link = sprintf('%s/%s', $product->post_type, $product->post_name);
                             } else {
                                 $link = '';
                             }
@@ -32,6 +32,9 @@ $fields = (new Helpers)->get_field_multi_lang();
                             </a>
                         <?php endforeach; ?>
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
