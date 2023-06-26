@@ -15,11 +15,11 @@ $fields = (new Helpers)->get_field_multi_lang();
     <section class="scramble">
         <div class="container">
             <div class="scramble_wrapper">
-                <h2 class="headline">
+                <h1 class="headline">
                     <a href="/catalog">
                         <?= $fields['headline'] ?? '' ?>
                     </a>
-                </h2>
+                </h1>
                 <p class="subheadline"><?= $fields['subheadline'] ?? '' ?></p>
                 <div class="scramble__products">
                     <?php if ($fields['products']) : ?>

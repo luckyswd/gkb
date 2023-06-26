@@ -1,3 +1,14 @@
+h1 {
+    font-size: 42px;
+    line-height: 50px;
+    color: $c-dark-black;
+
+    @include _1280 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
+
 h2 {
     font-size: 28px;
     line-height: 36px;
@@ -8,7 +19,6 @@ h2 {
         line-height: 28px;
     }
 }
-
 p {
     font-weight: 400;
     font-size: 16px;

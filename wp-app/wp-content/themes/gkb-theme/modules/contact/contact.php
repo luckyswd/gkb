@@ -13,9 +13,9 @@ $fields = (new Helpers)->get_field_multi_lang();
     <section class="contact">
         <div class="container">
             <?php if (!empty($fields['title'])) : ?>
-                <h2 class="contact__title">
+                <h1 class="contact__title">
                     <?= $fields['title'] ?>
-                </h2>
+                </h1>
             <?php endif; ?>
             <?php if (!empty($fields['contact_section'])) : ?>
                 <div class="contact__sections">

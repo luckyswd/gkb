@@ -13,9 +13,9 @@ $fields = (new Helpers)->get_field_multi_lang();
     <section class="dealers">
         <div class="container">
             <?php if (!empty($fields['title'])) : ?>
-                <h2 class="dealers__title">
+                <h1 class="dealers__title">
                     <?= $fields['title'] ?>
-                </h2>
+                </h1>
             <?php endif; ?>
             <?php if (!empty($fields['regions'])) : ?>
                 <div class="dealers__regions">

@@ -24,9 +24,9 @@ $iconPDF = get_field('icon_pdf', 'option');
     <section class="documentation">
         <div class="container">
             <?php if (!empty($fields['title'])) : ?>
-                <h2 class="documentation__title">
+                <h1 class="documentation__title">
                     <?= $fields['title'] ?>
-                </h2>
+                </h1>
             <?php endif; ?>
             <?php if (!empty($products)) : ?>
                 <div class="documentation__products">
