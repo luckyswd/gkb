@@ -21,10 +21,19 @@
 
 
   .product__info {
-    padding-left: 50px;
+    margin-left: 50px;
     width: 60%;
+    background-color: $c-white;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
     @include _1280 {
       width: 100%;
+      margin-left: 0;
     }
   }
 
@@ -62,7 +71,8 @@
   .product__body-nav-tabs {
     display: flex;
     gap: 15px;
-
+    position: relative;
+    z-index: 2;
   }
 
   .product__body-nav-tab {
@@ -70,7 +80,6 @@
     background-color: $c-white;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    box-shadow: rgb(235, 240, 255) 0 0 0 2px;
     border: 1px solid $c-gray-form-border;
     border-bottom: none;
     transition: $transition;
@@ -84,10 +93,16 @@
 
   .product__body-content {
     position: relative;
-    border-top: 1px solid $c-main-green-strong;
     margin-left: 1px;
-    padding: 20px 0;
     overflow: hidden;
+    background-color: $c-white;
+    border: 1px solid $c-gray-form-border;
+    box-shadow: $c-focus-border;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    border-top: none;
+    margin-bottom: 20px;
   }
 
 
