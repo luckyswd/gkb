@@ -358,6 +358,10 @@ body.mobile {
   z-index: 100;
   top:50%;
   transform:translateY(-50%);
+
+  @include _992 {
+    right: 5px;
+  }
 }
 
 .section-social {
@@ -376,6 +380,10 @@ body.mobile {
   z-index: 100;
   background: $c-white;
   border-radius: 8px;
+  @include _992 {
+    right: 5px;
+    bottom: 5px;
+  }
 
 
   &.js-active {
@@ -394,6 +402,9 @@ body.mobile {
     align-items: center;
     justify-content: center;
     padding: 8px;
+    @include _650 {
+      padding: 6px;
+    }
   }
 
   &__item {
@@ -405,5 +416,8 @@ body.mobile {
   svg {
     width: 32px;
     cursor: pointer;
+    @include _650 {
+      width: 21px;
+    }
   }
 }
