@@ -119,7 +119,7 @@ $categories = get_terms([
             <?php if (!empty($categories)) : ?>
                 <div class="header__categories header__menu">
                     <div class="header__category">
-                        <a href="">
+                        <a href="/catalog">
                             <?= $fields['all_products'] ?? '' ?>
                         </a>
                     </div>
