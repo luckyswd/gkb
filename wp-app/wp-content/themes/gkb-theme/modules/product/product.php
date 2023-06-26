@@ -45,9 +45,9 @@ $countTabs = $nameTabs ? count($nameTabs) : 0;
                 </div>
                 <div class="product__info">
                     <?php if (!empty($fields['title'])) : ?>
-                        <h2 class="product__title">
+                        <h1 class="product__title">
                             <?= $fields['title'] ?>
-                        </h2>
+                        </h1>
                     <?php endif; ?>
                     <?php if (!empty($fields['subtitle'])) : ?>
                         <h3 class="product__subtitle">
