@@ -26,10 +26,16 @@ $fields = (new Helpers)->get_field_multi_lang();
                                 $link = '';
                             }
 
+                            if (empty($link)) {
+                                $tag = 'div';
+                            } else {
+                                $tag = 'a';
+                            }
+
                             ?>
-                            <a href="<?= $link ?>" class="swiper-slide">
+                            <<?= $tag ?> href="<?= $link ?>" class="swiper-slide">
                                 <?= \helpers\Helpers::getPictureImage($slide['image'], 1400, 415); ?>
-                            </a>
+                            </<?= $tag ?>>
                         <?php endforeach; ?>
                     </div>
                     <div class="swiper-button-next"></div>
