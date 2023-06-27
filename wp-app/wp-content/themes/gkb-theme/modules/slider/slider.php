@@ -21,13 +21,13 @@ $fields = (new Helpers)->get_field_multi_lang();
                             <?php
                             $product = $slide['product'];
                             if ($product) {
-                                $link = sprintf('%s/%s', $product->post_type, $product->post_name);
+                                $link = sprintf('/%s/%s', $product->post_type, $product->post_name);
                             } else {
                                 $link = '';
                             }
 
                             ?>
-                            <a href="/<?= $link ?>" class="swiper-slide">
+                            <a href="<?= $link ?>" class="swiper-slide">
                                 <?= \helpers\Helpers::getPictureImage($slide['image'], 1400, 415); ?>
                             </a>
                         <?php endforeach; ?>
