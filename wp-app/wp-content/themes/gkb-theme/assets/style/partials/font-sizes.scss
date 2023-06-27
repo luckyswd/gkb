@@ -9,6 +9,17 @@ h1 {
     }
 }
 
+h1 {
+    font-size: 48px;
+    line-height: 56px;
+    color: $c-dark-black;
+
+    @include _992 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
+
 h2 {
     font-size: 28px;
     line-height: 36px;
