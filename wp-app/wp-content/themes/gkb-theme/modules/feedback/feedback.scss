@@ -17,10 +17,15 @@
 
   .feedback-headline {
     text-align: center;
-    font-size: 40px;
-    line-height: 61px;
+    font-size: 32px;
+    line-height: 48px;
     color: $c-main-red;
     font-weight: 700;
+
+    @include _768 {
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 
   .feedback-subheadline {
@@ -28,6 +33,11 @@
     line-height: 24px;
     color: $c-main-black;
     text-align: center;
+
+    @include _768 {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   .feedback-btn {
