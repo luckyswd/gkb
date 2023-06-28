@@ -75,3 +75,17 @@ function set_custom_cookie() {
     }
 }
 add_action('wp_loaded', 'set_custom_cookie');
+function removeMenu(): void
+{
+    remove_menu_page('all-fields');
+}
+add_action('admin_init', 'removeMenu');
+
+function slug_report_type_template()
+{
+    $page_type_object_podcasts = get_post_type_object('products');
+    $page_type_object_podcasts->template = [
+        ['acf/product'],
+    ];
+}
+add_action('init', 'slug_report_type_template');
