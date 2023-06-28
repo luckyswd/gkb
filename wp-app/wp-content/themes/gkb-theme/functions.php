@@ -81,7 +81,7 @@ function removeMenu(): void
 }
 add_action('admin_init', 'removeMenu');
 
-function slug_report_type_template()
+function slug_report_type_template(): void
 {
     $page_type_object_podcasts = get_post_type_object('products');
     $page_type_object_podcasts->template = [
