@@ -7,8 +7,9 @@ Mode: preview
 
 use helpers\Helpers;
 
-$fields = (new Helpers)->get_field_multi_lang();
-$nameTabs = (new Helpers)->get_field_multi_lang('name_tabs', 'option');
+$helpers = new Helpers();
+$fields = $helpers->get_field_multi_lang();
+$nameTabs = $helpers->get_field_multi_lang('name_tabs', 'option');
 $iconPDF = get_field('icon_pdf', 'option');
 $countTabs = $nameTabs ? count($nameTabs) : 0;
 ?>
@@ -59,11 +60,16 @@ $countTabs = $nameTabs ? count($nameTabs) : 0;
                             <?= $fields['description'] ?>
                         </div>
                     <?php endif; ?>
-                    <?php if (!empty($fields['button_name'])) : ?>
-                        <button class="product__button btn">
-                            <?= $fields['button_name'] ?>
-                        </button>
-                    <?php endif; ?>
+                    <div class="wrapper-buttons">
+                        <?php if (!empty($fields['button_name'])) : ?>
+                            <a href="/where-to-buy" class="product__button btn">
+                                <?= $fields['button_name'] ?>
+                            </a>
+                        <?php endif; ?>
+                        <a class="btn btn-form" href="javascript:;" data-fancybox="" data-src="#feedback-form">
+                            <?= $helpers->getLang() === 'ru' ? 'Написать нам' : 'Write to us' ?>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="product__body">

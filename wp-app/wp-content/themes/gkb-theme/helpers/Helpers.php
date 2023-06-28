@@ -207,4 +207,16 @@ class Helpers
 
         return get_posts(array_merge($args, $taxQuery ?? []));
     }
+
+    public function getFeedbackForm(): string {
+        if ($this->getLang() === 'ru') {
+            return get_field('feedback_ru', 'option');
+        }
+
+        if ($this->getLang() === 'en') {
+            return get_field('feedback_en', 'option');
+        }
+
+        return '';
+    }
 }

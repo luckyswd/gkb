@@ -18,7 +18,7 @@
   }
 }
 
-.auth-form {
+form {
   width: 100%;
   max-width: 400px;
   border: 1px solid $c-gray-form-border;
@@ -31,7 +31,7 @@
     width: 100%;
     padding-bottom: 12px;
 
-    label, input {
+    label, input, textarea {
       width: 100%;
     }
 
@@ -42,7 +42,7 @@
       padding-bottom: 8px;
     }
 
-    input {
+    input, textarea {
       font-size: 14px;
       padding: 8px 12px;
       line-height: 18px;
@@ -65,7 +65,7 @@
     }
   }
 
-  .alert-message, .message-error {
+  .alert-message, .message-error, .wpcf7-not-valid-tip {
     color: $c-main-red;
     font-size: 12px;
     line-height: 16px;
@@ -81,5 +81,32 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+
+.modal-form {
+  border-radius: 10px;
+  display: none;
+
+  form {
+    padding: 20px;
+    max-width: 500px;
+  }
+
+  .is-close {
+    margin: 0 !important;
+  }
+
+  .btn {
+    border: unset !important;
+  }
+
+  .wpcf7-response-output {
+    display: none;
+  }
+
+  .wpcf7-spinner {
+    display: none;
   }
 }

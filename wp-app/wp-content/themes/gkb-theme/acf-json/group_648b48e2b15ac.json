@@ -1046,6 +1046,53 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_649c5fd1e3c77",
+            "label": "Формы",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_649c5fe5e3c78",
+            "label": "Форма обратной свзяи RU",
+            "name": "feedback_ru",
+            "aria-label": "",
+            "type": "acf_cf7",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_649c6015e3c79",
+            "label": "Форма обратной свзяи EN",
+            "name": "feedback_en",
+            "aria-label": "",
+            "type": "acf_cf7",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -1066,5 +1113,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687101593
+    "modified": 1687969840
 }

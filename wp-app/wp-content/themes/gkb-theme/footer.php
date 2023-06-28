@@ -5,6 +5,7 @@ use helpers\Helpers;
 
 $fields = (new Helpers)->get_field_multi_lang('footer_section', 'option');
 $fieldsHeader = (new Helpers)->get_field_multi_lang('header_links', 'option');
+$form = (new Helpers)->getFeedbackForm();
 $categories = get_terms([
     'taxonomy' => 'product-category',
     'object_ids' => get_posts([
@@ -16,6 +17,11 @@ $categories = get_terms([
 ]);
 ?>
 <footer id="footer" class="footer">
+    <div class="modal-form" id="feedback-form">
+        <div class="form-container">
+            <?= $form ?>
+        </div>
+    </div>
     <div class="container">
         <div class="footer__body">
             <?php if ($fields['info']) : ?>

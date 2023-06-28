@@ -1,5 +1,6 @@
 /* libs */
 @import "libs/swiper";
+@import "libs/fancybox";
 
 /* GLOBAL */
 @import "global/fonts";
@@ -12,7 +13,6 @@
 @import "partials/footer";
 @import "partials/font-sizes";
 @import "partials/404";
-@import "partials/forms";
 @import "partials/authorization";
 @import "partials/catalog";
 
@@ -25,6 +25,7 @@
 @import "modules/documentation/documentation";
 @import "modules/dealers/dealers";
 @import "modules/price-list/price-list";
+@import "modules/feedback/feedback";
 
 /* COMPONENTS */
 @import "components/product-card";

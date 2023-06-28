@@ -64,8 +64,14 @@
     }
   }
 
-  .product__button {
-    max-width: 320px;
+  .wrapper-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 16px;
+
+    @include _480 {
+      flex-wrap: wrap;
+    }
   }
 
   .product__body-nav-tabs {

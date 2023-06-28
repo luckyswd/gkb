@@ -1,0 +1,37 @@
+.feedback {
+  margin: 40px 0;
+
+  @include _768 {
+    margin: 20px 0;
+  }
+
+  .feedback-wrapper {
+    background: $c-white;
+    border-radius: 20px;
+    padding: 16px;
+
+    @include _992 {
+      border-radius: 10px;
+    }
+  }
+
+  .feedback-headline {
+    text-align: center;
+    font-size: 40px;
+    line-height: 61px;
+    color: $c-main-red;
+    font-weight: 700;
+  }
+
+  .feedback-subheadline {
+    font-size: 18px;
+    line-height: 24px;
+    color: $c-main-black;
+    text-align: center;
+  }
+
+  .feedback-btn {
+    max-width: 220px;
+    margin: 16px auto 0 auto;
+  }
+}
