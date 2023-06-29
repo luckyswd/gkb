@@ -18,7 +18,6 @@ $products = get_posts(
     ]
 );
 $iconPDF = get_field('icon_pdf', 'option');
-
 ?>
 <?php if (!is_admin()) : ?>
     <section class="documentation">
@@ -30,6 +29,19 @@ $iconPDF = get_field('icon_pdf', 'option');
             <?php endif; ?>
             <?php if (!empty($products)) : ?>
                 <div class="documentation__products">
+                    <div class="documentation__product">
+                        <div class="documentation__product-files">
+                            <?php foreach ($fields['custom_card'] as $file) : ?>
+                                <div class="documentation__product-file">
+                                    <a href="<?= $file['file'] ?>"
+                                       class="product__body-content-documentation">
+                                        <img src="<?= $iconPDF['url'] ?>" alt="<?= $iconPDF['title'] ?>">
+                                        <?= ($file['name_file']) ?? '' ?>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                     <?php foreach ($products as $product) : ?>
                         <?php
                         $files = (new Helpers)->getProductDocumentation($product);
