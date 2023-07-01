@@ -7,6 +7,8 @@ fileInput && fileInput.addEventListener('change', async function(event) {
 
   if (file && !checkFileFormat(file)) {
     alert('Неверный формат файла. Пожалуйста, выберите файл Excel.');
+
+    return;
   }
 
   const dataUpload = await uploadFileAjax(file, url);
