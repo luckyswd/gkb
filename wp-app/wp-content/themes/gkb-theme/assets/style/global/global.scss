@@ -121,15 +121,3 @@ tr:last-child td.last {
     -moz-border-radius-bottomright:5px;
     -webkit-border-bottom-right-radius:5px; /* Saf3-4 */
 }
-
-.wp-block-columns {
-    padding-bottom: 20px!important;
-    @include _1280 {
-        flex-direction: column!important;
-    }
-}
-.wp-block-column {
-    @include _1280 {
-        width: 100% !important;
-    }
-}
