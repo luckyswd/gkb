@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gazkotel",
+  "private_key_id": "2611c87bfe9d91dd5e838614677de29eaca2faa1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC23W6KA1dv26qt\n61Et15bEjKlxSsupx4u2Fmwqsyd9xIpZxH6M0yJPWCWHkH6nbYaBEnPZyZvySyZZ\ndLVZd3TPQuQdC6qIXIdA6sXcEWoL0dylum7v6yZeXeUm9UUSfn/8s+nvG0NtFupU\nlLFUXi6NRlaqJCCv409zTgfsneSUd7MlYX+e28Eorx8smpO4GpF2DYINzlB6qSD8\nUN3wIEXchA3sc/q95dKKyWaHjA3dLRpgXVF1I1Wm13liZl9SvfkMJPKJPTb4NHSH\n0pbUSUwqEV8iaz8hfTvb1PR3PTJ1dSgw/LlupBT2qCkUrupjr6H2kFI6Sf1ZQsno\n4LPBCUOZAgMBAAECggEAKYlUF7TJGl8g3obuRlWrSSNzRIjbCIpLLZXbxXoyvPJV\nA61qmmXF7BRnV+rmHfU2oWBV4NEW41sXD6g/Hh6QcZit1HwnJPixfzkkrsdk2WD2\nt81IcCYvba1xxN7e7OO/giDCwR1l/CRBn2sz+Wg4Nj5VJqn0o8cj75q4mZJGzsMb\njkJkcEMZq1d/926W0k4na3FfhHrhbQfpm6Ztu6XqVOLRU/7RvtV8KNLdpHNjnlY3\nH27mhE2oCuIF6CYHFelJKcKyF/o3i9l2bTyIilZ1PDag8ijl8VqLsNfHFsP0sqpP\nBpGs4ZqkYdxHGjGxH2stDIEezEX1pWcv8aeAxf8elQKBgQD2+5uR6+hq0J19WkrU\ntIKd2lbnlkq69IdG+UF9WHz3Pq/VTV/5yiZeEYA+VFh34Z1srKKcctvfKLMCdNKu\ntwI4w+5GDgRH3v3xRwVl5jUp9TrE4Ej5xMrHP+KYsGZpxmHOh0EtwbMBfmnodiE7\n26F5JT/NuTrEwtYvpafPjemC7QKBgQC9io4OXLpfhiH0l5zU/UqPlYaiAG9BI7C6\nElSX4BUVU+9UJOy9GBk5TUp5Iwxxsn5kULZjHOflpTelsDBTT5mP4U8F5QJZnJto\nUsk7JbPfKSAIBtCy+wSUUo8InX394qDFfIs3515NtAjfkopf3acmRg7rHvVmqTKc\nxHn0GBeR3QKBgQCvS+egCzM71PNizBo+nBv008pItug1h2cYXcM4pvyTM5/zIebT\n0MGolH1UP+NGuxBT2LfVmMQrwKRFQwthzCy8g3vzpvEs3b2ZaVIQf/MN46shnxrM\ng/t0rggzXUhjHNXAk0kUo91cWw/qWSW/aWRTKrf9WNG4Y51H1iij7NJnBQKBgQCc\niggU2IScS/1TMrw2NBMWTtnohg9cbwuQQX9YB5uiB7ZLekuDSJncd3cgYM/wPwif\n9QENDlx/j1pMHx1qUP10lRJcveyY8fxvxp+nl9XcYuyvdGF80E/R5/V1mgzqV/eL\n4vZf71g1OJFzhGWAE2Hu/EFp8iGe7fJ9As/txtAAiQKBgQClH1oX7SVwMOTybxG3\nYQorZFcDiZmPM9VlLt1tfYGgeEeaNxza337QVlxcZO33II72muGd0GbDZGqcD4hr\n03pyHZf9EtySUOtwH+PnSeED0aZ6/LIKKtTl29BW27eV9vU5B0R7I5EhK4UQ+Z1Y\nNiuHpXi1VjQS8z8cQq77JLHsnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "id-gazkotelbel@gazkotel.iam.gserviceaccount.com",
+  "client_id": "108351659774644217540",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/id-gazkotelbel%40gazkotel.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

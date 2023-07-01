@@ -275,7 +275,7 @@ class Authorization
     {
         if (is_user_logged_in()) {
             wp_redirect(home_url());
-            exit;
+            wp_die();
         }
     }
 
@@ -283,7 +283,7 @@ class Authorization
     {
         if (current_user_can('subscriber') && !(defined('DOING_AJAX') && DOING_AJAX)) {
             wp_redirect(home_url());
-            exit;
+            wp_die();
         }
     }
 
@@ -297,7 +297,7 @@ class Authorization
                 $user = get_user_by('login', $username);
                 update_user_meta($user->ID, 'email_confirmation_status', 'verified');
                 wp_redirect(home_url());
-                exit;
+                wp_die();
             },
         ]);
     }

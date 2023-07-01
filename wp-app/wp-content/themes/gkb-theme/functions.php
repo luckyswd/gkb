@@ -10,10 +10,14 @@ include 'hooks_filters/additional.php';
 require_once 'helpers/Helpers.php';
 require_once 'authorization/Authorization.php';
 require_once 'ajax/Ajax.php';
+require_once 'googleApi/GoogleClient.php';
+require_once 'admin/LeftoversTab.php';
 $authorization = new \authorization\Authorization();
 $authorization->register();
 $ajax = new \ajax\Ajax();
 $ajax->register();
+$leftoversTab = new \admin\LeftoversTab();
+$leftoversTab->register();
 
 add_filter('show_admin_bar', '__return_false');
 add_filter('wpcf7_autop_or_not', '__return_false');
