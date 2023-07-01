@@ -206,6 +206,7 @@ header {
     a {
       display: flex;
       align-items: center;
+      font-size: 12px;
 
     }
 
@@ -217,7 +218,7 @@ header {
     &:hover {
       .header__category-products {
         opacity: 1;
-        z-index: 10;
+        z-index: 100;
       }
     }
   }
@@ -233,6 +234,7 @@ header {
     margin-top: 10px;
     box-shadow: $c-focus-border;
     z-index: -10;
+    min-width: 400px;
 
     a {
       transition: $transition;
