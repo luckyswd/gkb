@@ -11,7 +11,6 @@ $helpers = new Helpers();
 $fields = $helpers->get_field_multi_lang();
 $nameTabs = $helpers->get_field_multi_lang('name_tabs', 'option');
 $iconPDF = get_field('icon_pdf', 'option');
-$countTabs = $nameTabs ? count($nameTabs) : 0;
 ?>
 
 <?php if (!is_admin()) : ?>
@@ -74,14 +73,26 @@ $countTabs = $nameTabs ? count($nameTabs) : 0;
             </div>
             <div class="product__body">
                 <div class="product__body-nav-tabs">
-                    <?php for ($i = 0; $i <= $countTabs; $i++) : ?>
-                        <?php if ($nameTabs['tab_' . $i]) : ?>
-                            <div class="product__body-nav-tab <?= $i === 1 ? 'active' : '' ?>">
-                                <?= $nameTabs['tab_' . $i] ?>
-                            </div>
-                        <?php endif; ?>
-                    <?php endfor; ?>
-
+                    <?php if ($nameTabs['tab_1'] && $fields['features_and_benefits']) : ?>
+                        <div class="product__body-nav-tab active">
+                            <?= $nameTabs['tab_1'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($nameTabs['tab_2'] && $fields['specifications']) : ?>
+                        <div class="product__body-nav-tab active">
+                            <?= $nameTabs['tab_2'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($nameTabs['tab_3'] && $fields['equipment']) : ?>
+                        <div class="product__body-nav-tab active">
+                            <?= $nameTabs['tab_3'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($nameTabs['tab_4'] && $fields['documentation']) : ?>
+                        <div class="product__body-nav-tab active">
+                            <?= $nameTabs['tab_4'] ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="product__body-content">
                     <?php if ($fields['features_and_benefits']) : ?>
