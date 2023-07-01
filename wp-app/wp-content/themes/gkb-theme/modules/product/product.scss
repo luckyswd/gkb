@@ -79,6 +79,9 @@
     gap: 15px;
     position: relative;
     z-index: 2;
+    @include _992{
+      flex-direction: column;
+    }
   }
 
   .product__body-nav-tab {
@@ -90,6 +93,9 @@
     border-bottom: none;
     transition: $transition;
     cursor: pointer;
+    @include _992 {
+      border-radius: 10px;
+    }
   }
 
   .product__body-nav-tab.active, .product__body-nav-tab:hover {
@@ -109,6 +115,10 @@
     padding: 10px;
     border-top: none;
     margin-bottom: 20px;
+    @include _992 {
+      margin-top: 20px;
+      border-radius: 10px;
+    }
   }
 
 
