@@ -19,6 +19,7 @@ class Header {
         this.openSearch()
         this.closeSearch()
         this.openBurger()
+        this.search();
     }
 
     selectLang() {
@@ -90,6 +91,17 @@ class Header {
         this.headerBurgerIcon && this.headerBurgerIcon.addEventListener('click', () => {
             this.headerMobile && this.headerMobile.classList.toggle('active');
             this.body && this.body.classList.toggle('mobile');
+        });
+    }
+
+    search() {
+        const inputSearch = document.querySelector('.header__search-input');
+
+        inputSearch && inputSearch.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const homeUrl = window.location.protocol + '//' + window.location.host;
+                window.location.href = homeUrl + '/catalog?search=' + inputSearch.value;
+            }
         });
     }
 }

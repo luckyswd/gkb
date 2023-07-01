@@ -2,7 +2,8 @@
 
 get_header();
 
-$products = \helpers\Helpers::getProductsByCategory();
+$search = $_GET['search'] ?? '';
+$products = \helpers\Helpers::getProductsByCategory(null, $search);
 
 include 'components/category-template.php';
 

@@ -184,8 +184,8 @@ class Helpers
 
     public static function getProductsByCategory(
         ?WP_Term $term = null,
+        ?string $search = '',
     ): array {
-
         if ($term) {
             $taxQuery = [
                 'tax_query' => [
@@ -203,6 +203,7 @@ class Helpers
             'posts_per_page' => -1,
             'post_status' => 'publish',
             'order' => 'ASC',
+            's' => $search,
         ];
 
         return get_posts(array_merge($args, $taxQuery ?? []));
