@@ -18,6 +18,7 @@ $fields = (new Helpers)->get_field_multi_lang();
                 </h1>
             <?php endif; ?>
             <?php if (!empty($fields['regions'])) : ?>
+            <div class="dealers__wrapper">
                 <div class="dealers__regions">
                     <?php foreach ($fields['regions'] as $key => $region) : ?>
                         <?php if (!empty($region)) : ?>
@@ -61,6 +62,10 @@ $fields = (new Helpers)->get_field_multi_lang();
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+                <div class="dealers__map">
+                    <?=do_shortcode(' [mappress mapid="1"]'); ?>
+                </div>
+            </div>
             <?php endif; ?>
             <?php if (!empty($fields['description'])) : ?>
                 <div class="dealers__description">
