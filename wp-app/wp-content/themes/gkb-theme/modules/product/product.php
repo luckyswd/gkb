@@ -74,7 +74,7 @@ $iconPDF = get_field('icon_pdf', 'option');
             <div class="product__body">
                 <div class="product__body-nav-tabs">
                     <?php if ($nameTabs['tab_1'] && $fields['features_and_benefits']) : ?>
-                        <div class="product__body-nav-tab active">
+                        <div class="product__body-nav-tab">
                             <?= $nameTabs['tab_1'] ?>
                         </div>
                     <?php endif; ?>

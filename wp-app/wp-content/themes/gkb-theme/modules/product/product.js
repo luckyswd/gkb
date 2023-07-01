@@ -1,18 +1,32 @@
 class Product {
     constructor() {
         this.navTabs = document.querySelectorAll('.product__body-nav-tab');
-        this.contentElements = {
+        this.contentElementsArr = {
             0: document.querySelector('.product__body-content-benefits'),
             1: document.querySelector('.product__body-content-specifications'),
             2: document.querySelector('.product__body-content-equipment'),
             3: document.querySelector('.product__body-content-documentations')
         };
+
+        this.contentElements = {};
+
+        let newIndex = 0;
+        for (const key in this.contentElementsArr) {
+            if (this.contentElementsArr[key]) {
+                this.contentElements[newIndex] = this.contentElementsArr[key];
+                newIndex++;
+            }
+        }
         this.init();
         this.initSlider();
     }
 
     init() {
         this.navTabs.forEach((tab, index) => {
+            if (index === 0) {
+                tab.classList.add('active');
+                this.contentElements[0].classList.add('active');
+            }
             tab.addEventListener('click', () => {
                 this.navTabs.forEach((otherTab) => {
                     otherTab.classList.remove('active');
