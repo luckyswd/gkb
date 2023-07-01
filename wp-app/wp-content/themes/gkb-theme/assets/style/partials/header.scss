@@ -13,7 +13,7 @@ header {
   }
 
   .header__logo-mobile {
-    width: 200px;
+    width: 100px;
     display: none;
     @include _1280 {
       display: block;
