@@ -79,17 +79,17 @@ $iconPDF = get_field('icon_pdf', 'option');
                         </div>
                     <?php endif; ?>
                     <?php if ($nameTabs['tab_2'] && $fields['specifications']) : ?>
-                        <div class="product__body-nav-tab active">
+                        <div class="product__body-nav-tab">
                             <?= $nameTabs['tab_2'] ?>
                         </div>
                     <?php endif; ?>
                     <?php if ($nameTabs['tab_3'] && $fields['equipment']) : ?>
-                        <div class="product__body-nav-tab active">
+                        <div class="product__body-nav-tab">
                             <?= $nameTabs['tab_3'] ?>
                         </div>
                     <?php endif; ?>
                     <?php if ($nameTabs['tab_4'] && $fields['documentation']) : ?>
-                        <div class="product__body-nav-tab active">
+                        <div class="product__body-nav-tab">
                             <?= $nameTabs['tab_4'] ?>
                         </div>
                     <?php endif; ?>
