@@ -7,15 +7,13 @@ fileInput && fileInput.addEventListener('change', async function(event) {
 
   if (file && !checkFileFormat(file)) {
     alert('Неверный формат файла. Пожалуйста, выберите файл Excel.');
+  } else {
+    const dataUpload = await uploadFileAjax(file, url);
 
-    return;
-  }
-
-  const dataUpload = await uploadFileAjax(file, url);
-
-  if (dataUpload.status) {
-    location.reload();
-    await updateGoogleApiExel(urlGoogleApi)
+    if (dataUpload.status) {
+      location.reload();
+      await updateGoogleApiExel(urlGoogleApi)
+    }
   }
 });
 
