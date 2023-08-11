@@ -93,3 +93,5 @@ function slug_report_type_template(): void
     ];
 }
 add_action('init', 'slug_report_type_template');
+
+add_filter( 'allow_dev_auto_core_updates', '__return_false' );
