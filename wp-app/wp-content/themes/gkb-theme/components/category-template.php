@@ -51,13 +51,23 @@ $categories = get_terms([
                 </div>
             <?php endif; ?>
 
-            <?php if (!empty($products)) : ?>
-                <div class="catalog-right">
-                    <?php foreach ($products as $product) : ?>
-                        <?php include 'product-card.php' ?>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+            <div>
+                <?php if (!empty($search)) : ?>
+                    <div class="search-catalog">
+                        <p><?= $helper->getLang() === 'ru' ? 'Поиск по каталогу: ' : 'Catalog search: ' ?> <?= $search ?></p>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($products)) : ?>
+                    <div class="catalog-right">
+                        <?php foreach ($products as $product) : ?>
+                            <?php include 'product-card.php' ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="not-found"><?= $helper->getLang() === 'ru' ? 'Ничего не найдено' : 'Nothing found' ?>
+                        😔</p>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
