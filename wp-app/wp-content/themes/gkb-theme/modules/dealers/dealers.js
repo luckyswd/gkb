@@ -1,6 +1,6 @@
 class Dealers {
     constructor() {
-        this.regions = document.querySelectorAll('.dealers__region');
+        this.regions = document.querySelectorAll('.dealers__region-title');
 
         this.init();
     }
@@ -12,7 +12,8 @@ class Dealers {
     handleAccordion() {
         this.regions && this.regions.forEach((region, index) => {
             region.addEventListener('click', () => {
-                region.classList.toggle('active');
+                const parent = region.parentElement;
+                parent.classList.toggle('active');
             });
         });
     }
