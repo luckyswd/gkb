@@ -1,20 +1,14 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
-const minifyCSS = require('gulp-minify-css');
+const minifyCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const minify = require("gulp-minify");
 const del = require("del");
 const include = require('gulp-include')
 
 /* build production */
-gulp.task('build', function (cb) {
-  clearDist();
-  style()
-  fonts()
-  scripts()
-  cb();
-})
+gulp.task('build', gulp.series(clearDist, gulp.parallel(style, fonts, scripts)));
 
 function style() {
   const number = getRandomInRange(1000, 1000000);
@@ -93,8 +87,9 @@ function watchScripts() {
     .pipe(gulp.dest('dist/js'))
 }
 
-function clearDist() {
+function clearDist(cb) {
   del.sync(['dist/**']);
+  if (cb) cb();
 }
 
 function getRandomInRange(min, max) {

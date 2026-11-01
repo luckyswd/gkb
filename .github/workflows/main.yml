@@ -2,22 +2,50 @@ name: 🚀 Deploy website
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Прогон без заливки файлов на сервер"
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
       - name: 📩 Get latest code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
-      - name: npm install && build && composer install
-        run: cd wp-app/wp-content/themes/gkb-theme/ && npm install && gulp build && composer i
+      - name: ⚙️ Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: wp-app/wp-content/themes/gkb-theme/package-lock.json
+
+      - name: ⚙️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: 🛠 Build theme
+        working-directory: wp-app/wp-content/themes/gkb-theme
+        run: |
+          npm ci
+          npx gulp build
+          composer install --prefer-dist --no-interaction --no-progress
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: 178.172.164.22
           username: ${{ secrets.FTP_HOSTNAME_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wp-app/
           server-dir: "./public_html/"
+          dry-run: ${{ inputs.dry-run == true }}
