@@ -7,6 +7,7 @@ include 'hooks_filters/after_setup_theme.php';
 include 'hooks_filters/reset_default_css_js.php';
 include 'hooks_filters/additional.php';
 include 'hooks_filters/removed_urls.php';
+include 'hooks_filters/acf_blocks_editor.php';
 
 require_once 'helpers/Helpers.php';
 require_once 'authorization/Authorization.php';
@@ -61,6 +62,8 @@ function my_register_blocks()
                 'mode' => __($file_headers['mode']),
                 'render_callback' => 'my_acf_block_render_callback',
                 'category' => 'formatting',
+                // Без переключателя в edit: в этом режиме поля не работают, см. acf_blocks_editor.php
+                'supports' => ['mode' => false],
             ));
         }
     }
