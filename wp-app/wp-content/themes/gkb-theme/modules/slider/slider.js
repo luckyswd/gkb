@@ -11,6 +11,7 @@ class Slider {
     new Swiper(".gallery-swiper", {
       slidesPerView: 1,
       slidesPerGroup: 1,
+      watchOverflow: true,
       autoplay: {
         delay: 4000,
       },

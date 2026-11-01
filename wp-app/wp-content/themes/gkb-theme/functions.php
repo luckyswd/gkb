@@ -6,6 +6,7 @@ include 'hooks_filters/webp_upload.php';
 include 'hooks_filters/after_setup_theme.php';
 include 'hooks_filters/reset_default_css_js.php';
 include 'hooks_filters/additional.php';
+include 'hooks_filters/removed_urls.php';
 
 require_once 'helpers/Helpers.php';
 require_once 'authorization/Authorization.php';
