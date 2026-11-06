@@ -1,59 +1,202 @@
-footer {
-  background-color: $c-main-black;
-  .footer__copyright {
-    text-align: center;
-    color: $c-gray-form-border;
-    font-size: 14px;
-    padding: 20px 0;
-  }
+/* Подвал: карточка формы обратной связи и карточка ссылок,
+   ниже — логотип и копирайт. */
 
-  .footer__body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid $c-gray-form-border;
+.gkb-footer {
+    margin-top: var(--gkb-section-gap);
+    padding-bottom: var(--gkb-gap-2xl);
 
-    @include _650 {
-      flex-direction: column;
-      align-items: flex-start;
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-lg);
     }
-  }
+}
 
-  .footer__menu {
+.gkb-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: var(--gkb-gap-lg);
+    align-items: start;
+}
+
+.gkb-footer__form {
     display: flex;
     flex-direction: column;
-  }
+    gap: var(--gkb-gap-md);
+}
 
-  .footer__column-info {
+.gkb-footer__title {
+    font-size: var(--gkb-fs-h3);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Разметку формы рисует Contact Form 7: ul.container-input с label и полем
+   внутри span.wpcf7-form-control-wrap, кнопка — в div.buttons-wrapper.
+   Сами поля оформлены в partials/elements, здесь только раскладка. */
+.gkb-footer__form {
+    .screen-reader-response {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .wpcf7-form > ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: var(--gkb-gap-sm);
+    }
+
+    /* поле сообщения занимает всю ширину */
+    .wpcf7-form > ul > li:last-child {
+        grid-column: 1 / -1;
+    }
+
+    li.container-input {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-xs);
+
+        > label {
+            color: var(--gkb-text-muted);
+            font-size: var(--gkb-fs-xs);
+            font-weight: 600;
+        }
+    }
+
+    .wpcf7-form-control-wrap {
+        display: block;
+    }
+
+    textarea {
+        height: 104px;
+    }
+
+    .buttons-wrapper {
+        margin-top: var(--gkb-gap-sm);
+    }
+
     p {
-      font-size: 16px;
-      color: $c-gray-form-border;
+        margin: 0;
     }
-  }
 
-  .footer__category {
+    .wpcf7-submit {
+        align-self: flex-start;
+        width: auto;
+        padding: 13px 26px;
+        border: none;
+        border-radius: var(--gkb-r-md);
+        background: linear-gradient(180deg, var(--gkb-accent-from), var(--gkb-accent-to));
+        color: var(--gkb-text-inverse);
+        font-family: inherit;
+        font-size: var(--gkb-fs-body);
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: var(--gkb-shadow-accent);
+        transition: filter var(--gkb-t-fast);
+
+        &:hover {
+            filter: brightness(0.94);
+        }
+    }
+}
+
+.gkb-footer__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: var(--gkb-gap-2xl);
+}
+
+.gkb-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
     a {
-      font-size: 16px;
-      color: $c-gray-form-border;
-      transition: $transition;
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-body);
 
-      &:hover {
-        color: $c-main-green-strong;
-      }
+        &:hover {
+            color: var(--gkb-accent-strong);
+        }
     }
-  }
+}
 
-  .footer__menu {
+.gkb-footer__col-title {
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+    font-weight: 600;
+}
+
+.gkb-footer__col--contacts {
+    gap: var(--gkb-gap-md);
+}
+
+.gkb-footer__info {
+    padding: var(--gkb-gap-md) var(--gkb-gap-lg);
+    border-radius: var(--gkb-r-md);
+    background: var(--gkb-bg);
+    font-size: var(--gkb-fs-sm);
+    color: var(--gkb-text-secondary);
+
+    p {
+        margin: 0;
+
+        &:first-child {
+            color: var(--gkb-text);
+            font-size: var(--gkb-fs-body);
+            font-weight: 600;
+        }
+    }
+
     a {
-      font-size: 16px;
-      color: $c-gray-form-border;
-      transition: $transition;
-
-      &:hover {
-        color: $c-main-green-strong;
-      }
+        color: var(--gkb-text);
+        font-weight: 500;
     }
-  }
+}
+
+.gkb-footer__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-xs);
+
+    .gkb-btn--icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--gkb-r-sm);
+        background: var(--gkb-bg);
+
+        &:hover {
+            background: var(--gkb-surface-hover);
+            box-shadow: none;
+        }
+
+        img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+    }
+}
+
+.gkb-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gkb-gap-md);
+    padding: var(--gkb-gap-2xs) var(--gkb-gap-sm);
+
+    img {
+        width: auto;
+        height: 32px;
+        opacity: 0.85;
+    }
+}
+
+.gkb-footer__copyright {
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
 }

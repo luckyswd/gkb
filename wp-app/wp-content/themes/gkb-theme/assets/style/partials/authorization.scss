@@ -1,112 +1,95 @@
-.registration-page, .login-page {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: $c-background-auth;
-  min-height: 70vh;
+/* Вход, регистрация, восстановление пароля.
+   Поля и кнопки — общие, из partials/elements. */
 
-  .message-after-register {
-    width: 100%;
-    max-width: 400px;
-    border: 1px solid $c-gray-form-border;
-    border-radius: 10px;
-    background-color: $c-white;
-    box-shadow: $c-focus-border;
-    padding: 15px;
-    text-align: center;
-  }
-}
-
-form {
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid $c-gray-form-border;
-  border-radius: 10px;
-  background-color: $c-white;
-  box-shadow: $c-focus-border;
-  padding: 15px;
-
-  .container-input {
-    width: 100%;
-    padding-bottom: 12px;
-
-    label, input, textarea {
-      width: 100%;
-    }
-
-    label {
-      font-size: 15px;
-      line-height: 18px;
-      font-weight: 500;
-      padding-bottom: 8px;
-    }
-
-    input, textarea {
-      font-size: 14px;
-      padding: 8px 12px;
-      line-height: 18px;
-      border-radius: 4px;
-      border: 1px solid $c-gray-input-border;
-      color: $c-main-black;
-
-      &:focus {
-        outline: none;
-        border: 1px solid $c-main-green-light;
-        box-shadow: $c-focus-border;
-      }
-    }
-
-    &.error-input {
-      input {
-        border: 1px solid $c-main-red;
-        box-shadow: $c-focus-border;
-      }
-    }
-  }
-
-  .alert-message, .message-error, .wpcf7-not-valid-tip {
-    color: $c-main-red;
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 2px;
-    display: block;
-  }
-
-  .alert-message {
-    margin-bottom: 8px;
-  }
-
-  .buttons-wrapper {
+.registration-page,
+.login-page {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: clamp(24px, 5vw, 64px) 0;
+
+    .message-after-register {
+        width: 100%;
+        max-width: 420px;
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+        text-align: center;
+    }
 }
 
+/* правило намеренно ограничено страницами авторизации: раньше оно было
+   глобальным и ужимало все формы сайта до 400px */
+.registration-page form,
+.login-page form {
+    width: 100%;
+    max-width: 420px;
+    padding: var(--gkb-card-pad);
+    border-radius: var(--gkb-r-2xl);
+    background: var(--gkb-surface);
 
-.modal-form {
-  border-radius: 10px;
-  display: none;
+    .container-input {
+        width: 100%;
+        padding-bottom: var(--gkb-gap-md);
 
-  form {
-    padding: 20px;
-    max-width: 500px;
-  }
+        label {
+            display: block;
+            padding-bottom: var(--gkb-gap-xs);
+            color: var(--gkb-text-muted);
+            font-size: var(--gkb-fs-xs);
+            font-weight: 600;
+        }
 
-  .is-close {
-    margin: 0 !important;
-  }
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--gkb-border-strong);
+            border-radius: var(--gkb-r-sm);
+            background: var(--gkb-surface-sunken);
+            color: var(--gkb-text);
+            font-family: inherit;
+            font-size: var(--gkb-fs-body);
+            transition: border-color var(--gkb-t-fast), background var(--gkb-t-fast),
+            box-shadow var(--gkb-t-fast);
 
-  .btn {
-    border: unset !important;
-  }
+            &:focus {
+                outline: none;
+                border-color: var(--gkb-accent);
+                background: var(--gkb-surface);
+                box-shadow: 0 0 0 3px var(--gkb-accent-ring);
+            }
+        }
 
-  .wpcf7-response-output {
-    display: none;
-  }
+        &.error-input input {
+            border-color: var(--gkb-danger);
+        }
+    }
 
-  .wpcf7-spinner {
-    display: none;
-  }
+    .alert-message,
+    .message-error,
+    .wpcf7-not-valid-tip {
+        display: block;
+        margin-top: var(--gkb-gap-2xs);
+        color: var(--gkb-danger);
+        font-size: var(--gkb-fs-xs);
+        font-weight: 500;
+    }
+
+    .alert-message {
+        margin-bottom: var(--gkb-gap-sm);
+    }
+
+    .buttons-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-md);
+        margin-top: var(--gkb-gap-sm);
+    }
+
+    .btn,
+    input[type='submit'] {
+        width: 100%;
+    }
 }

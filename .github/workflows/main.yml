@@ -40,6 +40,12 @@ jobs:
           npx gulp build
           composer install --prefer-dist --no-interaction --no-progress
 
+      - name: 🔍 Проверить синтаксис PHP
+        working-directory: wp-app/wp-content/themes/gkb-theme
+        run: |
+          find . -path ./node_modules -prune -o -path ./vendor -prune -o \
+                 -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:

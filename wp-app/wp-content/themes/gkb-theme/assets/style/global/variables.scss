@@ -1,25 +1,12 @@
-$c-white: #fff;
-$c-dark-black: #000000;
-$c-main-black: rgb(40, 43, 53);
-$c-white: #fff;
-$c-gray: #9d9d9d;
+/* Переменные времени сборки. Цвета здесь не объявляются —
+   они живут в global/_tokens.scss. */
 
-$c-main-green: rgb(54 205 83);
-$c-main-green-light: rgb(157 255 175);
-$c-main-green-strong: rgb(13 177 45);
-$c-background-green: rgba(230, 255, 235, 1);
+$font: var(--gkb-font);
+$transition: all var(--gkb-t-fast);
 
-$c-main-red-light: rgb(239 216 216);
-$c-main-red: rgb(209, 67, 67);
-$c-background-red: rgb(255, 209, 209);
-
-$c-gray-form-border: rgb(227, 229, 229);
-$c-gray-input-border: rgb(216, 218, 229);
-$c-background-auth: rgb(243, 246, 255);
-$c-focus-border: rgb(235, 240, 255) 0 0 0 2px;
-
-$font: 'Roboto Regular', sans-serif;
-$transition: all .100s ease-in-out;
+/* --- Брейкпоинты ---
+   900px — порог, на котором макет переключается между десктопной
+   и мобильной раскладкой. Остальные сохранены ради непереписанных партиалов. */
 
 @mixin _1440 {
     @media (max-width: 1440px) {
@@ -35,6 +22,18 @@ $transition: all .100s ease-in-out;
 
 @mixin _992 {
     @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin _900 {
+    @media (max-width: 899.98px) {
+        @content;
+    }
+}
+
+@mixin _from900 {
+    @media (min-width: 900px) {
         @content;
     }
 }

@@ -1,64 +1,61 @@
+/* Страница товара: вкладки и галерея.
+   Миниатюры — обычные кнопки, а не второй Swiper: так их раскладкой
+   (вертикально на десктопе, горизонтально на телефоне) управляет CSS. */
 class Product {
     constructor() {
-        this.navTabs = document.querySelectorAll('.product__body-nav-tab');
-        this.contentElementsArr = {
-            0: document.querySelector('.product__body-content-benefits'),
-            1: document.querySelector('.product__body-content-specifications'),
-            2: document.querySelector('.product__body-content-equipment'),
-            3: document.querySelector('.product__body-content-documentations')
-        };
-
-        this.contentElements = {};
-
-        let newIndex = 0;
-        for (const key in this.contentElementsArr) {
-            if (this.contentElementsArr[key]) {
-                this.contentElements[newIndex] = this.contentElementsArr[key];
-                newIndex++;
-            }
-        }
-        this.init();
-        this.initSlider();
+        this.initTabs();
+        this.initGallery();
     }
 
-    init() {
-        this.navTabs.forEach((tab, index) => {
-            if (index === 0) {
-                tab.classList.add('active');
-                this.contentElements[0].classList.add('active');
-            }
-            tab.addEventListener('click', () => {
-                this.navTabs.forEach((otherTab) => {
-                    otherTab.classList.remove('active');
-                });
-                Object.values(this.contentElements).forEach((contentElement) => {
-                    contentElement && contentElement.classList.remove('active');
-                });
+    initTabs() {
+        const tabs = document.querySelectorAll('.gkb-product__tabs [data-tab]');
 
-                tab.classList.add('active');
-                const contentElement = this.contentElements[index];
-                contentElement && contentElement.classList.add('active');
+        if (!tabs.length) {
+            return;
+        }
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const id = tab.dataset.tab;
+
+                tabs.forEach((other) => other.classList.toggle('is-active', other === tab));
+
+                document.querySelectorAll('.gkb-product__pane').forEach((pane) => {
+                    pane.classList.toggle('is-active', pane.dataset.pane === id);
+                });
             });
         });
     }
 
-    initSlider() {
-        const swiper = new Swiper(".product__slider", {
-            spaceBetween: 10,
-            slidesPerView: 4,
-            freeMode: true,
-            watchSlidesProgress: true,
+    initGallery() {
+        const main = document.querySelector('.gkb-gallery__main');
+
+        if (!main || typeof Swiper === 'undefined') {
+            return;
+        }
+
+        const thumbs = Array.from(document.querySelectorAll('.gkb-gallery__thumb'));
+        const counter = document.querySelector('.gkb-gallery__counter');
+
+        const swiper = new Swiper(main, {
+            slidesPerView: 1,
+            watchOverflow: true,
+            pagination: counter ? { el: counter, type: 'fraction' } : false,
         });
-        const swiper2 = new Swiper(".product__slider-2", {
-            spaceBetween: 10,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            thumbs: {
-                swiper: swiper,
-            },
+
+        const sync = () => {
+            thumbs.forEach((thumb, index) => {
+                thumb.classList.toggle('is-active', index === swiper.activeIndex);
+            });
+        };
+
+        swiper.on('slideChange', sync);
+
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => swiper.slideTo(index));
         });
+
+        sync();
     }
 }
 

@@ -1,0 +1,200 @@
+/* Содержимое из визуального редактора: вкладки товара, описания страниц.
+   Базовый уровень оформляет любую разметку, опорные классы дают точность
+   макета там, где редактор их проставил. */
+
+.gkb-content {
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-md);
+    line-height: 1.55;
+
+    > * + * {
+        margin-top: var(--gkb-gap-lg);
+    }
+
+    h2,
+    h3,
+    h4 {
+        color: var(--gkb-text);
+        margin-top: clamp(24px, 3vw, 40px);
+    }
+
+    h2 {
+        font-size: var(--gkb-fs-h2);
+    }
+
+    h3 {
+        font-size: var(--gkb-fs-h3);
+    }
+
+    p {
+        margin: 0;
+        text-wrap: pretty;
+    }
+
+    strong,
+    b {
+        color: var(--gkb-text);
+        font-weight: 600;
+    }
+
+    a {
+        color: var(--gkb-accent-strong);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    /* в контенте нужны настоящие маркеры: глобальный сброс их убирает */
+    ul,
+    ol {
+        padding-left: 22px;
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    li + li {
+        margin-top: var(--gkb-gap-sm);
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--gkb-r-lg);
+    }
+
+    iframe,
+    video {
+        max-width: 100%;
+        border-radius: var(--gkb-r-lg);
+    }
+
+    /* Таблицы приходят с презентационными атрибутами (border, bgcolor,
+       width) — переопределяем их, чтобы вид был общий для всего сайта. */
+    .gkb-table-scroll {
+        margin-top: var(--gkb-gap-lg);
+
+        > table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 0;
+            background: inherit;
+        }
+
+        td {
+            border-top: 1px solid var(--gkb-border);
+        }
+
+        thead th,
+        tr:first-child th {
+            background: var(--gkb-bg);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--gkb-surface-sunken);
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+/* ===== Опорные классы ===== */
+
+/* Нумерованные блоки преимуществ: номер рисует счётчик, вручную
+   проставлять 01, 02, 03 не нужно. */
+.gkb-steps {
+    counter-reset: gkb-step;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 48px);
+}
+
+/* Содержимое блока — плоский набор тегов из редактора: заголовок, абзацы
+   и картинка идут соседями. Поэтому картинка обтекается, а не ставится в
+   колонку сетки: сетка растягивала бы строки текста под высоту картинки. */
+.gkb-step {
+    display: block;
+
+    &::before {
+        counter-increment: gkb-step;
+        content: counter(gkb-step, decimal-leading-zero);
+        display: block;
+        margin-bottom: 10px;
+        color: var(--gkb-accent-strong);
+        font-size: var(--gkb-fs-xs);
+        font-weight: 600;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    > * + * {
+        margin-top: 10px;
+    }
+
+    strong,
+    h2,
+    h3,
+    h4 {
+        display: block;
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h2);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+
+    img {
+        float: right;
+        width: 45%;
+        max-height: 420px;
+        margin: 0 0 var(--gkb-gap-lg) clamp(20px, 3vw, 48px);
+        object-fit: contain;
+    }
+}
+
+.gkb-accent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 900px;
+    padding: clamp(20px, 2.6vw, 32px);
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-product-soft);
+
+    > * + * {
+        margin-top: 0;
+    }
+
+    strong,
+    h2,
+    h3 {
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h2);
+        line-height: 1.2;
+    }
+}
+
+.gkb-note {
+    display: block;
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+}
+
+@include _900 {
+    .gkb-step img {
+        float: none;
+        width: 100%;
+        max-height: none;
+        margin: var(--gkb-gap-lg) 0 0;
+    }
+}

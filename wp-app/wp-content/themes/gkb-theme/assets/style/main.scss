@@ -1,17 +1,18 @@
 /* libs */
 @import "libs/swiper";
-@import "libs/fancybox";
 
 /* GLOBAL */
+@import "global/tokens";
 @import "global/fonts";
 @import "global/variables";
 @import "global/reset";
 @import "global/global";
 
 /* PARTIALS */
+@import "partials/elements";
+@import "partials/content";
 @import "partials/header";
 @import "partials/footer";
-@import "partials/font-sizes";
 @import "partials/404";
 @import "partials/authorization";
 @import "partials/catalog";

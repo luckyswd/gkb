@@ -68,7 +68,7 @@ $fields = (new Helpers)->get_field_multi_lang();
             </div>
             <?php endif; ?>
             <?php if (!empty($fields['description'])) : ?>
-                <div class="dealers__description">
+                <div class="dealers__description gkb-content">
                     <?= $fields['description'] ?>
                 </div>
             <?php endif; ?>
