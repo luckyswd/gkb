@@ -46,7 +46,16 @@ class Helpers
 
     public function getLang()
     {
-        return $_COOKIE['lang'] ?? 'ru';
+        // Параметр ?lang= в адресе важнее куки: после переключения языка
+        // страница открывается с ним, чтобы кеш страниц не отдал старую версию.
+        $fromUrl = $_GET['lang'] ?? null;
+        if ($fromUrl === 'ru' || $fromUrl === 'en') {
+            return $fromUrl;
+        }
+
+        // Любое другое значение куки считаем русским — иначе match() в
+        // get_field_multi_lang упадёт с UnhandledMatchError.
+        return ($_COOKIE['lang'] ?? 'ru') === 'en' ? 'en' : 'ru';
     }
 
     // Заголовок

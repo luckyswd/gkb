@@ -117,7 +117,10 @@ $firstTab = $tabs[0]['id'] ?? '';
                                 <button type="button" class="gkb-ficon gkb-ficon--lg gkb-tip-host"
                                         aria-label="<?= esc_attr($item['text'] ?? '') ?>">
                                     <span class="gkb-ficon__sprite<?= $item['is_sprite'] ? '' : ' is-single' ?>">
-                                        <img src="<?= esc_url($item['icon']) ?>" alt="" aria-hidden="true">
+                                        <img class="gkb-ficon__base" src="<?= esc_url($item['icon']) ?>" alt="" aria-hidden="true">
+                                        <?php if ($item['is_sprite']) : ?>
+                                            <img class="gkb-ficon__hover" src="<?= esc_url($item['icon']) ?>" alt="" aria-hidden="true">
+                                        <?php endif; ?>
                                     </span>
                                     <?php if (!empty($item['text'])) : ?>
                                         <span class="gkb-tip" role="tooltip"><?= esc_html($item['text']) ?></span>

@@ -3,6 +3,7 @@
 
 /* PARTIALS */
 //=include partials/header.js
+//=include partials/search.js
 //=include partials/forms.js
 //=include partials/authorization.js
 //=include partials/product-card.js

@@ -1,42 +1,42 @@
-/* Подвал: карточка формы обратной связи и карточка ссылок,
-   ниже — логотип и копирайт. */
+/* Блок «Написать нам» над подвалом и сам подвал — полоса во всю ширину окна. */
 
-.gkb-footer {
-    margin-top: var(--gkb-section-gap);
-    padding-bottom: var(--gkb-gap-2xl);
+/* ===== Написать нам ===== */
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gkb-gap-lg);
+.gkb-cta {
+    margin-top: clamp(32px, 5vw, 64px);
+}
+
+.gkb-cta__card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
+
+    @include _900 {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
-.gkb-footer__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-    gap: var(--gkb-gap-lg);
-    /* карточки тянутся до высоты самой высокой в строке: при align-items: start
-       форма и блок ссылок получались разной высоты и подвал выглядел рваным */
-    align-items: stretch;
-}
-
-.gkb-footer__form {
+.gkb-cta__intro {
     display: flex;
     flex-direction: column;
     gap: var(--gkb-gap-md);
 }
 
-.gkb-footer__title {
-    font-size: var(--gkb-fs-h3);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+.gkb-cta__title {
+    font-size: var(--gkb-fs-h2);
 }
 
-/* Разметку формы рисует Contact Form 7: ul.container-input с label и полем
+.gkb-cta__text {
+    max-width: 420px;
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-md);
+}
+
+/* Разметку формы рисует Contact Form 7: ul > li.container-input с label и полем
    внутри span.wpcf7-form-control-wrap, кнопка — в div.buttons-wrapper.
    Сами поля оформлены в partials/elements, здесь только раскладка. */
-.gkb-footer__form {
+.gkb-cta__form {
     .screen-reader-response {
         position: absolute;
         width: 1px;
@@ -51,7 +51,6 @@
         gap: var(--gkb-gap-sm);
     }
 
-    /* поле сообщения занимает всю ширину */
     .wpcf7-form > ul > li:last-child {
         grid-column: 1 / -1;
     }
@@ -77,7 +76,7 @@
     }
 
     .buttons-wrapper {
-        margin-top: var(--gkb-gap-sm);
+        margin-top: var(--gkb-gap-md);
     }
 
     p {
@@ -85,7 +84,6 @@
     }
 
     .wpcf7-submit {
-        align-self: flex-start;
         width: auto;
         padding: 13px 26px;
         border: none;
@@ -100,20 +98,93 @@
         transition: filter var(--gkb-t-fast);
 
         &:hover {
+            background: linear-gradient(180deg, var(--gkb-accent-from), var(--gkb-accent-to));
+            color: var(--gkb-text-inverse);
             filter: brightness(0.94);
         }
     }
 }
 
-.gkb-footer__links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-    gap: var(--gkb-gap-2xl);
+/* ===== Подвал: полоса во всю ширину ===== */
 
-    /* Колонке с часами и соцсетями нужно больше места, чем колонкам ссылок:
-       строка «Пн — Пт: 08:00 — 17:00» должна помещаться целиком. */
-    @media (min-width: 760px) {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+.gkb-footer {
+    margin-top: clamp(32px, 5vw, 64px);
+    border-top: 1px solid var(--gkb-border);
+    background: var(--gkb-surface);
+}
+
+.gkb-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    padding-top: clamp(32px, 4vw, 56px);
+    padding-bottom: clamp(32px, 4vw, 56px);
+
+    @include _900 {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+        .gkb-footer__brand {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @include _480 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.gkb-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gkb-gap-lg);
+}
+
+.gkb-footer__logo img {
+    width: auto;
+    max-width: 160px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.gkb-footer__info {
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-sm);
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: var(--gkb-text);
+        font-weight: 500;
+    }
+}
+
+.gkb-footer__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-xs);
+
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--gkb-r-sm);
+        background: var(--gkb-bg);
+        transition: background var(--gkb-t-fast);
+
+        &:hover {
+            background: var(--gkb-surface-hover);
+        }
+
+        img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
     }
 }
 
@@ -133,105 +204,39 @@
 }
 
 .gkb-footer__col-title {
+    margin-bottom: var(--gkb-gap-2xs);
     color: var(--gkb-text-muted);
     font-size: var(--gkb-fs-xs);
     font-weight: 600;
-}
-
-.gkb-footer__col--contacts {
-    gap: var(--gkb-gap-md);
-}
-
-.gkb-footer__info {
-    padding: var(--gkb-gap-md);
-    border-radius: var(--gkb-r-md);
-    background: var(--gkb-bg);
-    font-size: var(--gkb-fs-sm);
-    color: var(--gkb-text-secondary);
-
-    p {
-        margin: 0;
-
-        /* часы работы держим в одну строку: на узкой колонке текст
-           уменьшается, а не переносится */
-        &:first-child {
-            color: var(--gkb-text);
-            font-size: clamp(13px, 1.05vw, 15px);
-            font-weight: 600;
-            white-space: nowrap;
-        }
-    }
-
-    a {
-        color: var(--gkb-text);
-        font-weight: 500;
-    }
-}
-
-.gkb-footer__socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gkb-gap-xs);
-
-    /* ссылки-иконки, перенесённые из поля «Общая информация», приходят
-       без классов темы — выравниваем их с остальными соцсетями */
-    > a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: var(--gkb-r-sm);
-        background: var(--gkb-bg);
-        transition: background var(--gkb-t-fast);
-
-        &:hover {
-            background: var(--gkb-surface-hover);
-            box-shadow: none;
-        }
-
-        img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-        }
-    }
-
-    .gkb-btn--icon {
-        width: 44px;
-        height: 44px;
-        border-radius: var(--gkb-r-sm);
-        background: var(--gkb-bg);
-
-        &:hover {
-            background: var(--gkb-surface-hover);
-            box-shadow: none;
-        }
-
-        img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-        }
-    }
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
 }
 
 .gkb-footer__bottom {
+    border-top: 1px solid var(--gkb-border);
+}
+
+.gkb-footer__bottom-inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: var(--gkb-gap-md);
-    padding: var(--gkb-gap-2xs) var(--gkb-gap-sm);
-
-    img {
-        width: auto;
-        height: 32px;
-        opacity: 0.85;
-    }
+    padding-top: var(--gkb-gap-lg);
+    padding-bottom: var(--gkb-gap-lg);
 }
 
 .gkb-footer__copyright {
     color: var(--gkb-text-muted);
     font-size: var(--gkb-fs-xs);
+}
+
+.gkb-footer__up {
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+    font-weight: 600;
+
+    &:hover {
+        color: var(--gkb-text);
+    }
 }

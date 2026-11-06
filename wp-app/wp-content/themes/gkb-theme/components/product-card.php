@@ -29,7 +29,10 @@ $subheadline = $helper->getProductDescriptionCatalog($product);
                     <button type="button" class="gkb-ficon gkb-tip-host"
                             aria-label="<?= esc_attr($functionality['text'] ?? '') ?>">
                         <span class="gkb-ficon__sprite<?= $functionality['is_sprite'] ? '' : ' is-single' ?>">
-                            <img src="<?= esc_url($functionality['icon']) ?>" alt="" aria-hidden="true">
+                            <img class="gkb-ficon__base" src="<?= esc_url($functionality['icon']) ?>" alt="" aria-hidden="true">
+                            <?php if ($functionality['is_sprite']) : ?>
+                                <img class="gkb-ficon__hover" src="<?= esc_url($functionality['icon']) ?>" alt="" aria-hidden="true">
+                            <?php endif; ?>
                         </span>
                         <?php if (!empty($functionality['text'])) : ?>
                             <span class="gkb-tip" role="tooltip"><?= esc_html($functionality['text']) ?></span>

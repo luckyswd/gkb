@@ -59,7 +59,7 @@ $totalCount = count(Helpers::getProductsByCategory());
 
         <?php if (!empty($categories)) : ?>
             <div class="gkb-catalog__tabs">
-                <div class="gkb-segments">
+                <div class="gkb-segments gkb-segments--chips">
                     <div class="gkb-segments__track">
                         <a href="<?= esc_url($catalogUrl) ?>"
                            class="gkb-segment<?= $currentCategory ? '' : ' is-active' ?>">

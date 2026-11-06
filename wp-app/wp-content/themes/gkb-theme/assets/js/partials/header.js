@@ -70,7 +70,11 @@ class Header {
                 const result = await response.json();
 
                 if (result.status) {
-                    location.reload();
+                    // Перезагрузка того же адреса вернула бы копию из кеша
+                    // страниц на прежнем языке — открываем адрес с ?lang=.
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('lang', button.dataset.lang);
+                    window.location.href = url.toString();
                     return;
                 }
             } catch (error) {

@@ -37,6 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--gkb-gap-sm);
+    padding: 2px;
     overflow: auto;
     scrollbar-width: none;
 
@@ -58,8 +59,15 @@
     cursor: pointer;
     transition: box-shadow var(--gkb-t-fast);
 
+    /* рамка рисуется внутри (outline со смещением внутрь): тень снаружи
+       обрезалась прокручиваемой лентой миниатюр и была видна не целиком */
     &.is-active {
-        box-shadow: 0 0 0 2px var(--gkb-accent);
+        outline: 2px solid var(--gkb-accent);
+        outline-offset: -2px;
+    }
+
+    &:hover:not(.is-active) {
+        box-shadow: inset 0 0 0 1px var(--gkb-border-strong);
     }
 
     img {
@@ -134,17 +142,26 @@
     }
 }
 
+/* Счётчик — компактная плашка в правом верхнем углу. Swiper вешает на неё
+   класс swiper-pagination-fraction с width: 100% и bottom: 10px — без явного
+   сброса получалась белая полоса во всю ширину под картинкой. */
 .gkb-gallery__counter {
     position: absolute;
-    right: 14px;
-    bottom: 14px;
+    top: var(--gkb-gap-md);
+    right: var(--gkb-gap-md);
+    bottom: auto;
+    left: auto;
     z-index: 2;
+    width: auto;
     padding: 4px 10px;
     border-radius: var(--gkb-r-pill);
-    background: var(--gkb-surface);
+    background: rgba(255, 255, 255, 0.92);
     color: var(--gkb-text-secondary);
     font-size: var(--gkb-fs-2xs);
     font-weight: 600;
+    line-height: 1.4;
+    box-shadow: var(--gkb-shadow-sm);
+    pointer-events: none;
 }
 
 /* ===== Текстовая часть ===== */

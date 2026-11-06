@@ -77,12 +77,33 @@ function my_acf_block_render_callback($block)
     }
 }
 function set_custom_cookie() {
+    $month = time() + (30 * 24 * 60 * 60);
+    $fromUrl = $_GET['lang'] ?? null;
+
+    if ($fromUrl === 'ru' || $fromUrl === 'en') {
+        if (($_COOKIE['lang'] ?? '') !== $fromUrl) {
+            setcookie('lang', $fromUrl, $month, COOKIEPATH, COOKIE_DOMAIN);
+            $_COOKIE['lang'] = $fromUrl;
+        }
+        return;
+    }
+
     if (!isset($_COOKIE['lang'])) {
-        $month = time() + (30 * 24 * 60 * 60);
         setcookie('lang', 'ru', $month, COOKIEPATH, COOKIE_DOMAIN);
     }
 }
 add_action('wp_loaded', 'set_custom_cookie');
+
+/* Кеш страниц WP-Optimize по умолчанию не знает про куку языка и отдаёт
+   английскому посетителю русскую копию страницы. Этот фильтр делает отдельную
+   копию кеша на каждое значение куки lang. Настройка попадает в конфиг кеша
+   при сохранении настроек WP-Optimize, поэтому после выкладки их нужно один
+   раз пересохранить. */
+add_filter('wpo_cache_cookies', static function ($cookies) {
+    $cookies = is_array($cookies) ? $cookies : [];
+    $cookies[] = 'lang';
+    return array_values(array_unique($cookies));
+});
 function removeMenu(): void
 {
     remove_menu_page('all-fields');

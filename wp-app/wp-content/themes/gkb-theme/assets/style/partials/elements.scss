@@ -209,6 +209,37 @@ textarea.gkb-field,
     }
 }
 
+/* Лента категорий: без серой дорожки, каждая категория — отдельная
+   «таблетка». Активная подсвечивается зелёным, остальные — при наведении. */
+.gkb-segments--chips {
+    .gkb-segments__track {
+        gap: 2px;
+        padding: 0;
+        background: transparent;
+    }
+
+    .gkb-segment {
+        padding: 8px 13px;
+        border-radius: var(--gkb-r-pill);
+        color: var(--gkb-text-secondary);
+
+        &:hover {
+            background: var(--gkb-surface-muted);
+            color: var(--gkb-text);
+        }
+
+        &.is-active {
+            background: var(--gkb-accent-soft-strong);
+            box-shadow: none;
+            color: var(--gkb-accent-dark);
+        }
+
+        &.is-active .gkb-segment__count {
+            color: var(--gkb-accent-dark);
+        }
+    }
+}
+
 .gkb-segments__track {
     display: flex;
     gap: 2px;
@@ -432,38 +463,49 @@ textarea.gkb-field,
 }
 
 .gkb-ficon__sprite {
+    position: relative;
     display: block;
     width: 32px;
     height: 32px;
     overflow: hidden;
 
     img {
+        position: absolute;
+        top: 0;
         display: block;
         width: 64px;
         height: 32px;
         max-width: none;
-        transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
+        transition: opacity 0.12s ease;
     }
 }
 
-.gkb-ficon:hover .gkb-ficon__sprite img,
-.gkb-ficon:focus-visible .gkb-ficon__sprite img,
-.gkb-ficon.is-open .gkb-ficon__sprite img {
-    transform: translateX(-32px);
+/* Спрайт 64×32: обычное состояние — левая половина, активное — правая.
+   Картинки не сдвигаются: активная лежит сверху и просто проявляется. */
+.gkb-ficon__base {
+    left: 0;
 }
 
-/* одинарная картинка: ничего не сдвигаем */
-.gkb-ficon__sprite.is-single {
-    img {
-        width: 32px;
-        transition: none;
+.gkb-ficon__hover {
+    left: -32px;
+    opacity: 0;
+}
+
+.gkb-ficon:hover,
+.gkb-ficon:focus-visible,
+.gkb-ficon.is-open {
+    .gkb-ficon__hover {
+        opacity: 1;
+    }
+
+    .gkb-ficon__sprite:not(.is-single) .gkb-ficon__base {
+        opacity: 0;
     }
 }
 
-.gkb-ficon:hover .gkb-ficon__sprite.is-single img,
-.gkb-ficon:focus-visible .gkb-ficon__sprite.is-single img,
-.gkb-ficon.is-open .gkb-ficon__sprite.is-single img {
-    transform: none;
+/* одинарная картинка: показывается целиком и не меняется */
+.gkb-ficon__sprite.is-single img {
+    width: 32px;
 }
 
 /* ============ Подсказка ============ */

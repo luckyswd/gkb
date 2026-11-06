@@ -7,6 +7,10 @@
     <meta name="yandex-verification" content="56c82ebe91ca39d9" />
     <title><?php wp_title('«', true, 'right'); ?><?php bloginfo('name'); ?></title>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
+    <?php $fontsDir = get_template_directory_uri() . '/dist/fonts/Inter/'; ?>
+    <?php foreach (['cyrillic-400', 'cyrillic-500', 'cyrillic-600'] as $fontFile) : ?>
+        <link rel="preload" href="<?= esc_url($fontsDir . 'inter-' . $fontFile . '-normal.woff2') ?>" as="font" type="font/woff2" crossorigin>
+    <?php endforeach; ?>
     <?php wp_head(); ?>
     <?php if (home_url() == 'https://gazkotelbel.com' ) :?>
     <!-- Yandex.Metrika counter -->
@@ -100,6 +104,12 @@ $whereUrl = $whereLink['url'] ?? home_url('/where-to-buy/');
 $whereTitle = $whereLink['title'] ?? ($lang === 'en' ? 'Where to buy?' : 'Где купить?');
 $searchPlaceholder = $fields['placeholder_search'] ?? ($lang === 'en' ? 'Search' : 'Поиск');
 $loginLabel = $fields['login'] ?? ($lang === 'en' ? 'Log in' : 'Войти');
+
+/* Данные для мгновенного поиска: заполняются ниже, пока выводится панель
+   моделей категорий, чтобы не делать второй проход по товарам. */
+$searchItems = [];
+$searchPopular = [];
+$searchIcon = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
 ?>
 
@@ -170,7 +180,7 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
 
         <div class="gkb-header__bar">
             <?php if (!empty($categories)) : ?>
-                <div class="gkb-segments gkb-segments--wrap gkb-header__cats">
+                <div class="gkb-segments gkb-segments--wrap gkb-segments--chips gkb-header__cats">
                     <div class="gkb-segments__track">
                         <a href="<?= esc_url($catalogUrl) ?>" class="gkb-segment<?= $isCatalogPage ? ' is-active' : '' ?>">
                             <?= esc_html($allProductsLabel) ?>
@@ -180,6 +190,7 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                             <?php if (empty($models)) {
                                 continue;
                             } ?>
+                            <?php $searchPopular[] = $termName($category); ?>
                             <div class="gkb-header__cat">
                                 <a href="<?= esc_url(get_term_link($category)) ?>"
                                    class="gkb-segment<?= $activeTermId === (int) $category->term_id ? ' is-active' : '' ?>"
@@ -188,9 +199,18 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                                 </a>
                                 <div class="gkb-header__models" data-cat-panel>
                                     <?php foreach ($models as $model) : ?>
+                                        <?php
+                                        $modelImage = $helper->getProductSliderImage($model);
+                                        $searchItems[] = [
+                                            'name' => (string) ($helper->getProductTitle($model) ?? ''),
+                                            'sub' => (string) ($helper->getProductDescriptionCatalog($model) ?? ''),
+                                            'cat' => $termName($category),
+                                            'img' => $modelImage ?: '',
+                                            'url' => get_permalink($model),
+                                        ];
+                                        ?>
                                         <a href="<?= esc_url(get_permalink($model)) ?>" class="gkb-header__model">
                                             <span class="gkb-header__model-pic">
-                                                <?php $modelImage = $helper->getProductSliderImage($model); ?>
                                                 <?php if ($modelImage) : ?>
                                                     <img src="<?= esc_url($modelImage) ?>" alt="" loading="lazy" width="48" height="64">
                                                 <?php endif; ?>
@@ -208,12 +228,11 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                 </div>
             <?php endif; ?>
 
-            <form class="gkb-header__search" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
-                <input type="search" name="search" class="gkb-field gkb-header__search-input"
-                       value="<?= esc_attr($_GET['search'] ?? '') ?>"
-                       placeholder="<?= esc_attr($searchPlaceholder) ?>"
-                       aria-label="<?= esc_attr($searchPlaceholder) ?>">
-            </form>
+            <button type="button" class="gkb-header__search-trigger" data-search-open
+                    aria-haspopup="dialog" aria-controls="gkb-search">
+                <?= $searchIcon ?>
+                <span><?= esc_html($searchPlaceholder) ?></span>
+            </button>
 
             <a href="<?= esc_url($whereUrl) ?>" class="gkb-btn gkb-btn--primary gkb-btn--sm gkb-header__cta">
                 <?= esc_html($whereTitle) ?>
@@ -226,12 +245,11 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
         </div>
 
         <div class="gkb-header__mobile" id="gkb-mobile-menu" hidden>
-            <form class="gkb-header__mobile-search" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
-                <input type="search" name="search" class="gkb-field"
-                       value="<?= esc_attr($_GET['search'] ?? '') ?>"
-                       placeholder="<?= esc_attr($searchPlaceholder) ?>"
-                       aria-label="<?= esc_attr($searchPlaceholder) ?>">
-            </form>
+            <button type="button" class="gkb-header__search-trigger gkb-header__search-trigger--block" data-search-open
+                    aria-haspopup="dialog" aria-controls="gkb-search">
+                <?= $searchIcon ?>
+                <span><?= esc_html($searchPlaceholder) ?></span>
+            </button>
 
             <?php if (!empty($fields['links'])) : ?>
                 <nav class="gkb-header__mobile-nav">
@@ -287,6 +305,53 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
             </div>
         </div>
 
+    </div>
+
+    <?php
+    // популярные запросы: категории и несколько ходовых моделей
+    foreach ($searchItems as $item) {
+        if (count($searchPopular) >= 8) {
+            break;
+        }
+        if (preg_match('/(турбо|turbo|житомир-3$|zhytomyr-3$|впг-20$)/iu', $item['name'])) {
+            $searchPopular[] = $item['name'];
+        }
+    }
+    $searchPopular = array_values(array_unique(array_filter($searchPopular)));
+    ?>
+    <div class="gkb-search" id="gkb-search" role="dialog" aria-modal="true"
+         aria-label="<?= esc_attr($searchPlaceholder) ?>" hidden
+         data-text-empty="<?= esc_attr($lang === 'en' ? 'Nothing found' : 'Ничего не найдено') ?>"
+         data-text-all="<?= esc_attr($lang === 'en' ? 'All results in the catalog' : 'Все результаты в каталоге') ?>">
+        <div class="container gkb-search__inner">
+            <button type="button" class="gkb-search__close" data-search-close
+                    aria-label="<?= esc_attr($lang === 'en' ? 'Close search' : 'Закрыть поиск') ?>">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+
+            <form class="gkb-search__form" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
+                <?= $searchIcon ?>
+                <input type="search" name="search" class="gkb-search__input" autocomplete="off"
+                       value="<?= esc_attr($_GET['search'] ?? '') ?>"
+                       placeholder="<?= esc_attr($lang === 'en' ? 'search' : 'поиск') ?>"
+                       aria-label="<?= esc_attr($searchPlaceholder) ?>">
+                <button type="button" class="gkb-search__clear" data-search-clear hidden
+                        aria-label="<?= esc_attr($lang === 'en' ? 'Clear' : 'Очистить') ?>">
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+            </form>
+
+            <?php if (!empty($searchPopular)) : ?>
+                <div class="gkb-search__popular">
+                    <?php foreach ($searchPopular as $word) : ?>
+                        <button type="button" class="gkb-search__chip" data-search-term="<?= esc_attr($word) ?>"><?= esc_html($word) ?></button>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="gkb-search__results" data-search-results aria-live="polite"></div>
+        </div>
+        <script type="application/json" id="gkb-search-data"><?= wp_json_encode($searchItems, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
     </div>
 </header>
 <main id="main" class="main" data-page-id="<?= get_queried_object_id() ?>">

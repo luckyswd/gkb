@@ -15,7 +15,7 @@ $fields = (new Helpers)->get_field_multi_lang();
             <div class="feedback-wrapper">
                 <h2 class="feedback-headline"><?= $fields['headline'] ?? '' ?></h2>
                 <p class="feedback-subheadline"><?= $fields['subheadline'] ?? '' ?></p>
-                <a class="btn feedback-btn" href="#feedback-form">
+                <a class="gkb-btn gkb-btn--primary feedback-btn" href="#feedback-form">
                     <?= $fields['btn_name'] ?>
                 </a>
             </div>
