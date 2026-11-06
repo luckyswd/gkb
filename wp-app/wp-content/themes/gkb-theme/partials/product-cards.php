@@ -39,28 +39,28 @@
                             <p class="kitchen-bottom-attr-name">Размер кухни:</p>
                             <p class="kitchen-bottom-attr-value"><?= $entity_size[0]->name ?? '' ?> м²</p>
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
 
                     <?php if (!empty($brand)) : ?>
                         <div class="kitchen-bottom-attr">
                             <p class="kitchen-bottom-attr-name">Бренд:</p>
                             <p class="kitchen-bottom-attr-value"><?= $brand[0]->name ?? '' ?></p>
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
 
                     <?php if (!empty($country)) : ?>
                         <div class="kitchen-bottom-attr">
                             <p class="kitchen-bottom-attr-name">Страна:</p>
                             <p class="kitchen-bottom-attr-value"><?= $country[0]->name ?? '' ?></p>
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
 
                     <?php if (!empty($material)) : ?>
                         <div class="kitchen-bottom-attr">
                             <p class="kitchen-bottom-attr-name">Материал:</p>
                             <p class="kitchen-bottom-attr-value"><?= $material[0]->name ?? '' ?></p>
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
 
 
                     <div class="kitchen-bottom-price">
