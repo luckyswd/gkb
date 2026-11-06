@@ -69,7 +69,7 @@ $fields = (new Helpers)->get_field_multi_lang();
             <?php endif; ?>
             <?php if (!empty($fields['description'])) : ?>
                 <div class="dealers__description gkb-content">
-                    <?= $fields['description'] ?>
+                    <?= Helpers::wrapTables($fields['description']) ?>
                 </div>
             <?php endif; ?>
         </div>

@@ -123,7 +123,7 @@ $firstTab = $tabs[0]['id'] ?? '';
                     </div>
 
                     <?php if (!empty($fields['description'])) : ?>
-                        <div class="gkb-product__description gkb-content"><?= $fields['description'] ?></div>
+                        <div class="gkb-product__description gkb-content"><?= Helpers::wrapTables($fields['description']) ?></div>
                     <?php endif; ?>
 
                     <div class="gkb-product__actions">
@@ -168,7 +168,7 @@ $firstTab = $tabs[0]['id'] ?? '';
                             <?php elseif ($tab['id'] === 'specifications') : ?>
                                 <div class="gkb-content"><?= Helpers::wrapTables($tab['content']) ?></div>
                             <?php else : ?>
-                                <div class="gkb-content"><?= $tab['content'] ?></div>
+                                <div class="gkb-content"><?= Helpers::wrapTables($tab['content']) ?></div>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>

@@ -14,7 +14,7 @@ $fields = (new Helpers)->get_field_multi_lang();
         <div class="container">
             <h1 class="price-list-headline"><?= $fields['headline'] ?? '' ?></h1>
             <p class="price-list-subheadline"><?= $fields['subheadline'] ?></p>
-            <div class="price-list-text gkb-content"><?= $fields['text'] ?></div>
+            <div class="price-list-text gkb-content"><?= Helpers::wrapTables($fields['text'] ?? '') ?></div>
         </div>
     </section>
 <?php else: ?>

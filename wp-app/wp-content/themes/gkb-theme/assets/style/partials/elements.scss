@@ -262,7 +262,9 @@ textarea.gkb-field,
 
     > table {
         width: 100%;
-        min-width: 720px;
+        /* порог, ниже которого таблица начинает прокручиваться вместо того,
+           чтобы ужиматься в нечитаемые колонки */
+        min-width: 520px;
         border-collapse: collapse;
         font-size: var(--gkb-fs-sm);
         background: var(--gkb-surface);
