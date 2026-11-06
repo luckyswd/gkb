@@ -1,52 +1,65 @@
+/* Страница документации: товар — карточка, документы — строки с PDF. */
+
 .documentation {
-  padding: 50px 0;
-  min-height: 60vh;
+    padding-top: clamp(12px, 2vw, 28px);
+    min-height: 50vh;
 
-  .documentation__title {
-    color: $c-main-red;
-    padding-bottom: 20px;
-  }
-
-  .documentation__products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    @include _992 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-
-  .documentation__product {
-    padding: 20px;
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    box-shadow: $c-focus-border;
-    border-radius: 10px;
-  }
-
-  .documentation__product-files {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .documentation__product-title {
-    padding-bottom: 15px;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .documentation__product-file {
-    a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: $c-main-red;
+    .documentation__title {
+        margin-bottom: var(--gkb-gap-xl);
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h1);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
     }
 
-    img {
-      width: 32px;
-      height: 32px;
+    .documentation__products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+        gap: var(--gkb-gap-lg);
     }
-  }
+
+    .documentation__product {
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+    }
+
+    .documentation__product-title {
+        margin-bottom: var(--gkb-gap-lg);
+        color: var(--gkb-product);
+        font-size: var(--gkb-fs-h3);
+        font-weight: 700;
+    }
+
+    .documentation__product-files {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-md);
+    }
+
+    .documentation__product-file {
+        a {
+            display: flex;
+            align-items: center;
+            gap: var(--gkb-gap-lg);
+            padding: var(--gkb-gap-md) var(--gkb-gap-lg);
+            border-radius: var(--gkb-r-md);
+            background: var(--gkb-surface-muted);
+            color: var(--gkb-text);
+            font-weight: 500;
+            transition: background var(--gkb-t-fast);
+
+            &:hover {
+                background: var(--gkb-product-soft);
+                color: var(--gkb-text);
+            }
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+    }
 }

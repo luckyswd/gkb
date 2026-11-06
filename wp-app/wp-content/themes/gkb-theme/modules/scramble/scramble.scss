@@ -1,48 +1,71 @@
+/* Блок избранных товаров на главной: заголовок с лид-абзацем и кнопкой,
+   ниже — адаптивная сетка карточек. */
+
 .scramble {
-  margin: 40px 0;
+    padding-top: clamp(12px, 2vw, 28px);
 
-  @include _768 {
-    margin: 20px 0;
-  }
-
-  .scramble_wrapper {
-    background: $c-white;
-    border-radius: 20px;
-    padding: 16px;
-
-    @include _992 {
-      border-radius: 10px;
+    .scramble_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-xl);
     }
-  }
+}
 
-  .headline {
-    font-weight: 700;
-    margin-bottom: 8px;
+.scramble__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--gkb-gap-lg);
+    padding: 0 var(--gkb-gap-sm);
+}
 
-    a {
-      color: $c-main-red;
+.scramble__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 720px;
+}
 
-      &:hover {
-        color: $c-main-green;
-      }
+.scramble {
+    .headline {
+        margin: 0;
+        font-size: var(--gkb-fs-h1);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+
+        a {
+            color: var(--gkb-text);
+
+            &:hover {
+                color: var(--gkb-accent-strong);
+            }
+        }
     }
-  }
 
-  .subheadline {
-    margin-bottom: 16px;
-  }
-
-  .scramble__products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-
-    @include _992 {
-      grid-template-columns: repeat(2, 1fr);
+    .subheadline {
+        margin: 0;
+        color: var(--gkb-text-secondary);
+        font-size: var(--gkb-fs-lead);
+        text-wrap: pretty;
     }
 
-    @include _650 {
-      grid-template-columns: 1fr;
+    .scramble__products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
+        gap: var(--gkb-gap-lg);
     }
-  }
+}
+
+.scramble__all {
+    flex-shrink: 0;
+    background: var(--gkb-surface);
+    color: var(--gkb-text);
+
+    &:hover {
+        background: var(--gkb-surface);
+        color: var(--gkb-text);
+        box-shadow: inset 0 0 0 1px var(--gkb-border-strong);
+    }
 }

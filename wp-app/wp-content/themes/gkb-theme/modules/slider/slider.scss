@@ -1,29 +1,55 @@
+/* Промо-слайдер главной. Блок остаётся слайдером: редактор может добавить
+   баннеры, при одном слайде Swiper сам прячет стрелки и пагинацию. */
+
 .slider {
-  .gallery-swiper {
-    overflow: hidden;
-    border-radius: 20px;
-    position: relative;
-
-    @include _992 {
-      border-radius: 10px;
+    .gallery-swiper {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
     }
-  }
 
-  img {
-    border-radius: 20px;
-
-    @include _992 {
-      border-radius: 10px;
+    .swiper-slide {
+        display: block;
     }
-  }
 
-  .swiper-button-next, .swiper-button-prev {
-    transform:translateY(-50%);
-    color:$c-main-red;
-  }
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1400 / 415;
+        object-fit: cover;
+    }
 
-  .swiper-pagination-bullet {
-    background:$c-main-red;
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 44px;
+        height: 44px;
+        margin-top: 0;
+        border-radius: var(--gkb-r-pill);
+        background: var(--gkb-surface);
+        color: var(--gkb-text);
+        box-shadow: var(--gkb-shadow-sm);
+        transform: translateY(-50%);
+        transition: background var(--gkb-t-fast);
 
-  }
+        &:hover {
+            background: var(--gkb-surface-muted);
+        }
+
+        &::after {
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        background: var(--gkb-surface);
+        opacity: 0.6;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: var(--gkb-accent);
+        opacity: 1;
+    }
 }

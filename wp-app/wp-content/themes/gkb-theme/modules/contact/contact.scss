@@ -1,69 +1,80 @@
+/* Страница контактов. */
+
 .contact {
-  padding: 50px 0;
-  min-height: 60vh;
+    padding-top: clamp(12px, 2vw, 28px);
+    min-height: 50vh;
 
-  .contact__title {
-    color: $c-main-red;
-    padding-bottom: 20px;
-  }
-
-  .contact__sections {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    @include _992 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-
-  .contact__section {
-    padding: 20px;
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    box-shadow: $c-focus-border;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .contact__caption {
-    font-weight: 700;
-    font-size: 14px;
-  }
-
-  .contact__section-title {
-    font-weight: 700;
-    font-size: 18px;
-    padding-bottom: 10px;
-  }
-
-  .contact__description {
-    padding-bottom: 10px;
-
-    a {
-      transition: $transition;
-      color: $c-main-red;
-    }
-  }
-
-  .contact__link {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    transition: $transition;
-
-    img {
-      max-width: 48px;
-      max-height: 48px;
+    .contact__title {
+        margin-bottom: var(--gkb-gap-xl);
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h1);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
     }
 
-    p {
-      color: $c-main-red;
+    .contact__sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+        gap: var(--gkb-gap-lg);
     }
 
-    &:hover {
-      padding-left: 10px;
+    .contact__section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: var(--gkb-gap-md);
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
     }
-  }
+
+    .contact__caption {
+        color: var(--gkb-text-muted);
+        font-size: var(--gkb-fs-xs);
+        font-weight: 600;
+    }
+
+    .contact__section-title {
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h3);
+        font-weight: 600;
+    }
+
+    .contact__description {
+        color: var(--gkb-text-secondary);
+
+        a {
+            color: var(--gkb-accent-strong);
+
+            &:hover {
+                color: var(--gkb-accent-dark);
+            }
+        }
+    }
+
+    .contact__link {
+        display: flex;
+        align-items: center;
+        gap: var(--gkb-gap-md);
+        padding: var(--gkb-gap-md);
+        border-radius: var(--gkb-r-md);
+        background: var(--gkb-bg);
+        transition: background var(--gkb-t-fast);
+
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        p {
+            color: var(--gkb-text);
+            font-weight: 500;
+        }
+
+        &:hover {
+            background: var(--gkb-surface-hover);
+        }
+    }
 }

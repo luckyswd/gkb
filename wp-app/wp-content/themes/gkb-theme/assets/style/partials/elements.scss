@@ -1,0 +1,547 @@
+/* Общие элементы интерфейса: кнопки, поля, сегментные табы, таблицы,
+   хлебные крошки, бейджи, карточка документа, подсказка.
+   Страницы и модули переиспользуют их и не переопределяют локально. */
+
+/* ============ Кнопки ============ */
+
+.gkb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gkb-gap-sm);
+    padding: 13px 26px;
+    border: none;
+    border-radius: var(--gkb-r-md);
+    font-family: inherit;
+    font-size: var(--gkb-fs-body);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition: background var(--gkb-t-fast), color var(--gkb-t-fast),
+    box-shadow var(--gkb-t-fast), filter var(--gkb-t-fast);
+
+    &--sm {
+        padding: 9px 16px;
+        font-size: var(--gkb-fs-sm);
+        border-radius: var(--gkb-r-sm);
+    }
+
+    &--block {
+        width: 100%;
+    }
+
+    &--primary {
+        background: linear-gradient(180deg, var(--gkb-accent-from), var(--gkb-accent-to));
+        color: var(--gkb-text-inverse);
+        box-shadow: var(--gkb-shadow-accent);
+
+        &:hover {
+            filter: brightness(0.94);
+            color: var(--gkb-text-inverse);
+        }
+
+        &:active {
+            filter: brightness(0.88);
+        }
+    }
+
+    &--secondary {
+        background: var(--gkb-surface-muted);
+        color: var(--gkb-text);
+
+        &:hover {
+            background: var(--gkb-surface-hover);
+            color: var(--gkb-text);
+        }
+    }
+
+    &--dark {
+        background: var(--gkb-dark);
+        color: var(--gkb-text-inverse);
+
+        &:hover {
+            background: var(--gkb-dark-hover);
+            color: var(--gkb-text-inverse);
+        }
+    }
+
+    &--ghost {
+        background: transparent;
+        color: var(--gkb-text);
+
+        &:hover {
+            background: var(--gkb-surface);
+            color: var(--gkb-text);
+        }
+    }
+
+    &--icon {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border-radius: var(--gkb-r-xs);
+        background: var(--gkb-surface);
+
+        &:hover {
+            box-shadow: inset 0 0 0 1px var(--gkb-border-strong);
+        }
+
+        img,
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+/* Мост для шаблонов, ещё не переведённых на .gkb-btn. Удаляется задачей 11.1. */
+.btn {
+    @extend .gkb-btn;
+    @extend .gkb-btn--secondary;
+}
+
+/* ============ Поля ввода ============ */
+
+.gkb-field,
+.wpcf7 input[type='text'],
+.wpcf7 input[type='email'],
+.wpcf7 input[type='tel'],
+.wpcf7 textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--gkb-border-strong);
+    border-radius: var(--gkb-r-sm);
+    background: var(--gkb-surface-sunken);
+    color: var(--gkb-text);
+    font-family: inherit;
+    font-size: var(--gkb-fs-body);
+    line-height: 1.4;
+    transition: border-color var(--gkb-t-fast), background var(--gkb-t-fast),
+    box-shadow var(--gkb-t-fast);
+
+    &::placeholder {
+        color: var(--gkb-text-muted);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--gkb-accent);
+        background: var(--gkb-surface);
+        box-shadow: 0 0 0 3px var(--gkb-accent-ring);
+    }
+}
+
+textarea.gkb-field,
+.wpcf7 textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.gkb-label {
+    display: block;
+    margin-bottom: var(--gkb-gap-xs);
+    font-size: var(--gkb-fs-xs);
+    font-weight: 600;
+    color: var(--gkb-text-muted);
+}
+
+/* Ошибки: свои и те, что рисует Contact Form 7 */
+.gkb-field--error,
+.wpcf7 .wpcf7-not-valid {
+    border-color: var(--gkb-danger);
+}
+
+.gkb-field-error,
+.wpcf7 .wpcf7-not-valid-tip {
+    margin-top: var(--gkb-gap-xs);
+    color: var(--gkb-danger);
+    font-size: var(--gkb-fs-xs);
+    font-weight: 500;
+}
+
+/* CF7 держит блок ответа в разметке всегда — показываем только с сообщением */
+.wpcf7 .wpcf7-response-output[aria-hidden='true']:empty {
+    display: none;
+}
+
+.wpcf7 .wpcf7-response-output {
+    margin: var(--gkb-gap-md) 0 0;
+    padding: var(--gkb-gap-md) var(--gkb-gap-lg);
+    border: 1px solid var(--gkb-border);
+    border-radius: var(--gkb-r-sm);
+    font-size: var(--gkb-fs-sm);
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+    border-color: var(--gkb-accent-ring);
+    background: var(--gkb-accent-soft);
+    color: var(--gkb-accent-dark);
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output {
+    border-color: var(--gkb-product-soft-hover);
+    background: var(--gkb-product-soft);
+    color: var(--gkb-product-dark);
+}
+
+/* ============ Сегментные табы ============ */
+
+.gkb-segments {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Вариант без прокрутки: сегменты переносятся на вторую строку.
+   Нужен там, где из-под ленты раскрывается панель, — overflow её бы обрезал. */
+.gkb-segments--wrap {
+    overflow: visible;
+
+    .gkb-segments__track {
+        flex-wrap: wrap;
+    }
+}
+
+.gkb-segments__track {
+    display: flex;
+    gap: 2px;
+    padding: var(--gkb-gap-2xs);
+    border-radius: var(--gkb-r-md);
+    background: var(--gkb-surface-muted);
+}
+
+.gkb-segment {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gkb-gap-sm);
+    padding: 8px 14px;
+    border: none;
+    border-radius: var(--gkb-r-xs);
+    background: transparent;
+    color: var(--gkb-text);
+    font-family: inherit;
+    font-size: var(--gkb-fs-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background var(--gkb-t-fast), box-shadow var(--gkb-t-fast);
+
+    &:hover {
+        background: var(--gkb-surface-hover);
+        color: var(--gkb-text);
+    }
+
+    &.is-active {
+        background: var(--gkb-surface);
+        box-shadow: var(--gkb-shadow-sm);
+        font-weight: 600;
+        color: var(--gkb-text);
+    }
+
+    &__count {
+        font-size: var(--gkb-fs-2xs);
+        font-weight: 600;
+        color: var(--gkb-text-muted);
+    }
+}
+
+/* ============ Таблицы ============ */
+
+.gkb-table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--gkb-border);
+    border-radius: var(--gkb-r-lg);
+    -webkit-overflow-scrolling: touch;
+
+    > table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
+        font-size: var(--gkb-fs-sm);
+        background: var(--gkb-surface);
+    }
+
+    th {
+        padding: 14px 16px;
+        background: var(--gkb-bg);
+        font-weight: 600;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 12px 16px;
+        border-top: 1px solid var(--gkb-border);
+        color: var(--gkb-text-secondary);
+    }
+
+    tbody tr {
+        background: var(--gkb-surface);
+    }
+
+    tbody tr.is-highlighted {
+        background: var(--gkb-accent-row);
+    }
+
+    /* Первая колонка остаётся видимой при прокрутке вбок */
+    th:first-child,
+    td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: inherit;
+    }
+
+    thead th:first-child {
+        background: var(--gkb-bg);
+    }
+}
+
+.gkb-table-note {
+    display: block;
+    padding: 0 var(--gkb-gap-2xs);
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+}
+
+/* ============ Хлебные крошки ============ */
+
+.gkb-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-sm);
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+
+    a {
+        color: var(--gkb-text-muted);
+
+        &:hover {
+            color: var(--gkb-text);
+        }
+    }
+
+    &__current {
+        color: var(--gkb-text);
+    }
+}
+
+/* ============ Бейджи ============ */
+
+.gkb-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: var(--gkb-r-pill);
+    font-size: var(--gkb-fs-2xs);
+    font-weight: 600;
+
+    &--green {
+        background: var(--gkb-accent-soft);
+        color: var(--gkb-accent-dark);
+    }
+
+    &--red {
+        background: var(--gkb-product-soft);
+        color: var(--gkb-product-dark);
+    }
+
+    &--neutral {
+        background: var(--gkb-surface-muted);
+        color: var(--gkb-text-secondary);
+    }
+}
+
+/* ============ Карточка документа ============ */
+
+.gkb-doc {
+    display: flex;
+    align-items: center;
+    gap: var(--gkb-gap-lg);
+    max-width: 720px;
+    padding: var(--gkb-gap-lg);
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-surface-muted);
+    color: var(--gkb-text);
+    transition: background var(--gkb-t-fast);
+
+    &:hover {
+        background: var(--gkb-product-soft);
+        color: var(--gkb-text);
+    }
+
+    &__icon {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--gkb-r-sm);
+        background: linear-gradient(180deg, var(--gkb-pdf-from), var(--gkb-pdf-to));
+        color: var(--gkb-text-inverse);
+        font-size: var(--gkb-fs-xs);
+        font-weight: 700;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__name {
+        font-weight: 500;
+    }
+}
+
+/* ============ Иконки характеристик ============
+   Используются в карточке товара и в герое страницы товара.
+   Картинки загружены спрайтами 64×32: видна левая половина, при наведении
+   и по нажатию показывается правая. Для одинарных картинок сдвиг отключается
+   классом is-single — ширину иконки шаблон берёт из размеров файла. */
+
+.gkb-ficons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-sm);
+}
+
+.gkb-ficon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    border-radius: var(--gkb-r-sm);
+    background: var(--gkb-surface-muted);
+    box-shadow: inset 0 0 0 1px var(--gkb-border);
+    cursor: help;
+    transition: background var(--gkb-t), box-shadow var(--gkb-t);
+
+    &:hover,
+    &:focus-visible,
+    &.is-open {
+        background: var(--gkb-accent-soft);
+        box-shadow: inset 0 0 0 1px var(--gkb-accent-ring-strong);
+    }
+
+    &--lg {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+.gkb-ficon__sprite {
+    display: block;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 64px;
+        height: 32px;
+        max-width: none;
+        transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
+    }
+}
+
+.gkb-ficon:hover .gkb-ficon__sprite img,
+.gkb-ficon:focus-visible .gkb-ficon__sprite img,
+.gkb-ficon.is-open .gkb-ficon__sprite img {
+    transform: translateX(-32px);
+}
+
+/* одинарная картинка: ничего не сдвигаем */
+.gkb-ficon__sprite.is-single {
+    img {
+        width: 32px;
+        transition: none;
+    }
+}
+
+.gkb-ficon:hover .gkb-ficon__sprite.is-single img,
+.gkb-ficon:focus-visible .gkb-ficon__sprite.is-single img,
+.gkb-ficon.is-open .gkb-ficon__sprite.is-single img {
+    transform: none;
+}
+
+/* ============ Подсказка ============ */
+
+.gkb-tip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    z-index: 5;
+    width: max-content;
+    max-width: 200px;
+    padding: var(--gkb-gap-sm) var(--gkb-gap-md);
+    border-radius: var(--gkb-r-xs);
+    background: var(--gkb-dark);
+    color: var(--gkb-text-inverse);
+    font-size: var(--gkb-fs-2xs);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    box-shadow: var(--gkb-shadow-tooltip);
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--gkb-t-fast), visibility var(--gkb-t-fast);
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -6px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid var(--gkb-dark);
+    }
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* На узком экране подсказка у третьей и дальше иконок вылезала бы за правый
+   край карточки — прижимаем её к правому краю иконки, стрелку сдвигаем туда же. */
+@include _650 {
+    .gkb-ficons > .gkb-ficon:nth-child(n + 3) > .gkb-tip {
+        right: 0;
+        left: auto;
+        transform: none;
+
+        &::after {
+            right: 18px;
+            left: auto;
+            margin-left: 0;
+        }
+    }
+}
+
+.gkb-tip-host {
+    position: relative;
+
+    &:hover > .gkb-tip,
+    &:focus-within > .gkb-tip,
+    &.is-open > .gkb-tip {
+        opacity: 1;
+        visibility: visible;
+    }
+}

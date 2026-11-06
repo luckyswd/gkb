@@ -106,17 +106,24 @@ class Helpers
         $count = $this->getProductDataValue($product, 'language_functionality_icons');
         $fields = [];
 
+        $prefix = $this->getLang() === 'en' ? 'en_language' : 'ru_language';
+
         for ($i = 0; $i < $count; $i++) {
-            $fields[] = match ((new Helpers)->getLang()) {
-                'ru' => [
-                    'icon' => wp_get_attachment_image_url($data['ru_language_functionality_icons_'. $i .'_icon'], 'full') ?? '',
-                    'text' => $data['ru_language_functionality_icons_'. $i .'_caption'],
-                ],
-                'en' => [
-                    'icon' => wp_get_attachment_image_url($data['en_language_functionality_icons_'. $i .'_icon'], 'full') ?? '',
-                    'text' => $data['en_language_functionality_icons_'. $i .'_caption'],
-                ],
-            };
+            $key = $prefix . '_functionality_icons_' . $i;
+            // при отсутствии вложения функция возвращает false — приводим к массиву,
+            // чтобы не получить предупреждение об обращении к индексу у bool
+            $image = wp_get_attachment_image_src($data[$key . '_icon'] ?? 0, 'full') ?: [];
+
+            // Иконки загружены спрайтами 64×32: левая половина — обычное
+            // состояние, правая показывается при наведении. Одинарную картинку
+            // сдвигать нельзя, поэтому ширину и высоту отдаём в шаблон.
+            $fields[] = [
+                'icon' => $image[0] ?? '',
+                'width' => $image[1] ?? 0,
+                'height' => $image[2] ?? 0,
+                'is_sprite' => !empty($image[1]) && !empty($image[2]) && $image[1] >= $image[2] * 1.8,
+                'text' => $data[$key . '_caption'] ?? '',
+            ];
         }
 
         return $fields;
@@ -171,6 +178,31 @@ class Helpers
         }
 
         return '';
+    }
+
+    /**
+     * Оборачивает каждую таблицу из визуального редактора в прокручиваемый
+     * контейнер. Редактор работает в визуальном режиме и обёртку руками
+     * потерял бы при первой же правке, поэтому она ставится на выводе.
+     * Вложенные таблицы не поддерживаются: при несовпадении числа открывающих
+     * и закрывающих тегов разметка возвращается нетронутой.
+     */
+    public static function wrapTables(?string $html): string
+    {
+        if (empty($html) || stripos($html, '<table') === false) {
+            return (string) $html;
+        }
+
+        $open = preg_match_all('#<table\b#i', $html);
+        $close = preg_match_all('#</table>#i', $html);
+
+        if ($open !== $close) {
+            return $html;
+        }
+
+        $html = preg_replace('#<table(\b[^>]*)>#i', '<div class="gkb-table-scroll"><table$1>', $html);
+
+        return preg_replace('#</table>#i', '</table></div>', $html);
     }
 
     public static function getPictureImage(

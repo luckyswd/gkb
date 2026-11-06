@@ -1,110 +1,114 @@
+window.ajaxUrl = window.ajaxUrl || '/wp-admin/admin-ajax.php';
+
+/* Шапка: мобильное меню и переключатель языка.
+   Раскрытие моделей категории сделано на CSS (:hover и :focus-within),
+   скрипт для него не нужен. */
 class Header {
     constructor() {
-        this.headerMenu = document.querySelector('.header__menu');
-        this.headerSearch = document.querySelector('.header__search');
-        this.headerSearchClose = document.querySelector('.header__search-close');
-        this.headerSearchOpen = document.querySelector('.header__search-icon');
-        this.headerLogoMobile = document.querySelector('.header__logo-mobile');
-        this.headerBurgerIcon = document.querySelector('.header__burger-icon');
-        this.container = document.querySelector('.container');
-        this.headerMain = document.querySelector('.header__main');
-        this.headerMobile = document.querySelector('.header__mobile');
-        this.body = document.querySelector('body');
+        this.burger = document.querySelector('.gkb-header__burger');
+        this.menu = document.getElementById('gkb-mobile-menu');
 
-        this.init()
+        this.init();
     }
 
     init() {
-        this.selectLang()
-        this.openSearch()
-        this.closeSearch()
-        this.openBurger()
-        this.search();
+        this.burgerToggle();
+        this.langSwitch();
+        this.closeOnEscape();
+        this.closeOnDesktop();
     }
 
-    selectLang() {
-        const selectLang = document.querySelector('.select-lang');
-        const languages = document.querySelectorAll('.lang-wrapper .select-lang__item')
-
-        selectLang && selectLang.addEventListener('click', () => {
-            selectLang.classList.toggle('js-active')
-        })
-
-        languages.forEach((lang) => {
-            lang.addEventListener('click', async (event) => {
-                event.preventDefault();
-                const formData = new FormData();
-                formData.append('lang', lang.getAttribute('data-lang'))
-                formData.append('action', 'select_lang')
-                const response = await fetch(window.ajaxUrl,
-                  {
-                      method: 'POST',
-                      body: formData
-                  }
-                );
-
-                const resp = await response.json();
-
-                if (resp.status) {
-                    location.reload();
-                }
-            })
-        })
+    isMenuOpen() {
+        return !!this.menu && !this.menu.hasAttribute('hidden');
     }
 
-    openSearch() {
-        this.headerSearchOpen && this.headerSearchOpen.addEventListener('click', () => {
-            if (window.innerWidth > 1280) {
-                this.headerMenu && this.headerMenu.classList.add('disable')
-                this.headerSearchOpen && this.headerSearchOpen.classList.add('disable')
-                this.headerSearch && this.headerSearch.classList.add('active')
-            } else {
-                this.headerLogoMobile && this.headerLogoMobile.classList.add('disable')
-                this.headerSearchOpen && this.headerSearchOpen.classList.add('disable')
-                this.headerBurgerIcon && this.headerBurgerIcon.classList.add('disable')
-                this.headerSearch && this.headerSearch.classList.add('active')
-                this.container && this.container.classList.add('mobile')
-                this.headerMain && this.headerMain.classList.add('mobile')
-            }
-        })
+    setMenu(open) {
+        if (!this.burger || !this.menu) {
+            return;
+        }
+
+        if (open) {
+            this.menu.removeAttribute('hidden');
+        } else {
+            this.menu.setAttribute('hidden', '');
+        }
+
+        this.burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+        const label = open
+            ? this.burger.dataset.labelClose
+            : this.burger.dataset.labelOpen;
+
+        if (label) {
+            this.burger.textContent = label;
+        }
     }
 
-    closeSearch() {
-        this.headerSearchClose && this.headerSearchClose.addEventListener('click', () => {
-            if (window.innerWidth > 1280) {
-                this.headerMenu && this.headerMenu.classList.remove('disable')
-                this.headerSearchOpen && this.headerSearchOpen.classList.remove('disable')
-                this.headerSearch && this.headerSearch.classList.remove('active')
-            } else {
-                this.headerLogoMobile && this.headerLogoMobile.classList.remove('disable')
-                this.headerSearchOpen && this.headerSearchOpen.classList.remove('disable')
-                this.headerBurgerIcon && this.headerBurgerIcon.classList.remove('disable')
-                this.headerSearch && this.headerSearch.classList.remove('active')
-                this.container && this.container.classList.remove('mobile')
-                this.headerMain && this.headerMain.classList.remove('mobile')
-            }
-
-        })
-    }
-
-    openBurger() {
-        this.headerBurgerIcon && this.headerBurgerIcon.addEventListener('click', () => {
-            this.headerMobile && this.headerMobile.classList.toggle('active');
-            this.body && this.body.classList.toggle('mobile');
+    burgerToggle() {
+        this.burger && this.burger.addEventListener('click', () => {
+            this.setMenu(!this.isMenuOpen());
         });
     }
 
-    search() {
-        const inputSearch = document.querySelector('.header__search-input');
+    langSwitch() {
+        document.addEventListener('click', async (event) => {
+            const button = event.target.closest('.gkb-lang__btn');
 
-        inputSearch && inputSearch.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                const homeUrl = window.location.protocol + '//' + window.location.host;
-                window.location.href = homeUrl + '/catalog?search=' + inputSearch.value;
+            if (!button || button.classList.contains('is-active')) {
+                return;
+            }
+
+            event.preventDefault();
+            button.disabled = true;
+
+            const formData = new FormData();
+            formData.append('lang', button.dataset.lang);
+            formData.append('action', 'select_lang');
+
+            try {
+                const response = await fetch(window.ajaxUrl, { method: 'POST', body: formData });
+                const result = await response.json();
+
+                if (result.status) {
+                    location.reload();
+                    return;
+                }
+            } catch (error) {
+                /* переключение не удалось — возвращаем кнопку в рабочее состояние */
+            }
+
+            button.disabled = false;
+        });
+    }
+
+    closeOnEscape() {
+        document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') {
+                return;
+            }
+
+            if (this.isMenuOpen()) {
+                this.setMenu(false);
+                this.burger && this.burger.focus();
+                return;
+            }
+
+            /* снять фокус с раскрытой панели категории, чтобы она закрылась */
+            const openPanel = document.activeElement && document.activeElement.closest('.gkb-header__cat');
+
+            if (openPanel) {
+                document.activeElement.blur();
+            }
+        });
+    }
+
+    closeOnDesktop() {
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 900 && this.isMenuOpen()) {
+                this.setMenu(false);
             }
         });
     }
 }
 
 new Header();
-window.ajaxUrl = '/wp-admin/admin-ajax.php';

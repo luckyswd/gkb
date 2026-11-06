@@ -7,7 +7,11 @@ Mode: preview
 
 use helpers\Helpers;
 
-$fields = (new Helpers)->get_field_multi_lang();
+$helper = new Helpers();
+$fields = $helper->get_field_multi_lang();
+$headerFields = $helper->get_field_multi_lang('header_links', 'option');
+$allProductsLabel = $headerFields['all_products']
+    ?? ($helper->getLang() === 'en' ? 'All products' : 'Вся продукция');
 
 ?>
 
@@ -15,12 +19,19 @@ $fields = (new Helpers)->get_field_multi_lang();
     <section class="scramble">
         <div class="container">
             <div class="scramble_wrapper">
-                <h1 class="headline">
-                    <a href="/catalog">
-                        <?= $fields['headline'] ?? '' ?>
+                <div class="scramble__head">
+                    <div class="scramble__intro">
+                        <h1 class="headline">
+                            <a href="<?= esc_url(home_url('/catalog')) ?>">
+                                <?= $fields['headline'] ?? '' ?>
+                            </a>
+                        </h1>
+                        <p class="subheadline"><?= $fields['subheadline'] ?? '' ?></p>
+                    </div>
+                    <a href="<?= esc_url(home_url('/catalog')) ?>" class="gkb-btn gkb-btn--sm scramble__all">
+                        <?= esc_html($allProductsLabel) ?>
                     </a>
-                </h1>
-                <p class="subheadline"><?= $fields['subheadline'] ?? '' ?></p>
+                </div>
                 <div class="scramble__products">
                     <?php if ($fields['products']) : ?>
                         <?php foreach ($fields['products'] as $product) : ?>

@@ -1,123 +1,146 @@
+/* Где купить: карта и раскрывающийся список регионов. */
+
 .dealers {
-  padding: 50px 0;
-  min-height: 60vh;
+    padding-top: clamp(12px, 2vw, 28px);
+    min-height: 50vh;
 
-  .dealers__title {
-    color: $c-main-red;
-    padding-bottom: 20px;
-  }
-
-  .dealers__regions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .dealers__region {
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    box-shadow: $c-focus-border;
-    border-radius: 10px;
-  }
-
-  .dealers__region-title {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    gap: 5px;
-    cursor: pointer;
-    position: relative;
-    p {
-      transition: $transition;
-      font-size: 16px;
-      font-weight: 700;
+    .dealers__title {
+        margin-bottom: var(--gkb-gap-xl);
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h1);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
     }
 
-    &:hover {
-      p {
-        color: $c-main-red;
-      }
+    .dealers__wrapper {
+        display: flex;
+        gap: var(--gkb-gap-lg);
+        align-items: flex-start;
+
+        @include _1280 {
+            flex-direction: column;
+        }
     }
 
-    img {
-      max-width: 24px;
-      max-height: 24px;
+    .dealers__regions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-sm);
+        width: 100%;
     }
 
-    svg {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 10px;
-      width: 26px;
-      height: 26px;
-      fill: $c-main-red;
+    .dealers__region {
+        overflow: hidden;
+        border-radius: var(--gkb-r-xl);
+        background: var(--gkb-surface);
     }
-  }
 
-  .dealers__cities {
-    opacity: 0;
-    max-height: 0;
-    z-index: -2;
-    padding: 0 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    transition: $transition;
-  }
+    .dealers__region-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--gkb-gap-sm);
+        padding: var(--gkb-gap-lg);
+        cursor: pointer;
 
-  .dealers__region.active {
+        p {
+            color: var(--gkb-text);
+            font-size: var(--gkb-fs-md);
+            font-weight: 600;
+            transition: color var(--gkb-t-fast);
+        }
+
+        &:hover p {
+            color: var(--gkb-accent-strong);
+        }
+
+        img {
+            max-width: 24px;
+            max-height: 24px;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            right: var(--gkb-gap-lg);
+            width: 24px;
+            height: 24px;
+            fill: var(--gkb-text-muted);
+            transform: translateY(-50%);
+        }
+    }
+
     .dealers__cities {
-      opacity: 1;
-      max-height: 1000px;
-      z-index: 1;
-      padding: 15px;
+        position: relative;
+        z-index: -2;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-sm);
+        max-height: 0;
+        padding: 0 var(--gkb-gap-lg);
+        opacity: 0;
+        transition: opacity var(--gkb-t-fast), max-height var(--gkb-t-fast), padding var(--gkb-t-fast);
     }
-  }
 
-  .dealers__city {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 10px;
-    border-bottom: 1px solid $c-gray-form-border;
-    padding: 5px 0;
-    &:last-child {
-      border-bottom: none;
+    .dealers__region.active .dealers__cities {
+        z-index: 1;
+        max-height: 1000px;
+        padding: 0 var(--gkb-gap-lg) var(--gkb-gap-lg);
+        opacity: 1;
     }
-  }
 
-  .dealers__city-title {
-    color: $c-main-red;
-    font-weight: 700;
-  }
+    .dealers__city {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+        gap: var(--gkb-gap-md);
+        padding: var(--gkb-gap-md) 0;
+        border-bottom: 1px solid var(--gkb-border);
 
-  .dealers__address {
-    a {
-      transition: $transition;
-      color: $c-main-red;
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include _650 {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--gkb-gap-2xs);
+        }
     }
-  }
 
-  .dealers__description {
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    box-shadow: $c-focus-border;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 20px;
-  }
-
-  .dealers__wrapper {
-    display: flex;
-    gap: 20px;
-    @include _1280 {
-      flex-direction: column;
+    .dealers__city-title {
+        color: var(--gkb-text);
+        font-weight: 600;
     }
-  }
-  .dealers__map {
-    width: 100%;
-    z-index: 1;
-  }
+
+    .dealers__address {
+        color: var(--gkb-text-secondary);
+
+        a {
+            color: var(--gkb-accent-strong);
+
+            &:hover {
+                color: var(--gkb-accent-dark);
+            }
+        }
+    }
+
+    .dealers__description {
+        margin-top: var(--gkb-gap-lg);
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+    }
+
+    .dealers__map {
+        z-index: 1;
+        width: 100%;
+        overflow: hidden;
+        border-radius: var(--gkb-r-2xl);
+
+        iframe,
+        .mapp-canvas {
+            max-width: 100%;
+            border-radius: var(--gkb-r-2xl);
+        }
+    }
 }

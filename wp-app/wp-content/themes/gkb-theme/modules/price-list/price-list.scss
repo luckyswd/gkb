@@ -1,63 +1,50 @@
+/* Прайс-лист: таблица цен на белой карточке. */
+
 .price-list {
-  margin: 40px 0;
+    padding-top: clamp(12px, 2vw, 28px);
 
-  .price-list-headline {
-    font-weight: 700;
-    text-align: center;
-  }
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gkb-gap-lg);
+    }
 
-  .price-list-subheadline {
-    color: $c-dark-black;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-  }
+    .price-list-headline {
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h1);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        text-align: center;
+    }
 
-  .price-list-text {
-    margin-top: 24px;
-  }
+    .price-list-subheadline {
+        color: var(--gkb-text-secondary);
+        font-size: var(--gkb-fs-lead);
+        text-align: center;
+    }
 
-  table {
-    margin: 0;
-    border: unset;
-    color: $c-dark-black;
-  }
+    .price-list-text {
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+    }
 
-  .table-headline {
+    .table-headline td {
+        background: var(--gkb-bg);
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h3);
+        font-weight: 700;
+    }
+
+    .table-subheadline td {
+        background: var(--gkb-product-soft);
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-md);
+        font-weight: 700;
+    }
+
     td {
-      font-size: 24px;
-      line-height: 32px;
-      font-weight: 700;
-      background: $c-gray-form-border;
-
-      @include _768 {
-        font-size: 18px;
-        line-height: 24px;
-      }
+        font-size: var(--gkb-fs-sm);
     }
-  }
-
-  .table-subheadline {
-    td {
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 700;
-      background: $c-main-red-light;
-
-      @include _768 {
-        font-size: 16px;
-        line-height: 20px;
-      }
-    }
-  }
-
-  td {
-    font-size: 18px;
-    line-height: 22px;
-
-    @include _768 {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
 }

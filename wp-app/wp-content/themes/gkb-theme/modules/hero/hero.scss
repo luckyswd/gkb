@@ -1,21 +1,35 @@
+/* Блок «картинка + описание» на контентных страницах. */
+
 .hero {
-  padding: 50px 0;
+    padding-top: clamp(12px, 2vw, 28px);
 
-  .hero__image {
-    display: flex;
-
-    img {
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
+    .container {
+        display: flex;
+        flex-direction: column;
     }
-  }
 
-  .hero__description {
-    background-color: $c-white;
-    border: 1px solid $c-gray-form-border;
-    box-shadow: $c-focus-border;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 10px;
-  }
+    .hero__image {
+        display: flex;
+        overflow: hidden;
+        border-radius: var(--gkb-r-2xl) var(--gkb-r-2xl) 0 0;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .hero__description {
+        padding: var(--gkb-card-pad);
+        border-radius: 0 0 var(--gkb-r-2xl) var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+        color: var(--gkb-text-secondary);
+        font-size: var(--gkb-fs-md);
+
+        /* описание приходит из редактора */    }
+
+    /* без картинки карточка скругляется со всех сторон */
+    .hero__description:first-child {
+        border-radius: var(--gkb-r-2xl);
+    }
 }

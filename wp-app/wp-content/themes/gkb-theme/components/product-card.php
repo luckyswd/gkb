@@ -12,32 +12,38 @@ $subheadline = $helper->getProductDescriptionCatalog($product);
 
 ?>
 
-<div class="product-card">
-    <div class="product-left">
-        <a href="<?= $link ?? '/' ?>">
-            <picture>
-                <img loading="lazy" src="<?= $image ?>" alt="product-image" width="140" height="190">
-            </picture>
-        </a>
+<div class="gkb-product-card">
+    <div class="gkb-product-card__pic">
+        <?php if ($image) : ?>
+            <img loading="lazy" src="<?= esc_url($image) ?>" alt="<?= esc_attr($title ?? '') ?>" width="240" height="320">
+        <?php endif; ?>
     </div>
-    <div class="product-right">
+
+    <div class="gkb-product-card__body">
         <?php if (!empty($dataFunctionality)) : ?>
-            <div class="product_icons">
-                <?php foreach ($dataFunctionality as $functionality): ?>
-                    <?php if ($functionality['icon']): ?>
-                        <div class="product_icon_wrapper">
-                            <div class="product_icon">
-                                <picture>
-                                    <img src="<?= $functionality['icon'] ?>" alt="product-icon" width="32" height="32">
-                                </picture>
-                            </div>
-                            <div class="product_text"><?= $functionality['text'] ?? '' ?></div>
-                        </div>
-                    <?php endif; ?>
+            <div class="gkb-ficons">
+                <?php foreach ($dataFunctionality as $functionality) : ?>
+                    <?php if (empty($functionality['icon'])) {
+                        continue;
+                    } ?>
+                    <button type="button" class="gkb-ficon gkb-tip-host"
+                            aria-label="<?= esc_attr($functionality['text'] ?? '') ?>">
+                        <span class="gkb-ficon__sprite<?= $functionality['is_sprite'] ? '' : ' is-single' ?>">
+                            <img src="<?= esc_url($functionality['icon']) ?>" alt="" aria-hidden="true">
+                        </span>
+                        <?php if (!empty($functionality['text'])) : ?>
+                            <span class="gkb-tip" role="tooltip"><?= esc_html($functionality['text']) ?></span>
+                        <?php endif; ?>
+                    </button>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <a href="<?= $link ?? '/' ?>" class="product-headline"><?= $title ?? '' ?></a>
-        <p class="product-subheadline"><?= $subheadline ?? '' ?></p>
+
+        <div class="gkb-product-card__text">
+            <a href="<?= esc_url($link ?: home_url('/')) ?>" class="gkb-product-card__name"><?= esc_html($title ?? '') ?></a>
+            <?php if (!empty($subheadline)) : ?>
+                <p class="gkb-product-card__sub"><?= esc_html($subheadline) ?></p>
+            <?php endif; ?>
+        </div>
     </div>
 </div>

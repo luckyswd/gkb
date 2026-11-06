@@ -1,123 +1,99 @@
-html, body {
-    position: relative;
-    height: 100%;
-    background-color: $c-background-auth;
+/* Оболочка страницы и базовая типографика.
+   Общие элементы интерфейса — в partials/elements. */
+
+html,
+body {
+    background-color: var(--gkb-bg);
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.container {
-    max-width: 1480px;
-    margin: 0 auto;
-    padding: 0 40px;
-    width: 100%;
-
-    @include _992 {
-        padding: 0 15px;
-    }
+    min-height: 100%;
+    color: var(--gkb-text);
+    font-family: var(--gkb-font);
+    font-size: var(--gkb-fs-body);
+    line-height: var(--gkb-lh);
 }
 
 .main {
-    font-weight: 400;
-    font-size: 16px;
-    color: $c-main-black;
+    flex: 1 0 auto;
+    font-size: var(--gkb-fs-body);
+    color: var(--gkb-text);
 }
 
-.btn {
-    padding: 12px;
-    border-radius: 4px;
+/* Контейнер страницы. Ширина ограничена 1440px и центрируется,
+   боковые поля текучие. */
+.container {
+    max-width: var(--gkb-container);
     width: 100%;
-    cursor: pointer;
-    background: $c-main-green;
-    font-size: 15px;
-    line-height: 18px;
-    letter-spacing: 0.5px;
-    color: white;
+    margin: 0 auto;
+    padding: 0 var(--gkb-page-pad);
+}
+
+/* --- Заголовки --- */
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
     font-weight: 700;
-    text-align: center;
-    transition: $transition;
-    display: block;
+    line-height: var(--gkb-lh-tight);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: var(--gkb-fs-h1);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    font-size: var(--gkb-fs-h2);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: var(--gkb-fs-h3);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: var(--gkb-fs-md);
+    font-weight: 600;
+}
+
+p {
+    margin: 0;
+    text-wrap: pretty;
+}
+
+a {
+    color: var(--gkb-accent-strong);
+    transition: color var(--gkb-t-fast);
 
     &:hover {
-        background: $c-main-green-strong;
+        color: var(--gkb-accent-dark);
     }
 }
 
-table {
-    overflow:hidden;
-    border:1px solid #d3d3d3;
-    background:#fefefe;
-    width:99% !important;
-    margin: 0 auto;
-    -moz-border-radius:5px; /* FF1+ */
-    -webkit-border-radius:5px; /* Saf3-4 */
-    border-radius:5px;
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+strong,
+b {
+    font-weight: 600;
 }
 
-th, td {
-    padding:5px;
+/* --- Белая карточка-контейнер --- */
+.gkb-card {
+    background: var(--gkb-surface);
+    border-radius: var(--gkb-r-2xl);
+    padding: var(--gkb-card-pad);
 }
 
-th {
-    padding-top:22px;
-    text-shadow: 1px 1px 1px #fff;
-    background:#e8eaeb;
-}
-
-td {
-    border-top:1px solid #e0e0e0;
-    border-right:1px solid #e0e0e0;
-}
-
-tr.odd-row td {
-    background:#f6f6f6;
-}
-
-td.first, th.first {
-    text-align:left
-}
-
-td.last {
-    border-right:none;
-}
-
-td {
-    background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
-    background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
-}
-
-tr.odd-row td {
-    background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
-    background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
-}
-
-th {
-    background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
-    background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
-}
-
-tr:first-child th.first {
-    -moz-border-radius-topleft:5px;
-    -webkit-border-top-left-radius:5px; /* Saf3-4 */
-}
-
-tr:first-child th.last {
-    -moz-border-radius-topright:5px;
-    -webkit-border-top-right-radius:5px; /* Saf3-4 */
-}
-
-tr:last-child td.first {
-    -moz-border-radius-bottomleft:5px;
-    -webkit-border-bottom-left-radius:5px; /* Saf3-4 */
-}
-
-tr:last-child td.last {
-    -moz-border-radius-bottomright:5px;
-    -webkit-border-bottom-right-radius:5px; /* Saf3-4 */
+/* --- Видимый фокус с клавиатуры --- */
+:focus-visible {
+    outline: 2px solid var(--gkb-focus);
+    outline-offset: 2px;
+    border-radius: var(--gkb-r-xs);
 }

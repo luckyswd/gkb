@@ -24,9 +24,14 @@ function style() {
     .pipe(gulp.dest('dist/css'));
 }
 
+/* Inter берётся из пакета @fontsource/inter, а не хранится в репозитории.
+   Нужны только woff2 начертаний 400/500/600/700 в подмножествах
+   cyrillic и latin — остальное в сборку не попадает. */
 function fonts() {
-  return gulp.src('assets/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+  return gulp.src(
+    'node_modules/@fontsource/inter/files/inter-{cyrillic,latin}-{400,500,600,700}-normal.woff2'
+  )
+    .pipe(gulp.dest('dist/fonts/Inter'))
 }
 
 function scripts() {

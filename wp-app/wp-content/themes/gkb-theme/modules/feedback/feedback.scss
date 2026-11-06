@@ -1,47 +1,36 @@
+/* Блок-призыв «Написать нам»: ведёт к форме в подвале. */
+
 .feedback {
-  margin: 40px 0;
+    padding-top: clamp(12px, 2vw, 28px);
 
-  @include _768 {
-    margin: 20px 0;
-  }
-
-  .feedback-wrapper {
-    background: $c-white;
-    border-radius: 20px;
-    padding: 16px;
-
-    @include _992 {
-      border-radius: 10px;
+    .feedback-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--gkb-gap-md);
+        padding: var(--gkb-card-pad);
+        border-radius: var(--gkb-r-2xl);
+        background: var(--gkb-surface);
+        text-align: center;
     }
-  }
 
-  .feedback-headline {
-    text-align: center;
-    font-size: 32px;
-    line-height: 48px;
-    color: $c-main-red;
-    font-weight: 700;
-
-    @include _768 {
-      font-size: 24px;
-      line-height: 32px;
+    .feedback-headline {
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h2);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
     }
-  }
 
-  .feedback-subheadline {
-    font-size: 18px;
-    line-height: 24px;
-    color: $c-main-black;
-    text-align: center;
-
-    @include _768 {
-      font-size: 16px;
-      line-height: 22px;
+    .feedback-subheadline {
+        max-width: 640px;
+        color: var(--gkb-text-secondary);
+        font-size: var(--gkb-fs-lead);
     }
-  }
 
-  .feedback-btn {
-    max-width: 220px;
-    margin: 16px auto 0 auto;
-  }
+    .feedback-btn {
+        margin-top: var(--gkb-gap-sm);
+
+        @extend .gkb-btn--primary;
+    }
 }
