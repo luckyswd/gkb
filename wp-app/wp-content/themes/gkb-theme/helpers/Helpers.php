@@ -248,15 +248,35 @@ class Helpers
      */
     private static function isKeyValueTable(string $html, int $tablePos): bool
     {
-        $rowEnd = stripos($html, '</tr>', $tablePos);
-
-        if ($rowEnd === false) {
+        // Считаем ячейки первой строки только у самой таблицы: в прайсе из
+        // Excel внутри первой ячейки лежит вложенная таблица, и подсчёт до
+        // первого </tr> принимал её строку за строку внешней таблицы.
+        if (!preg_match_all('#<table\b|</table>|<t[dh]\b|</tr>#i', $html, $m, PREG_OFFSET_CAPTURE, $tablePos)) {
             return false;
         }
 
-        $firstRow = substr($html, $tablePos, $rowEnd - $tablePos);
+        $depth = 0;
+        $cells = 0;
 
-        return preg_match_all('#<t[dh]\b#i', $firstRow) <= 2;
+        foreach ($m[0] as [$tag]) {
+            $tag = strtolower($tag);
+
+            if ($tag === '<table') {
+                $depth++;
+            } elseif ($tag === '</table>') {
+                $depth--;
+                if ($depth === 0) {
+                    break;
+                }
+            } elseif ($depth === 1) {
+                if ($tag === '</tr>') {
+                    break;
+                }
+                $cells++;
+            }
+        }
+
+        return $cells > 0 && $cells <= 2;
     }
 
     public static function getPictureImage(
