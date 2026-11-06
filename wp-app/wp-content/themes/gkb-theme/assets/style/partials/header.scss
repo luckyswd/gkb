@@ -27,7 +27,9 @@
 
     img {
         width: auto;
+        max-width: 170px;
         height: 44px;
+        object-fit: contain;
     }
 }
 
@@ -341,7 +343,6 @@
     .gkb-header__nav,
     .gkb-header__bar,
     .gkb-header__top .gkb-header__socials,
-    .gkb-header__top .gkb-header__search,
     .gkb-header__top .gkb-lang,
     .gkb-header__account {
         display: none;

@@ -131,13 +131,6 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                 </nav>
             <?php endif; ?>
 
-            <form class="gkb-header__search" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
-                <input type="search" name="search" class="gkb-field gkb-header__search-input"
-                       value="<?= esc_attr($_GET['search'] ?? '') ?>"
-                       placeholder="<?= esc_attr($searchPlaceholder) ?>"
-                       aria-label="<?= esc_attr($searchPlaceholder) ?>">
-            </form>
-
             <?php if (!empty($socials)) : ?>
                 <div class="gkb-header__socials">
                     <?php foreach ($socials as $social) : ?>
@@ -214,6 +207,13 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                     </div>
                 </div>
             <?php endif; ?>
+
+            <form class="gkb-header__search" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
+                <input type="search" name="search" class="gkb-field gkb-header__search-input"
+                       value="<?= esc_attr($_GET['search'] ?? '') ?>"
+                       placeholder="<?= esc_attr($searchPlaceholder) ?>"
+                       aria-label="<?= esc_attr($searchPlaceholder) ?>">
+            </form>
 
             <a href="<?= esc_url($whereUrl) ?>" class="gkb-btn gkb-btn--primary gkb-btn--sm gkb-header__cta">
                 <?= esc_html($whereTitle) ?>
