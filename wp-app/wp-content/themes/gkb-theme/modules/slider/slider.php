@@ -38,9 +38,11 @@ $fields = (new Helpers)->get_field_multi_lang();
                             </<?= $tag ?>>
                         <?php endforeach; ?>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
+                    <?php if (count($fields['slider']) > 1) : ?>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>

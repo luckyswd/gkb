@@ -21,6 +21,22 @@ $categories = get_terms([
 ]);
 
 $allProductsLabel = $fieldsHeader['all_products'] ?? ($lang === 'en' ? 'All products' : 'Вся продукция');
+
+/* В поле «Общая информация» редактор держит часы работы и заодно ссылку-иконку
+   на Instagram. В блоке с часами иконке не место — переносим её к остальным
+   соцсетям, ссылка и картинка при этом остаются теми же. */
+$infoHtml = $fields['info'] ?? '';
+$infoIcons = [];
+if ($infoHtml !== '') {
+    $pull = static function (string $pattern, int $group) use (&$infoHtml, &$infoIcons): void {
+        $infoHtml = preg_replace_callback($pattern, static function ($m) use (&$infoIcons, $group) {
+            $infoIcons[] = $m[$group];
+            return '';
+        }, $infoHtml) ?? $infoHtml;
+    };
+    $pull('#<p>\s*(<a\b[^>]*>\s*<img\b[^>]*>\s*</a>)\s*</p>#i', 1);
+    $pull('#(<a\b[^>]*>\s*<img\b[^>]*>\s*</a>)#i', 1);
+}
 $writeToUsLabel = $lang === 'en' ? 'Write to us' : 'Написать нам';
 $pagesLabel = $lang === 'en' ? 'Our pages' : 'Наши страницы';
 $categoriesLabel = $lang === 'en' ? 'Our categories' : 'Наши категории';
@@ -70,8 +86,8 @@ $termName = static function ($term) use ($lang): string {
                 <?php endif; ?>
 
                 <div class="gkb-footer__col gkb-footer__col--contacts">
-                    <?php if (!empty($fields['info'])) : ?>
-                        <div class="gkb-footer__info"><?= $fields['info'] ?></div>
+                    <?php if (trim(strip_tags($infoHtml)) !== '') : ?>
+                        <div class="gkb-footer__info"><?= $infoHtml ?></div>
                     <?php endif; ?>
 
                     <?php if (!empty($socials)) : ?>
@@ -84,6 +100,15 @@ $termName = static function ($term) use ($lang): string {
                                    title="<?= esc_attr($social['icon']['title'] ?? '') ?>" rel="noopener" target="_blank">
                                     <img src="<?= esc_url($social['icon']['url']) ?>" alt="<?= esc_attr($social['icon']['title'] ?? '') ?>" width="22" height="22">
                                 </a>
+                            <?php endforeach; ?>
+                            <?php foreach ($infoIcons as $icon) : ?>
+                                <?= $icon ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php elseif (!empty($infoIcons)) : ?>
+                        <div class="gkb-footer__socials">
+                            <?php foreach ($infoIcons as $icon) : ?>
+                                <?= $icon ?>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>

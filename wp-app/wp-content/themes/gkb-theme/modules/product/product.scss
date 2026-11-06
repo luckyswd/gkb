@@ -95,6 +95,45 @@
     }
 }
 
+/* Стрелки перелистывания. Swiper сам вешает swiper-button-disabled
+   на крайних снимках. */
+.gkb-gallery__nav {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: var(--gkb-r-pill);
+    background: var(--gkb-surface);
+    color: var(--gkb-text);
+    box-shadow: var(--gkb-shadow-sm);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background var(--gkb-t-fast), opacity var(--gkb-t-fast);
+
+    &:hover {
+        background: var(--gkb-surface-muted);
+    }
+
+    &--prev {
+        left: var(--gkb-gap-md);
+    }
+
+    &--next {
+        right: var(--gkb-gap-md);
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0.35;
+        pointer-events: none;
+    }
+}
+
 .gkb-gallery__counter {
     position: absolute;
     right: 14px;
@@ -181,4 +220,28 @@
         order: 2;
         flex-direction: row;
     }
+}
+
+/* Липкая первая колонка нужна только в таблицах характеристик товара:
+   там первая ячейка — название параметра. На прайс-листе, где лежит
+   вставка из Excel с пустыми колонками-распорками, она только мешает. */
+.gkb-product__pane .gkb-table-scroll {
+    th:first-child,
+    td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: inherit;
+    }
+
+    thead th:first-child {
+        background: var(--gkb-bg);
+    }
+}
+
+/* Галерея — элемент грид-строки; без min-width: 0 слайды Swiper распирают
+   колонку и текстовой части остаётся нулевая ширина. */
+.gkb-gallery,
+.gkb-product__info {
+    min-width: 0;
 }

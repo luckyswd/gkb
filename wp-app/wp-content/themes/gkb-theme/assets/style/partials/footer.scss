@@ -109,6 +109,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
     gap: var(--gkb-gap-2xl);
+
+    /* Колонке с часами и соцсетями нужно больше места, чем колонкам ссылок:
+       строка «Пн — Пт: 08:00 — 17:00» должна помещаться целиком. */
+    @media (min-width: 760px) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+    }
 }
 
 .gkb-footer__col {
@@ -137,7 +143,7 @@
 }
 
 .gkb-footer__info {
-    padding: var(--gkb-gap-md) var(--gkb-gap-lg);
+    padding: var(--gkb-gap-md);
     border-radius: var(--gkb-r-md);
     background: var(--gkb-bg);
     font-size: var(--gkb-fs-sm);
@@ -146,10 +152,13 @@
     p {
         margin: 0;
 
+        /* часы работы держим в одну строку: на узкой колонке текст
+           уменьшается, а не переносится */
         &:first-child {
             color: var(--gkb-text);
-            font-size: var(--gkb-fs-body);
+            font-size: clamp(13px, 1.05vw, 15px);
             font-weight: 600;
+            white-space: nowrap;
         }
     }
 
@@ -163,6 +172,30 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--gkb-gap-xs);
+
+    /* ссылки-иконки, перенесённые из поля «Общая информация», приходят
+       без классов темы — выравниваем их с остальными соцсетями */
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--gkb-r-sm);
+        background: var(--gkb-bg);
+        transition: background var(--gkb-t-fast);
+
+        &:hover {
+            background: var(--gkb-surface-hover);
+            box-shadow: none;
+        }
+
+        img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+    }
 
     .gkb-btn--icon {
         width: 44px;

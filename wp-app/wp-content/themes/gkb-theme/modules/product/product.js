@@ -35,12 +35,16 @@ class Product {
         }
 
         const thumbs = Array.from(document.querySelectorAll('.gkb-gallery__thumb'));
-        const counter = document.querySelector('.gkb-gallery__counter');
+        const stage = main.closest('.gkb-gallery__stage') || document;
+        const counter = stage.querySelector('.gkb-gallery__counter');
+        const prev = stage.querySelector('.gkb-gallery__nav--prev');
+        const next = stage.querySelector('.gkb-gallery__nav--next');
 
         const swiper = new Swiper(main, {
             slidesPerView: 1,
             watchOverflow: true,
             pagination: counter ? { el: counter, type: 'fraction' } : false,
+            navigation: prev && next ? { prevEl: prev, nextEl: next } : false,
         });
 
         const sync = () => {

@@ -292,18 +292,6 @@ textarea.gkb-field,
         background: var(--gkb-accent-row);
     }
 
-    /* Первая колонка остаётся видимой при прокрутке вбок */
-    th:first-child,
-    td:first-child {
-        position: sticky;
-        left: 0;
-        z-index: 1;
-        background: inherit;
-    }
-
-    thead th:first-child {
-        background: var(--gkb-bg);
-    }
 }
 
 .gkb-table-note {

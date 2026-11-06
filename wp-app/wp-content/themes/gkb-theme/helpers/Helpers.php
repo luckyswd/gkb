@@ -200,9 +200,32 @@ class Helpers
             return $html;
         }
 
-        $html = preg_replace('#<table(\b[^>]*)>#i', '<div class="gkb-table-scroll"><table$1>', $html);
+        // Оборачиваются только таблицы верхнего уровня: вставки из Excel
+        // приходят с таблицами внутри ячеек, и вложенная обёртка рисовала бы
+        // рамку вокруг пустой ячейки.
+        $out = '';
+        $depth = 0;
+        $offset = 0;
 
-        return preg_replace('#</table>#i', '</table></div>', $html);
+        if (!preg_match_all('#<table\b[^>]*>|</table>#i', $html, $m, PREG_OFFSET_CAPTURE)) {
+            return $html;
+        }
+
+        foreach ($m[0] as $tag) {
+            [$text, $pos] = $tag;
+            $out .= substr($html, $offset, $pos - $offset);
+            $offset = $pos + strlen($text);
+
+            if ($text[1] === '/') {
+                $depth--;
+                $out .= $depth === 0 ? $text . '</div>' : $text;
+            } else {
+                $out .= $depth === 0 ? '<div class="gkb-table-scroll">' . $text : $text;
+                $depth++;
+            }
+        }
+
+        return $out . substr($html, $offset);
     }
 
     public static function getPictureImage(

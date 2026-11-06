@@ -87,6 +87,20 @@ $firstTab = $tabs[0]['id'] ?? '';
                                 </div>
                             </div>
                             <?php if (count($slides) > 1) : ?>
+                                <button type="button" class="gkb-gallery__nav gkb-gallery__nav--prev"
+                                        aria-label="<?= esc_attr($lang === 'en' ? 'Previous photo' : 'Предыдущее фото') ?>">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                        <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="gkb-gallery__nav gkb-gallery__nav--next"
+                                        aria-label="<?= esc_attr($lang === 'en' ? 'Next photo' : 'Следующее фото') ?>">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                        <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
                                 <span class="gkb-gallery__counter"></span>
                             <?php endif; ?>
                         </div>
