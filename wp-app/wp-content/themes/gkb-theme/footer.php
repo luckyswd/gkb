@@ -132,5 +132,11 @@ $termName = static function ($term) use ($lang): string {
     </div>
 </footer>
 <?php wp_footer(); ?>
+<?php if (home_url() == 'https://gazkotelbel.com' ) :?>
+<!-- ShefTools: аналитика и cookie-баннер (uptime работает на стороне ShefTools) -->
+<script defer src="https://tools.shefcode.tech/all.js"
+        data-site="gazkotelbel"
+        data-modules="analytics,cookie"></script>
+<?php endif; ?>
 </body>
 </html>
