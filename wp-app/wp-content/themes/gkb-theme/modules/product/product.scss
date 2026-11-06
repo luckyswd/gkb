@@ -262,3 +262,48 @@
 .gkb-product__info {
     min-width: 0;
 }
+
+/* Таблицы моделей на странице товара: ширина по содержимому, а не по
+   атрибутам width="7%" из редактора (их сумма больше 100%, и последняя
+   колонка сжималась до буквы). Значения не переносятся, первая колонка
+   с названием параметра — переносится. Если таблица шире карточки, она
+   прокручивается внутри своей рамки. */
+.gkb-product__pane .gkb-table-scroll:not(.gkb-table-scroll--plain) {
+    > table {
+        width: max-content;
+        min-width: 100%;
+    }
+
+    th,
+    td {
+        width: auto;
+        padding: 10px 14px;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    th:first-child,
+    td:first-child {
+        min-width: 240px;
+        max-width: 340px;
+        white-space: normal;
+    }
+
+    /* значение, общее для всех моделей («Природный газ»), растянуто на все
+       колонки — по центру оно уезжает за экран телефона, прижимаем влево */
+    td[colspan] {
+        text-align: left;
+
+        p {
+            text-align: left;
+        }
+    }
+
+    @include _650 {
+        th:first-child,
+        td:first-child {
+            min-width: 150px;
+            max-width: 190px;
+        }
+    }
+}
