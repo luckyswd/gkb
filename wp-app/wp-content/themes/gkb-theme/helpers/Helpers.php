@@ -220,12 +220,34 @@ class Helpers
                 $depth--;
                 $out .= $depth === 0 ? $text . '</div>' : $text;
             } else {
-                $out .= $depth === 0 ? '<div class="gkb-table-scroll">' . $text : $text;
+                if ($depth === 0) {
+                    $out .= '<div class="gkb-table-scroll' . (self::isKeyValueTable($html, $pos) ? ' gkb-table-scroll--plain' : '') . '">' . $text;
+                } else {
+                    $out .= $text;
+                }
                 $depth++;
             }
         }
 
         return $out . substr($html, $offset);
+    }
+
+    /**
+     * Таблица на две колонки — это список «параметр — значение», а не данные.
+     * В макете он рисуется простыми строками с разделителем, без рамки и
+     * зебры, поэтому такие таблицы помечаются отдельным классом.
+     */
+    private static function isKeyValueTable(string $html, int $tablePos): bool
+    {
+        $rowEnd = stripos($html, '</tr>', $tablePos);
+
+        if ($rowEnd === false) {
+            return false;
+        }
+
+        $firstRow = substr($html, $tablePos, $rowEnd - $tablePos);
+
+        return preg_match_all('#<t[dh]\b#i', $firstRow) <= 2;
     }
 
     public static function getPictureImage(
