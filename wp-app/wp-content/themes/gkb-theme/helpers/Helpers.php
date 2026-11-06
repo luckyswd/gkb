@@ -230,7 +230,7 @@ class Helpers
                 $out .= $depth === 0 ? $text . '</div>' : $text;
             } else {
                 if ($depth === 0) {
-                    $out .= '<div class="gkb-table-scroll' . (self::isKeyValueTable($html, $pos) ? ' gkb-table-scroll--plain' : '') . '">' . $text;
+                    $out .= '<div class="gkb-table-scroll' . self::tableVariant($html, $pos) . '">' . $text;
                 } else {
                     $out .= $text;
                 }
@@ -242,17 +242,31 @@ class Helpers
     }
 
     /**
-     * Таблица на две колонки — это список «параметр — значение», а не данные.
-     * В макете он рисуется простыми строками с разделителем, без рамки и
-     * зебры, поэтому такие таблицы помечаются отдельным классом.
+     * Вид таблицы по числу колонок в её первой строке:
+     *  - до двух колонок — список «параметр — значение»: без рамки и зебры;
+     *  - три колонки (комплектация: что / сколько / примечание) — компактная
+     *    таблица по ширине экрана, с переносом и без прокрутки;
+     *  - четыре и больше (модели) — широкая таблица с прокруткой внутри рамки.
      */
-    private static function isKeyValueTable(string $html, int $tablePos): bool
+    private static function tableVariant(string $html, int $tablePos): string
     {
-        // Считаем ячейки первой строки только у самой таблицы: в прайсе из
-        // Excel внутри первой ячейки лежит вложенная таблица, и подсчёт до
-        // первого </tr> принимал её строку за строку внешней таблицы.
+        $cells = self::topRowCells($html, $tablePos);
+
+        if ($cells > 0 && $cells <= 2) {
+            return ' gkb-table-scroll--plain';
+        }
+
+        return $cells === 3 ? ' gkb-table-scroll--compact' : '';
+    }
+
+    /**
+     * Число ячеек первой строки самой таблицы. Вложенные таблицы не
+     * считаются: в прайсе из Excel внутри первой ячейки лежит ещё одна.
+     */
+    private static function topRowCells(string $html, int $tablePos): int
+    {
         if (!preg_match_all('#<table\b|</table>|<t[dh]\b|</tr>#i', $html, $m, PREG_OFFSET_CAPTURE, $tablePos)) {
-            return false;
+            return 0;
         }
 
         $depth = 0;
@@ -276,7 +290,7 @@ class Helpers
             }
         }
 
-        return $cells > 0 && $cells <= 2;
+        return $cells;
     }
 
     public static function getPictureImage(

@@ -151,8 +151,11 @@
     color: var(--gkb-text-secondary);
     font-size: var(--gkb-fs-sm);
 
+    /* «Пн — Пт: 08:00 — 17:00» держим в одну строку на любой ширине;
+       строки разделены <br> редактором — они по-прежнему переносятся */
     p {
         margin: 0;
+        white-space: nowrap;
     }
 
     a {

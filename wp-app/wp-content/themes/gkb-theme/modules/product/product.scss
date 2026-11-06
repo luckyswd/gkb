@@ -242,7 +242,7 @@
 /* Липкая первая колонка нужна только в таблицах характеристик товара:
    там первая ячейка — название параметра. На прайс-листе, где лежит
    вставка из Excel с пустыми колонками-распорками, она только мешает. */
-.gkb-product__pane .gkb-table-scroll {
+.gkb-product__pane .gkb-table-scroll:not(.gkb-table-scroll--plain):not(.gkb-table-scroll--compact) {
     th:first-child,
     td:first-child {
         position: sticky;
@@ -268,7 +268,7 @@
    колонка сжималась до буквы). Значения не переносятся, первая колонка
    с названием параметра — переносится. Если таблица шире карточки, она
    прокручивается внутри своей рамки. */
-.gkb-product__pane .gkb-table-scroll:not(.gkb-table-scroll--plain) {
+.gkb-product__pane .gkb-table-scroll:not(.gkb-table-scroll--plain):not(.gkb-table-scroll--compact) {
     > table {
         width: max-content;
         min-width: 100%;
@@ -304,6 +304,68 @@
         td:first-child {
             min-width: 150px;
             max-width: 190px;
+        }
+    }
+}
+
+/* Компактная таблица на три колонки (комплектация): по ширине карточки,
+   текст переносится, прокрутки и закреплённой колонки нет — на телефоне
+   закреплённая колонка наезжала на соседнюю. */
+.gkb-content .gkb-table-scroll--compact {
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+
+    > table {
+        width: 100%;
+        min-width: 0;
+        table-layout: auto;
+        background: transparent;
+    }
+
+    tbody tr,
+    tbody tr:nth-child(even) {
+        background: transparent;
+    }
+
+    td {
+        border-top: 0;
+        border-bottom: 1px solid var(--gkb-border);
+    }
+
+    tr:last-child td {
+        border-bottom: 0;
+    }
+
+    th,
+    td {
+        width: auto;
+        padding: 12px 14px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        vertical-align: top;
+    }
+
+    td:first-child {
+        width: 40%;
+        color: var(--gkb-text);
+        font-weight: 500;
+    }
+
+    td:nth-child(2) {
+        white-space: nowrap;
+    }
+
+    @include _650 {
+        th,
+        td {
+            padding: 10px 6px;
+            font-size: var(--gkb-fs-xs);
+        }
+
+        td:first-child {
+            padding-left: 0;
         }
     }
 }
