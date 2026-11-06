@@ -8,6 +8,7 @@ include 'hooks_filters/reset_default_css_js.php';
 include 'hooks_filters/additional.php';
 include 'hooks_filters/removed_urls.php';
 include 'hooks_filters/acf_blocks_editor.php';
+include 'hooks_filters/cache_purge.php';
 
 require_once 'helpers/Helpers.php';
 require_once 'authorization/Authorization.php';
