@@ -16,7 +16,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap: var(--gkb-gap-lg);
-    align-items: start;
+    /* карточки тянутся до высоты самой высокой в строке: при align-items: start
+       форма и блок ссылок получались разной высоты и подвал выглядел рваным */
+    align-items: stretch;
 }
 
 .gkb-footer__form {
