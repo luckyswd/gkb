@@ -78,7 +78,9 @@ class Content
             foreach ($terms as $t) {
                 echo '<li><a href="' . esc_url(get_term_link($t)) . '">' . esc_html($t->name) . ' Житомир</a></li>';
             }
-            echo '<li><a href="' . esc_url(home_url('/' . Context::CALCULATOR_SLUG . '/')) . '">Калькулятор мощности котла</a></li>';
+            if (Context::calculatorUrl()) {
+                echo '<li><a href="' . esc_url(Context::calculatorUrl()) . '">Калькулятор мощности котла</a></li>';
+            }
             echo '</ul>';
         }
         echo '</section>';
@@ -141,8 +143,10 @@ class Content
                     <?= esc_html(($en ? 'Retail prices incl. VAT, valid from ' : 'Розничные цены с НДС, действительны с ') . Org::pricesDateHuman() . '.') ?>
                 <?php endif; ?>
                 <a href="<?= esc_url(home_url('/where-to-buy/')) ?>"><?= esc_html($en ? 'Where to buy' : 'Где купить') ?></a>
-                ·
-                <a href="<?= esc_url(home_url('/' . Context::CALCULATOR_SLUG . '/')) ?>"><?= esc_html($en ? 'Boiler power calculator' : 'Калькулятор мощности') ?></a>
+                <?php if (Context::calculatorUrl()) : ?>
+                    ·
+                    <a href="<?= esc_url(Context::calculatorUrl()) ?>"><?= esc_html($en ? 'Boiler power calculator' : 'Калькулятор мощности') ?></a>
+                <?php endif; ?>
             </p>
         </section>
         <?php
@@ -228,7 +232,10 @@ class Content
                         </ul>
                     <?php endif; ?>
                     <div class="gkb-about__links">
-                        <a class="gkb-btn gkb-btn--primary gkb-btn--sm" href="<?= esc_url(home_url('/' . Context::CALCULATOR_SLUG . '/')) ?>">Рассчитать мощность котла</a>
+                        <?php if (Context::calculatorUrl()) : ?>
+                            <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(Context::calculatorUrl()) ?>">Рассчитать мощность котла</a>
+                        <?php endif; ?>
+                        <a class="gkb-btn gkb-btn--primary gkb-btn--sm" href="<?= esc_url(home_url('/catalog/')) ?>">Вся продукция</a>
                         <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(home_url('/where-to-buy/')) ?>">Где купить</a>
                         <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(home_url('/about/')) ?>">О производстве</a>
                     </div>

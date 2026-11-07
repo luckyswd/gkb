@@ -19,6 +19,13 @@ class Context
 
     private static ?array $cache = null;
 
+    /** Адрес калькулятора мощности, если такая страница опубликована, иначе null. */
+    public static function calculatorUrl(): ?string
+    {
+        $page = get_page_by_path(self::CALCULATOR_SLUG);
+        return ($page instanceof \WP_Post && $page->post_status === 'publish') ? trailingslashit(get_permalink($page)) : null;
+    }
+
     public static function lang(): string
     {
         return (new Helpers())->getLang();

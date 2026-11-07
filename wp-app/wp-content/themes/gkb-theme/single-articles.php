@@ -66,7 +66,10 @@ $related = Articles::relatedProducts($article);
         <?php endif; ?>
 
         <div class="gkb-card gkb-article__next">
-            <a class="gkb-btn gkb-btn--primary" href="<?= esc_url(home_url('/' . Context::CALCULATOR_SLUG . '/')) ?>">Рассчитать мощность котла</a>
+            <?php if (Context::calculatorUrl()) : ?>
+                <a class="gkb-btn gkb-btn--secondary" href="<?= esc_url(Context::calculatorUrl()) ?>">Рассчитать мощность котла</a>
+            <?php endif; ?>
+            <a class="gkb-btn gkb-btn--primary" href="<?= esc_url(home_url('/catalog/')) ?>">Каталог котлов Житомир</a>
             <a class="gkb-btn gkb-btn--secondary" href="<?= esc_url(home_url('/where-to-buy/')) ?>">Где купить котёл Житомир</a>
             <a class="gkb-btn gkb-btn--secondary" href="<?= esc_url(get_post_type_archive_link('articles')) ?>">Все статьи</a>
         </div>
