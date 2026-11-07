@@ -40,6 +40,17 @@ class Perf
             add_action('wp_head', [self::class, 'speculation'], 40); // старое ядро без встроенных правил
         }
         add_filter('wp_resource_hints', [self::class, 'hints'], 10, 2);
+
+        /* WP-Optimize склеивает скрипты подвала в один файл и теряет у них strategy=defer:
+           склейка (~170 КБ) блокирует разбор, и LCP-картинка ждёт отрисовки ~2 с
+           (PageSpeed каталога 07.11.2026). Все исходные скрипты темы — defer,
+           встроенный wpcf7 объявлен до склейки, так что defer ей безопасен. */
+        add_filter('script_loader_tag', static function ($tag, $handle) {
+            if (str_starts_with((string) $handle, 'wpo_min-footer') && !str_contains($tag, ' defer')) {
+                $tag = str_replace(' src=', ' defer src=', $tag);
+            }
+            return $tag;
+        }, 10, 2);
     }
 
     /** ID LCP-изображения текущей страницы и его sizes, или null. */
