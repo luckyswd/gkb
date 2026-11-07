@@ -406,3 +406,14 @@
 .dealers__region-links {
     margin: 0 0 var(--gkb-gap-lg);
 }
+
+/* Cookie-баннер ShefTools (tools.shefcode.tech/cookie.js) появляется через ~2,7 с,
+   и на телефоне его текст (380×84 px) — самый крупный элемент экрана: LCP каталога
+   и категорий считался по нему (Lighthouse 07.11.2026). Делаем текст компактнее,
+   чтобы LCP оставался на карточке товара. Специфичность выше, чем у `.sftk-bar *`. */
+@media (max-width: 768px) {
+    .sftk-bar .sftk-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+}
