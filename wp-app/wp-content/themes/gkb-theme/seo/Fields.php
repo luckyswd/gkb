@@ -84,7 +84,6 @@ class Fields
             'location' => [
                 [['param' => 'post_type', 'operator' => '==', 'value' => 'page']],
                 [['param' => 'post_type', 'operator' => '==', 'value' => 'products']],
-                [['param' => 'post_type', 'operator' => '==', 'value' => 'articles']],
             ],
             'position' => 'side',
             'menu_order' => 50,
@@ -134,30 +133,11 @@ class Fields
         ]);
 
         acf_add_local_field_group([
-            'key' => 'group_gkb_article_related',
-            'title' => 'Подходящие модели',
-            'fields' => [
-                self::f('similar_products', 'Модели в конце статьи', 'relationship', [
-                    'key' => 'field_gkb_similar_products_article',
-                    'instructions' => '2–3 модели. Пусто — первые газовые котлы каталога.',
-                    'post_type' => ['products'],
-                    'filters' => ['search'],
-                    'return_format' => 'object',
-                    'max' => 4,
-                ]),
-            ],
-            'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'articles']]],
-            'position' => 'side',
-            'menu_order' => 30,
-        ]);
-
-        acf_add_local_field_group([
             'key' => 'group_gkb_page_faq',
             'title' => 'Частые вопросы',
             'fields' => [self::faqField('page')],
             'location' => [
                 [['param' => 'post_type', 'operator' => '==', 'value' => 'page']],
-                [['param' => 'post_type', 'operator' => '==', 'value' => 'articles']],
             ],
             'menu_order' => 40,
         ]);

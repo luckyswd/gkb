@@ -77,15 +77,6 @@ class Llms
         $L[] = '- [Прайс-лист](' . home_url('/price-list/') . '): розничные цены на все модификации';
         $L[] = '- [Документация](' . home_url('/documentation/') . '): паспорта и инструкции в PDF';
         $L[] = '- [О производителе АТЕМ](' . home_url('/about/') . ')';
-        if (post_type_exists('articles')) {
-            foreach (get_posts(['post_type' => 'articles', 'post_status' => 'publish', 'posts_per_page' => 30]) as $a) {
-                if (Context::objectNoindex($a)) {
-                    continue;
-                }
-                $excerpt = has_excerpt($a) ? get_the_excerpt($a) : wp_trim_words(wp_strip_all_tags($a->post_content), 22, '…');
-                $L[] = '- [' . get_the_title($a) . '](' . trailingslashit(get_permalink($a)) . '): ' . trim(preg_replace('/\s+/u', ' ', $excerpt));
-            }
-        }
         $L[] = '';
 
         $L[] = '## Контакты';

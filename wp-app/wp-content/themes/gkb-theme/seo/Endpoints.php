@@ -12,9 +12,9 @@ use WP_Post;
 class Endpoints
 {
     /** Меняется при изменении правил — правила перезаписываются один раз. */
-    public const VERSION = '1';
+    public const VERSION = '2';
 
-    public const SITEMAPS = ['pages', 'products', 'categories', 'articles', 'regions'];
+    public const SITEMAPS = ['pages', 'products', 'categories', 'regions'];
 
     public static function register(): void
     {

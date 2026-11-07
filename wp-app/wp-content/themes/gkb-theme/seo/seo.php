@@ -18,7 +18,6 @@ require_once __DIR__ . '/IndexNow.php';
 require_once __DIR__ . '/Redirects.php';
 require_once __DIR__ . '/Perf.php';
 require_once __DIR__ . '/Fields.php';
-require_once __DIR__ . '/Articles.php';
 require_once __DIR__ . '/Calculator.php';
 require_once __DIR__ . '/Agents.php';
 
@@ -30,7 +29,6 @@ seo\Endpoints::register();
 seo\IndexNow::register();
 seo\Redirects::register();
 seo\Perf::register();
-seo\Articles::register();
 seo\Agents::register();
 
 /*
