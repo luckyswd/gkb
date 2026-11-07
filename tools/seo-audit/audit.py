@@ -435,15 +435,18 @@ def check_legacy(base: str, rep: Report):
         rep.add("error", "404", base, f"несуществующий адрес отвечает {st}")
 
 
-def parse_price_list(base: str) -> dict[str, int]:
-    """Код модификации → цена из таблицы прайс-листа (первое вхождение по серии не различаем)."""
+def parse_price_list(base: str) -> set[int]:
+    """Все розничные цены из таблицы прайс-листа (последняя ячейка строки из двух и более)."""
     st, _, body, _ = fetch(base + "/price-list/")
     if st != 200:
-        return {}
-    text = " ".join(re.sub(r"<[^>]+>", " ", html.unescape(body)).split())
-    prices = {}
-    for code, price in re.findall(r"(К[СС]-[А-ЯA-Z]+-?\s?0\d\d\s?[А-ЯA-Z]*)\s+(\d[\d\s]{2,6})", text):
-        prices.setdefault(re.sub(r"\s", "", code), int(re.sub(r"\s", "", price)))
+        return set()
+    prices = set()
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", body, re.S):
+        cells = [" ".join(html.unescape(re.sub(r"<[^>]+>", " ", c)).split())
+                 for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S)]
+        cells = [c for c in cells if c]
+        if len(cells) >= 2 and re.fullmatch(r"\d[\d\s\u00a0]*", cells[-1]):
+            prices.add(int(re.sub(r"\D", "", cells[-1])))
     return prices
 
 
@@ -452,18 +455,18 @@ def check_prices(results: list[dict], base: str, rep: Report):
     if not pl:
         rep.add("warn", "prices", base, "прайс-лист не разобран")
         return
-    low = min(pl.values())
     for r in results:
         offers = r.get("offers")
-        if offers and isinstance(offers, dict):
-            lp = offers.get("lowPrice")
+        if not (offers and isinstance(offers, dict)):
+            continue
+        for key in ("lowPrice", "highPrice"):
             try:
-                lp = float(lp)
+                v = int(float(offers.get(key)))
             except (TypeError, ValueError):
-                rep.add("error", "prices", r["url"], "lowPrice не число")
+                rep.add("error", "prices", r["url"], f"{key} не число")
                 continue
-            if lp < low:
-                rep.add("error", "prices", r["url"], f"lowPrice {lp} меньше минимальной цены прайса {low}")
+            if v not in pl:
+                rep.add("error", "prices", r["url"], f"{key} {v} нет в прайс-листе")
 
 
 def lighthouse(base: str, outdir: Path):

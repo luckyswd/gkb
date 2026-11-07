@@ -149,7 +149,7 @@ $firstTab = $tabs[0]['id'] ?? '';
                     </div>
 
                     <?php if (!empty($fields['description'])) : ?>
-                        <div class="gkb-product__description gkb-content"><?= Helpers::wrapTables($fields['description']) ?></div>
+                        <div class="gkb-product__description gkb-content"><?= \seo\Content::fillAlt(Helpers::wrapTables($fields['description']), (string) ($fields['title'] ?? '')) ?></div>
                     <?php endif; ?>
 
                     <div class="gkb-product__actions">
@@ -196,9 +196,9 @@ $firstTab = $tabs[0]['id'] ?? '';
                                     <?php endforeach; ?>
                                 </div>
                             <?php elseif ($tab['id'] === 'specifications') : ?>
-                                <div class="gkb-content"><?= Helpers::wrapTables($tab['content']) ?></div>
+                                <div class="gkb-content"><?= \seo\Content::fillAlt(Helpers::wrapTables($tab['content']), (string) ($fields['title'] ?? '')) ?></div>
                             <?php else : ?>
-                                <div class="gkb-content"><?= Helpers::wrapTables($tab['content']) ?></div>
+                                <div class="gkb-content"><?= \seo\Content::fillAlt(Helpers::wrapTables($tab['content']), (string) ($fields['title'] ?? '')) ?></div>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>

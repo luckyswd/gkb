@@ -245,6 +245,15 @@ class Content
         <?php
     }
 
+    /** Добавляет alt изображениям из визуального редактора, у которых его нет. */
+    public static function fillAlt(string $html, string $alt): string
+    {
+        if ($alt === '' || stripos($html, '<img') === false) {
+            return $html;
+        }
+        return preg_replace_callback('#<img\b(?![^>]*\balt=)([^>]*)>#i', static fn ($m) => '<img alt="' . esc_attr($alt) . '"' . $m[1] . '>', $html) ?? $html;
+    }
+
     /** alt изображения: из медиатеки, иначе из запасного текста. */
     public static function alt(int $attachmentId, string $fallback): string
     {
