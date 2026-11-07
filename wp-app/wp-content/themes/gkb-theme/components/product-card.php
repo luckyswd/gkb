@@ -9,10 +9,11 @@ $imageIds = $helper->getProductImageIds($product);
 $imageId = $imageIds[0] ?? 0;
 $image = $imageId ? '' : $helper->getProductSliderImage($product);
 
-/* Первая карточка каталога и категории — кандидат в LCP на телефоне:
-   грузится сразу и с высоким приоритетом, остальные лениво. */
+/* Первые две карточки каталога и категории видны на первом экране телефона
+   и бывают LCP-элементом (PageSpeed 07.11.2026: LCP — вторая карточка):
+   грузятся сразу и с высоким приоритетом, остальные лениво. */
 $GLOBALS['gkb_card_index'] = ($GLOBALS['gkb_card_index'] ?? 0) + 1;
-$cardPriority = $GLOBALS['gkb_card_index'] === 1
+$cardPriority = $GLOBALS['gkb_card_index'] <= 2
     && in_array(\seo\Context::type(), ['catalog', 'category'], true);
 $dataFunctionality = $helper->getProductFunctionality($product);
 $title = $helper->getProductTitle($product);
