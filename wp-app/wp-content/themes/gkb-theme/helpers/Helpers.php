@@ -100,10 +100,11 @@ class Helpers
 
     // Картинки для товара
     public function getProductSliderImage(
-        object $product
+        object $product,
+        string $size = 'full'
     ): false|string
     {
-        return wp_get_attachment_image_url($this->getProductDataValue($product, 'language_image_slider_0_image'), 'full');
+        return wp_get_attachment_image_url($this->getProductDataValue($product, 'language_image_slider_0_image'), $size);
     }
 
     // функциональности
@@ -159,6 +160,39 @@ class Helpers
             };
         }
         return $fields;
+    }
+
+    /**
+     * ID вложений галереи товара в порядке вывода. Нужны SEO-слою:
+     * og:image, image в JSON-LD и sitemap, preload LCP-изображения.
+     */
+    public function getProductImageIds(
+        object $product
+    ): array
+    {
+        $data = $this->getProductData($product);
+        if (!is_array($data)) {
+            return [];
+        }
+        $prefix = $this->getLang() === 'en' ? 'en_language' : 'ru_language';
+        $count = (int) ($data[$prefix . '_image_slider'] ?? 0);
+        $ids = [];
+        for ($i = 0; $i < $count; $i++) {
+            $id = (int) ($data[$prefix . '_image_slider_' . $i . '_image'] ?? 0);
+            if ($id > 0) {
+                $ids[] = $id;
+            }
+        }
+        return $ids;
+    }
+
+    /** Значение поля товара из блока acf/product на текущем языке. */
+    public function getProductField(
+        object $product,
+        string $fieldName,
+    )
+    {
+        return $this->getProductDataValue($product, 'language_' . $fieldName);
     }
 
     private function getProductDataValue(
@@ -294,9 +328,12 @@ class Helpers
     }
 
     public static function getPictureImage(
-        ?array $image = null,
-        ?int   $width = null,
-        ?int   $height = null,
+        ?array  $image = null,
+        ?int    $width = null,
+        ?int    $height = null,
+        string  $sizes = '100vw',
+        bool    $priority = false,
+        ?string $alt = null,
     ): void
     {
         include get_template_directory() . '/components/picture.php';

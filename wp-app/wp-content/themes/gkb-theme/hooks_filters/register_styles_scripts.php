@@ -37,7 +37,7 @@ function register_styles_scripts(): void
         $fileName = explode('/', $filePath);
         $fileName = end($fileName);
         $fileName = str_replace('.js', ' ', $fileName);
-        wp_enqueue_script(trim($fileName),get_template_directory_uri() . $filePath, array(), '1.0', true);
+        wp_enqueue_script(trim($fileName), get_template_directory_uri() . $filePath, [], null, ['in_footer' => true, 'strategy' => 'defer']);
     }
 }
 

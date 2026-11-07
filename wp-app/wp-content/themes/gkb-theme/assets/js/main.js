@@ -7,6 +7,8 @@
 //=include partials/forms.js
 //=include partials/authorization.js
 //=include partials/product-card.js
+//=include partials/goals.js
+//=include partials/calculator.js
 
 /**** MODULES ****/
 //=include ../../modules/slider/slider.js

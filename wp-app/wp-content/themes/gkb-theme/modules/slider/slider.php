@@ -17,7 +17,7 @@ $fields = (new Helpers)->get_field_multi_lang();
             <div class="container">
                 <div class="swiper gallery-swiper">
                     <div class="swiper-wrapper">
-                        <?php foreach ($fields['slider'] as $slide) : ?>
+                        <?php foreach ($fields['slider'] as $slideIndex => $slide) : ?>
                             <?php
                             $product = $slide['product'];
                             if ($product) {
@@ -34,7 +34,7 @@ $fields = (new Helpers)->get_field_multi_lang();
 
                             ?>
                             <<?= $tag ?> href="<?= $link ?>" class="swiper-slide">
-                                <?= \helpers\Helpers::getPictureImage($slide['image'], 1400, 415); ?>
+                                <?php \helpers\Helpers::getPictureImage($slide['image'], 1400, 415, \seo\Perf::SIZES_BANNER, $slideIndex === 0); ?>
                             </<?= $tag ?>>
                         <?php endforeach; ?>
                     </div>

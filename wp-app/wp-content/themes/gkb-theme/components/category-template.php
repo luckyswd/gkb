@@ -104,5 +104,9 @@ $totalCount = count(Helpers::getProductsByCategory());
             </div>
         <?php endif; ?>
 
+        <?php if (empty($search)) {
+            \seo\Content::renderTermBottom($currentCategory);
+        } ?>
+
     </div>
 </section>

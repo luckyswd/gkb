@@ -4,8 +4,16 @@ use helpers\Helpers;
 
 $helper = new Helpers();
 
-$link = get_post_permalink($product->ID);
-$image = $helper->getProductSliderImage($product);
+$link = get_permalink($product->ID);
+$imageIds = $helper->getProductImageIds($product);
+$imageId = $imageIds[0] ?? 0;
+$image = $imageId ? '' : $helper->getProductSliderImage($product);
+
+/* Первая карточка каталога и категории — кандидат в LCP на телефоне:
+   грузится сразу и с высоким приоритетом, остальные лениво. */
+$GLOBALS['gkb_card_index'] = ($GLOBALS['gkb_card_index'] ?? 0) + 1;
+$cardPriority = $GLOBALS['gkb_card_index'] === 1
+    && in_array(\seo\Context::type(), ['catalog', 'category'], true);
 $dataFunctionality = $helper->getProductFunctionality($product);
 $title = $helper->getProductTitle($product);
 $subheadline = $helper->getProductDescriptionCatalog($product);
@@ -14,8 +22,10 @@ $subheadline = $helper->getProductDescriptionCatalog($product);
 
 <div class="gkb-product-card">
     <div class="gkb-product-card__pic">
-        <?php if ($image) : ?>
-            <img loading="lazy" src="<?= esc_url($image) ?>" alt="<?= esc_attr($title ?? '') ?>" width="240" height="320">
+        <?php if ($imageId) : ?>
+            <?= \seo\Perf::img($imageId, \seo\Content::alt($imageId, (string) ($title ?? '')), \seo\Perf::SIZES_CARD, $cardPriority, ['width' => 240, 'height' => 320]) ?>
+        <?php elseif ($image) : ?>
+            <img loading="lazy" decoding="async" src="<?= esc_url($image) ?>" alt="<?= esc_attr($title ?? '') ?>" width="240" height="320">
         <?php endif; ?>
     </div>
 
@@ -47,6 +57,7 @@ $subheadline = $helper->getProductDescriptionCatalog($product);
             <?php if (!empty($subheadline)) : ?>
                 <p class="gkb-product-card__sub"><?= esc_html($subheadline) ?></p>
             <?php endif; ?>
+            <?= \seo\Content::priceLine($product, 'gkb-product-card__price') ?>
         </div>
     </div>
 </div>

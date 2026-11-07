@@ -4,32 +4,38 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="yandex-verification" content="56c82ebe91ca39d9" />
-    <title><?php wp_title('«', true, 'right'); ?><?php bloginfo('name'); ?></title>
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
     <?php $fontsDir = get_template_directory_uri() . '/dist/fonts/Inter/'; ?>
     <?php foreach (['cyrillic-400', 'cyrillic-500', 'cyrillic-600'] as $fontFile) : ?>
         <link rel="preload" href="<?= esc_url($fontsDir . 'inter-' . $fontFile . '-normal.woff2') ?>" as="font" type="font/woff2" crossorigin>
     <?php endforeach; ?>
     <?php wp_head(); ?>
     <?php if (home_url() == 'https://gazkotelbel.com' ) :?>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
+    <!-- Yandex.Metrika counter: загружается после первого действия посетителя
+         или когда браузер свободен (не позже ~3,5 с), чтобы не мешать отрисовке.
+         Вызовы ym() до загрузки копятся в очереди и не теряются. -->
+    <script>
+        (function (m, e, t, r, i) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
             m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
+            var loaded = false;
+            function load() {
+                if (loaded) { return; }
+                loaded = true;
+                for (var j = 0; j < e.scripts.length; j++) {
+                    if (e.scripts[j].src === r) { return; }
                 }
+                var k = e.createElement(t), a = e.getElementsByTagName(t)[0];
+                k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
             }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+                m.addEventListener(ev, load, {once: true, passive: true});
+            });
+            m.addEventListener('load', function () {
+                (m.requestIdleCallback || function (cb) { return setTimeout(cb, 1500); })(load, {timeout: 3500});
+            });
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-        ym(94762651, "init", {
+        ym(94762651, 'init', {
             clickmap: true,
             trackLinks: true,
             accurateTrackBounce: true,
@@ -200,7 +206,7 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                                 <div class="gkb-header__models" data-cat-panel>
                                     <?php foreach ($models as $model) : ?>
                                         <?php
-                                        $modelImage = $helper->getProductSliderImage($model);
+                                        $modelImage = $helper->getProductSliderImage($model, 'medium');
                                         $searchItems[] = [
                                             'name' => (string) ($helper->getProductTitle($model) ?? ''),
                                             'sub' => (string) ($helper->getProductDescriptionCatalog($model) ?? ''),
@@ -329,11 +335,14 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                 <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
 
-            <form class="gkb-search__form" role="search" method="get" action="<?= esc_url($catalogUrl) ?>">
+            <form class="gkb-search__form" role="search" method="get" action="<?= esc_url($catalogUrl) ?>"
+                  toolname="search_catalog" toolautosubmit
+                  tooldescription="Ищет модели в каталоге производителя котлов Житомир и колонок ВПГ (gazkotelbel.com) по названию или типу: «Житомир-3», «турбо», «колонка». Возвращает страницу каталога с найденными товарами.">
                 <?= $searchIcon ?>
                 <input type="search" name="search" class="gkb-search__input" autocomplete="off"
                        value="<?= esc_attr($_GET['search'] ?? '') ?>"
                        placeholder="<?= esc_attr($lang === 'en' ? 'search' : 'поиск') ?>"
+                       toolparamdescription="Поисковый запрос на русском: название модели (например, «Житомир-10») или тип оборудования."
                        aria-label="<?= esc_attr($searchPlaceholder) ?>">
                 <button type="button" class="gkb-search__clear" data-search-clear hidden
                         aria-label="<?= esc_attr($lang === 'en' ? 'Clear' : 'Очистить') ?>">

@@ -1,0 +1,378 @@
+/* Блоки SEO-слоя: цена «от» в карточке и герое, модификации, FAQ, похожие
+   модели, тексты категорий, «О производителе», статьи, калькулятор,
+   региональные страницы дилеров. Только токены из _tokens.scss. */
+
+/* --- Цена «от» и мощность --- */
+.gkb-product-card__price,
+.gkb-product__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--gkb-gap-xs) var(--gkb-gap-sm);
+    margin-top: var(--gkb-gap-sm);
+}
+
+.gkb-product-card__price__value,
+.gkb-product__price__value {
+    color: var(--gkb-text);
+    font-weight: 600;
+    font-size: var(--gkb-fs-md);
+}
+
+.gkb-product__price__value {
+    font-size: var(--gkb-fs-lead);
+}
+
+.gkb-product-card__price__power,
+.gkb-product__price__power {
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-sm);
+}
+
+/* --- Общие секции --- */
+.gkb-mods,
+.gkb-faq,
+.gkb-seo-text,
+.gkb-similar,
+.gkb-article__next,
+.gkb-region__map {
+    margin-top: var(--gkb-section-gap);
+}
+
+.gkb-mods__title,
+.gkb-faq__title,
+.gkb-similar__title,
+.gkb-calc__models-title {
+    margin-bottom: var(--gkb-gap-lg);
+    font-size: var(--gkb-fs-h2);
+    line-height: var(--gkb-lh-tight);
+}
+
+.gkb-mods__note {
+    margin-top: var(--gkb-gap-md);
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-sm);
+
+    a {
+        color: var(--gkb-accent-dark);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}
+
+/* --- FAQ --- */
+.gkb-faq__list {
+    display: grid;
+    gap: var(--gkb-gap-sm);
+}
+
+.gkb-faq__item {
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-surface-sunken);
+
+    &[open] .gkb-faq__q::after {
+        transform: rotate(45deg);
+    }
+}
+
+.gkb-faq__q {
+    position: relative;
+    padding: var(--gkb-gap-md) calc(var(--gkb-gap-md) * 2 + 16px) var(--gkb-gap-md) var(--gkb-gap-md);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+
+    &::after {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        right: var(--gkb-gap-md);
+        margin-top: -0.6em;
+        font-size: 1.4em;
+        line-height: 1;
+        color: var(--gkb-accent-dark);
+        transition: transform var(--gkb-t-fast);
+    }
+}
+
+.gkb-faq__a {
+    padding: 0 var(--gkb-gap-md) var(--gkb-gap-md);
+    color: var(--gkb-text-secondary);
+}
+
+.gkb-page-faq {
+    margin-top: var(--gkb-section-gap);
+}
+
+/* --- Текст категории и каталога --- */
+.gkb-seo-text__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-xs) var(--gkb-gap-md);
+    margin-top: var(--gkb-gap-md);
+
+    a {
+        color: var(--gkb-accent-dark);
+    }
+}
+
+/* --- О производителе (главная) --- */
+.gkb-about {
+    margin-top: var(--gkb-section-gap);
+}
+
+.gkb-about__title {
+    font-size: var(--gkb-fs-h2);
+    line-height: var(--gkb-lh-tight);
+}
+
+.gkb-about__text {
+    margin-top: var(--gkb-gap-md);
+    max-width: 75ch;
+}
+
+.gkb-about__points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: var(--gkb-gap-md);
+    margin-top: var(--gkb-gap-lg);
+}
+
+.gkb-about__point {
+    display: grid;
+    gap: var(--gkb-gap-2xs);
+    padding: var(--gkb-gap-md);
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-accent-soft);
+
+    span {
+        color: var(--gkb-text-secondary);
+        font-size: var(--gkb-fs-sm);
+    }
+}
+
+.gkb-about__links,
+.gkb-article__next,
+.gkb-region__others {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gkb-gap-sm);
+}
+
+.gkb-about__links {
+    margin-top: var(--gkb-gap-lg);
+}
+
+/* --- Страницы SEO-слоя --- */
+.gkb-seo-page {
+    padding-bottom: var(--gkb-section-gap);
+}
+
+.gkb-seo-page__title {
+    margin: var(--gkb-gap-md) 0 var(--gkb-gap-lg);
+    font-size: var(--gkb-fs-h1);
+    line-height: var(--gkb-lh-tight);
+}
+
+/* --- Статьи --- */
+.gkb-article__card .gkb-seo-page__title {
+    margin-top: 0;
+}
+
+.gkb-article__dates,
+.gkb-articles__date {
+    color: var(--gkb-text-subtle);
+    font-size: var(--gkb-fs-sm);
+}
+
+.gkb-article__toc {
+    margin: var(--gkb-gap-lg) 0;
+    padding: var(--gkb-gap-md) var(--gkb-gap-lg);
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-surface-sunken);
+
+    ol {
+        display: grid;
+        gap: var(--gkb-gap-2xs);
+        padding-left: 1.2em;
+        list-style: decimal;
+    }
+
+    a {
+        color: var(--gkb-accent-dark);
+    }
+}
+
+.gkb-article__toc-title {
+    margin-bottom: var(--gkb-gap-xs);
+    font-weight: 600;
+}
+
+.gkb-article__body {
+    max-width: 78ch;
+
+    h2 {
+        scroll-margin-top: 96px;
+    }
+}
+
+.gkb-articles__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--gkb-gap-lg);
+}
+
+.gkb-articles__item {
+    display: grid;
+    align-content: start;
+    gap: var(--gkb-gap-sm);
+    color: inherit;
+    transition: box-shadow var(--gkb-t);
+
+    img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: var(--gkb-r-lg);
+    }
+
+    &:hover,
+    &:focus-visible {
+        box-shadow: 0 0 0 2px var(--gkb-accent-ring);
+    }
+}
+
+.gkb-articles__title {
+    font-weight: 600;
+    font-size: var(--gkb-fs-md);
+}
+
+.gkb-articles__excerpt {
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-sm);
+}
+
+/* --- Калькулятор --- */
+.gkb-calc__layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    gap: var(--gkb-gap-lg);
+    align-items: start;
+}
+
+.gkb-calc__form {
+    display: grid;
+    gap: var(--gkb-gap-md);
+}
+
+.gkb-calc__field {
+    display: grid;
+    gap: var(--gkb-gap-xs);
+    min-width: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.gkb-calc__radio,
+.gkb-calc__check {
+    display: flex;
+    align-items: center;
+    gap: var(--gkb-gap-sm);
+    cursor: pointer;
+
+    input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--gkb-accent);
+    }
+}
+
+.gkb-calc__kw {
+    font-size: var(--gkb-fs-lead);
+
+    strong {
+        display: block;
+        margin-top: var(--gkb-gap-2xs);
+        color: var(--gkb-accent-dark);
+        font-size: var(--gkb-fs-h1);
+        line-height: var(--gkb-lh-tight);
+    }
+}
+
+.gkb-calc__explain,
+.gkb-calc__placeholder {
+    margin-top: var(--gkb-gap-sm);
+    color: var(--gkb-text-secondary);
+}
+
+.gkb-calc__models-title {
+    margin-top: var(--gkb-gap-lg);
+    font-size: var(--gkb-fs-h3);
+}
+
+.gkb-calc__models {
+    display: grid;
+    gap: var(--gkb-gap-xs);
+    margin-bottom: var(--gkb-gap-md);
+
+    a {
+        color: var(--gkb-accent-dark);
+        font-weight: 600;
+    }
+}
+
+/* --- Региональные страницы дилеров --- */
+.gkb-region__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--gkb-gap-lg);
+}
+
+.gkb-region__name {
+    margin-bottom: var(--gkb-gap-sm);
+    font-size: var(--gkb-fs-md);
+}
+
+.gkb-region__address {
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-sm);
+}
+
+.gkb-region__phones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-xs) var(--gkb-gap-md);
+    margin-top: var(--gkb-gap-sm);
+
+    a {
+        color: var(--gkb-accent-dark);
+        font-weight: 600;
+    }
+}
+
+.gkb-region__map {
+    overflow: hidden;
+
+    iframe,
+    .mapp-layout {
+        max-width: 100%;
+    }
+}
+
+.gkb-region__others {
+    margin-top: var(--gkb-section-gap);
+}
+
+.gkb-region__others-title {
+    font-weight: 600;
+}
+
+.dealers__region-links {
+    margin: 0 0 var(--gkb-gap-lg);
+}

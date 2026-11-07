@@ -108,6 +108,15 @@ $termName = static function ($term) use ($lang): string {
                         <?= esc_html($menuItem['link']['title']) ?>
                     </a>
                 <?php endforeach; ?>
+                <?php if ($lang !== 'en') : ?>
+                    <?php $calcPage = get_page_by_path(\seo\Context::CALCULATOR_SLUG); ?>
+                    <?php if ($calcPage && $calcPage->post_status === 'publish') : ?>
+                        <a href="<?= esc_url(get_permalink($calcPage)) ?>">Калькулятор мощности</a>
+                    <?php endif; ?>
+                    <?php if (wp_count_posts('articles')->publish ?? 0) : ?>
+                        <a href="<?= esc_url(get_post_type_archive_link('articles')) ?>">Статьи</a>
+                    <?php endif; ?>
+                <?php endif; ?>
             </nav>
         <?php endif; ?>
 

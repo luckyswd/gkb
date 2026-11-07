@@ -1,0 +1,2435 @@
+{
+ "base": "https://gazkotelbel.com",
+ "date": "2026-11-07 10:50",
+ "urls": [
+  "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+  "https://gazkotelbel.com/",
+  "https://gazkotelbel.com/price-list/",
+  "https://gazkotelbel.com/where-to-buy/",
+  "https://gazkotelbel.com/documentation/",
+  "https://gazkotelbel.com/contact/",
+  "https://gazkotelbel.com/about/",
+  "https://gazkotelbel.com/catalog/",
+  "https://gazkotelbel.com/registration/",
+  "https://gazkotelbel.com/login/",
+  "https://gazkotelbel.com/products/zhytomyr-5/",
+  "https://gazkotelbel.com/products/zhytomyr-10/",
+  "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+  "https://gazkotelbel.com/products/zhytomyr-3/",
+  "https://gazkotelbel.com/products/zhytomyr-9/",
+  "https://gazkotelbel.com/products/vpg-20t/",
+  "https://gazkotelbel.com/products/hsv-20m/",
+  "https://gazkotelbel.com/products/hsv-20/",
+  "https://gazkotelbel.com/products/zhytomyr-turbo/",
+  "https://gazkotelbel.com/products/zhytomyr-m/",
+  "https://gazkotelbel.com/products/zhytomyr/",
+  "https://gazkotelbel.com/products/hsv-20tm/",
+  "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+  "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+  "https://gazkotelbel.com/product-category/gas-boilers/",
+  "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+  "https://gazkotelbel.com/product-category/universal-boilers/",
+  "https://gazkotelbel.com/product-category/gas-convectors/",
+  "https://gazkotelbel.com/product-category/geysers/"
+ ],
+ "issues": [
+  {
+   "level": "error",
+   "rule": "sitemap",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "служебный или мусорный адрес в sitemap"
+  },
+  {
+   "level": "error",
+   "rule": "sitemap",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "служебный или мусорный адрес в sitemap"
+  },
+  {
+   "level": "error",
+   "rule": "sitemap",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "служебный или мусорный адрес в sitemap"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "мусор в title: Привет, мир! - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/",
+   "msg": "h1 содержит ссылку: Выбери свой котел"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/",
+   "msg": "опечатка «Беларусии»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "мусор в title: Прайс лист - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/price-list/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "мусор в title: Где купить - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "опечатка «диллер»"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "мусор в title: Документация - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/documentation/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "мусор в title: Контакты - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/contact/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "мусор в title: О производстве - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "мусор в title: Каталог - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "мусор в title: Регистрация - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "мусор в title: Логин - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "мусор в title: Газовые конвекторы ЖИТОМИР-5 - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "мусор в title: Газовые котлы ЖИТОМИР-10 - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "содержательных изображений без alt: 7"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "мусор в title: Газовые котлы ЖИТОМИР-3 С ТЭНОМ - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "мусор в title: Газовые котлы ЖИТОМИР-3 - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "содержательных изображений без alt: 8"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "мусор в title: Универсальные котлы ЖИТОМИР-9 - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "содержательных изображений без alt: 5"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "мусор в title: Газовые колонки ВПГ-20Т - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "мусор в title: Газовые колонки ВПГ-20M - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "мусор в title: Газовые колонки ВПГ-20 - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "мусор в title: Газовые котлы ЖИТОМИР-ТУРБО - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "содержательных изображений без alt: 5"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "мусор в title: Газовые котлы ЖИТОМИР-М - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "содержательных изображений без alt: 3"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "мусор в title: Твердотопливные котлы ЖИТОМИР - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "содержательных изображений без alt: 4"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "мусор в title: Газовые колонки ВПГ-20TM - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "мусор в title: Твердотопливные котлы ЖИТОМИР АОТВ/АКТВ - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "нет Product на странице товара"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "содержательных изображений без alt: 6"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "title на странице: 0"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "пустой title"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "canonical",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "canonical: 0"
+  },
+  {
+   "level": "error",
+   "rule": "robots",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "meta robots: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "блоков JSON-LD: 0"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет WebSite"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет WebPage"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет BreadcrumbList"
+  },
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "мусор в title: Газовые котлы - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "мусор в title: Твердотопливные котлы - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "мусор в title: Универсальные котлы - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "мусор в title: Газовые конвекторы - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "error",
+   "rule": "title",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "мусор в title: Газовые колонки - gazkotelbelgazkotelbel"
+  },
+  {
+   "level": "error",
+   "rule": "description",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "meta description: 0"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:title"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:description"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:url"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:image"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:type"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:locale"
+  },
+  {
+   "level": "error",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет og:site_name"
+  },
+  {
+   "level": "warn",
+   "rule": "og",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет twitter:card"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "нет Organization"
+  },
+  {
+   "level": "error",
+   "rule": "jsonld",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "в графе есть Person"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "msg": "опечатка «gazkotelbelgazkotelbel»"
+  },
+  {
+   "level": "warn",
+   "rule": "orphan",
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "msg": "нет входящих внутренних ссылок"
+  },
+  {
+   "level": "warn",
+   "rule": "orphan",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "нет входящих внутренних ссылок"
+  },
+  {
+   "level": "warn",
+   "rule": "orphan",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "нет входящих внутренних ссылок"
+  },
+  {
+   "level": "warn",
+   "rule": "orphan",
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "msg": "нет входящих внутренних ссылок"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «Disallow: /wp-admin/»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «Clean-param»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «llms.txt»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «OAI-SearchBot»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «PerplexityBot»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «ClaudeBot»"
+  },
+  {
+   "level": "error",
+   "rule": "robots.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "в robots.txt нет «YandexAdditional»"
+  },
+  {
+   "level": "error",
+   "rule": "llms.txt",
+   "url": "https://gazkotelbel.com",
+   "msg": "llms.txt: 404 text/html; charset=UTF-8"
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/wp-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 302 https://gazkotelbel.com/sitemap.xml"
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/sitemap_index.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 302 https://gazkotelbel.com/sitemap.xml"
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/post-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/page-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/products-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/product-category-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/category-sitemap.xml",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "legacy-sitemap",
+   "url": "https://gazkotelbel.com/sitemap.rss",
+   "msg": "ожидался 301 на /sitemap.xml, получено 200 "
+  },
+  {
+   "level": "error",
+   "rule": "robots",
+   "url": "https://gazkotelbel.com/login/",
+   "msg": "служебная страница без noindex"
+  },
+  {
+   "level": "error",
+   "rule": "robots",
+   "url": "https://gazkotelbel.com/registration/",
+   "msg": "служебная страница без noindex"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "нет X-Robots-Tag noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "msg": "нет meta robots noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "нет X-Robots-Tag noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "нет meta robots noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "нет X-Robots-Tag noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "msg": "нет meta robots noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/",
+   "msg": "нет X-Robots-Tag noindex у ?lang=en"
+  },
+  {
+   "level": "error",
+   "rule": "lang-en",
+   "url": "https://gazkotelbel.com/",
+   "msg": "нет meta robots noindex у ?lang=en"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/",
+   "msg": "мобильная производительность 80"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/",
+   "msg": "LCP 4.78 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "LCP 3.43 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "LCP 3.43 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "мобильная производительность 83"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "LCP 4.3 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "мобильная производительность 82"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "доступность 88"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "LCP 4.52 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "мобильная производительность 85"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "LCP 4.13 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "мобильная производительность 81"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "доступность 93"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "LCP 4.6 с"
+  }
+ ],
+ "lighthouse": [
+  {
+   "path": "/",
+   "preset": "mobile",
+   "performance": 80,
+   "accessibility": 93,
+   "best-practices": 75,
+   "seo": 100,
+   "lcp_s": 4.78,
+   "cls": 0,
+   "tbt_ms": 61
+  },
+  {
+   "path": "/",
+   "preset": "desktop",
+   "performance": 87,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 2.09,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/catalog/",
+   "preset": "mobile",
+   "performance": 90,
+   "accessibility": 93,
+   "best-practices": 75,
+   "seo": 92,
+   "lcp_s": 3.43,
+   "cls": 0,
+   "tbt_ms": 45
+  },
+  {
+   "path": "/catalog/",
+   "preset": "desktop",
+   "performance": 90,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 1.88,
+   "cls": 0.003,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/product-category/gas-boilers/",
+   "preset": "mobile",
+   "performance": 91,
+   "accessibility": 93,
+   "best-practices": 75,
+   "seo": 92,
+   "lcp_s": 3.43,
+   "cls": 0,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/product-category/gas-boilers/",
+   "preset": "desktop",
+   "performance": 94,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 1.49,
+   "cls": 0.003,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-3/",
+   "preset": "mobile",
+   "performance": 83,
+   "accessibility": 93,
+   "best-practices": 79,
+   "seo": 92,
+   "lcp_s": 4.3,
+   "cls": 0,
+   "tbt_ms": 12
+  },
+  {
+   "path": "/products/zhytomyr-3/",
+   "preset": "desktop",
+   "performance": 89,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 1.99,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-10/",
+   "preset": "mobile",
+   "performance": 82,
+   "accessibility": 88,
+   "best-practices": 79,
+   "seo": 85,
+   "lcp_s": 4.52,
+   "cls": 0,
+   "tbt_ms": 26
+  },
+  {
+   "path": "/products/zhytomyr-10/",
+   "preset": "desktop",
+   "performance": 87,
+   "accessibility": 88,
+   "best-practices": 78,
+   "seo": 85,
+   "lcp_s": 2.16,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-turbo/",
+   "preset": "mobile",
+   "performance": 85,
+   "accessibility": 93,
+   "best-practices": 79,
+   "seo": 92,
+   "lcp_s": 4.13,
+   "cls": 0,
+   "tbt_ms": 21
+  },
+  {
+   "path": "/products/zhytomyr-turbo/",
+   "preset": "desktop",
+   "performance": 94,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 1.41,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/where-to-buy/",
+   "preset": "mobile",
+   "performance": 81,
+   "accessibility": 93,
+   "best-practices": 79,
+   "seo": 92,
+   "lcp_s": 4.6,
+   "cls": 0,
+   "tbt_ms": 103
+  },
+  {
+   "path": "/where-to-buy/",
+   "preset": "desktop",
+   "performance": 80,
+   "accessibility": 93,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 3.17,
+   "cls": 0.003,
+   "tbt_ms": 0
+  }
+ ],
+ "pages": [
+  {
+   "url": "https://gazkotelbel.com/%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80/",
+   "status": 200,
+   "title": "Привет, мир! - gazkotelbelgazkotelbel",
+   "desc": "Добро пожаловать в WordPress. Это ваша первая запись. Отредактируйте или удалите ее, затем начинайте создавать!",
+   "types": [
+    "BlogPosting",
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/",
+   "status": 200,
+   "title": "Газовые котлы в Беларусии - Главная страницаgazkotelbel",
+   "desc": "Мы специализируемся на разработке передовых систем отопления для домашнего использования, которые отличаются экономичностью и непревзойденной надежностью.",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/price-list/",
+   "status": 200,
+   "title": "Прайс лист - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "status": 200,
+   "title": "Где купить - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/documentation/",
+   "status": 200,
+   "title": "Документация - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/contact/",
+   "status": 200,
+   "title": "Контакты - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/about/",
+   "status": 200,
+   "title": "О производстве - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/catalog/",
+   "status": 200,
+   "title": "Каталог - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/registration/",
+   "status": 200,
+   "title": "Регистрация - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/login/",
+   "status": 200,
+   "title": "Логин - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "status": 200,
+   "title": "Газовые конвекторы ЖИТОМИР-5 - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "status": 200,
+   "title": "Газовые котлы ЖИТОМИР-10 - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "status": 200,
+   "title": "Газовые котлы ЖИТОМИР-3 С ТЭНОМ - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "status": 200,
+   "title": "Газовые котлы ЖИТОМИР-3 - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "status": 200,
+   "title": "Универсальные котлы ЖИТОМИР-9 - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "status": 200,
+   "title": "Газовые колонки ВПГ-20Т - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "status": 200,
+   "title": "Газовые колонки ВПГ-20M - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "status": 200,
+   "title": "Газовые колонки ВПГ-20 - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "status": 200,
+   "title": "Газовые котлы ЖИТОМИР-ТУРБО - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "status": 200,
+   "title": "Газовые котлы ЖИТОМИР-М - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "status": 200,
+   "title": "Твердотопливные котлы ЖИТОМИР - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "status": 200,
+   "title": "Газовые колонки ВПГ-20TM - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "status": 200,
+   "title": "Твердотопливные котлы ЖИТОМИР АОТВ/АКТВ - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/category/%d0%b1%d0%b5%d0%b7-%d1%80%d1%83%d0%b1%d1%80%d0%b8%d0%ba%d0%b8/",
+   "status": 200,
+   "title": "",
+   "desc": "",
+   "types": []
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "status": 200,
+   "title": "Газовые котлы - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "status": 200,
+   "title": "Твердотопливные котлы - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "status": 200,
+   "title": "Универсальные котлы - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "status": 200,
+   "title": "Газовые конвекторы - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "status": 200,
+   "title": "Газовые колонки - gazkotelbelgazkotelbel",
+   "desc": "",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ]
+  }
+ ]
+}

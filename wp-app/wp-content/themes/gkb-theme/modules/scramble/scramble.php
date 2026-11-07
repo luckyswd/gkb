@@ -21,11 +21,7 @@ $allProductsLabel = $headerFields['all_products']
             <div class="scramble_wrapper">
                 <div class="scramble__head">
                     <div class="scramble__intro">
-                        <h1 class="headline">
-                            <a href="<?= esc_url(home_url('/catalog')) ?>">
-                                <?= $fields['headline'] ?? '' ?>
-                            </a>
-                        </h1>
+                        <h1 class="headline"><?= esc_html(wp_strip_all_tags((string) ($fields['headline'] ?? ''))) ?></h1>
                         <p class="subheadline"><?= $fields['subheadline'] ?? '' ?></p>
                     </div>
                     <a href="<?= esc_url(home_url('/catalog')) ?>" class="gkb-btn gkb-btn--sm scramble__all">

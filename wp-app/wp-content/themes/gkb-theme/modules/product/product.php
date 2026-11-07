@@ -69,7 +69,8 @@ $firstTab = $tabs[0]['id'] ?? '';
                                 <?php foreach ($slides as $index => $slide) : ?>
                                     <button type="button" class="gkb-gallery__thumb<?= $index === 0 ? ' is-active' : '' ?>"
                                             aria-label="<?= esc_attr(($lang === 'en' ? 'Photo ' : 'Фото ') . ($index + 1)) ?>">
-                                        <img src="<?= esc_url($slide['image']['url']) ?>" alt="" loading="lazy" width="72" height="96">
+                                        <?php $thumbId = (int) ($slide['image']['ID'] ?? 0); ?>
+                                        <img src="<?= esc_url($thumbId ? (wp_get_attachment_image_url($thumbId, 'medium') ?: $slide['image']['url']) : $slide['image']['url']) ?>" alt="" loading="lazy" decoding="async" width="72" height="96">
                                     </button>
                                 <?php endforeach; ?>
                             </div>
@@ -78,10 +79,17 @@ $firstTab = $tabs[0]['id'] ?? '';
                         <div class="gkb-gallery__stage">
                             <div class="swiper gkb-gallery__main">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($slides as $slide) : ?>
+                                    <?php foreach ($slides as $slideIndex => $slide) : ?>
+                                        <?php
+                                        $slideId = (int) ($slide['image']['ID'] ?? 0);
+                                        $slideAlt = trim(($fields['title'] ?? '') . ($slideIndex > 0 ? ($lang === 'en' ? ', photo ' : ', фото ') . ($slideIndex + 1) : ''));
+                                        ?>
                                         <div class="swiper-slide">
-                                            <img src="<?= esc_url($slide['image']['url']) ?>"
-                                                 alt="<?= esc_attr($fields['title'] ?? '') ?>">
+                                            <?php if ($slideId) : ?>
+                                                <?= \seo\Perf::img($slideId, \seo\Content::alt($slideId, $slideAlt), \seo\Perf::SIZES_GALLERY, $slideIndex === 0) ?>
+                                            <?php else : ?>
+                                                <img src="<?= esc_url($slide['image']['url']) ?>" alt="<?= esc_attr($slideAlt) ?>"<?= $slideIndex === 0 ? ' fetchpriority="high"' : ' loading="lazy"' ?>>
+                                            <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
@@ -137,6 +145,7 @@ $firstTab = $tabs[0]['id'] ?? '';
                         <?php if (!empty($fields['subtitle'])) : ?>
                             <p class="gkb-product__subtitle"><?= esc_html($fields['subtitle']) ?></p>
                         <?php endif; ?>
+                        <?= $productId ? \seo\Content::priceLine(get_post($productId), 'gkb-product__price') : '' ?>
                     </div>
 
                     <?php if (!empty($fields['description'])) : ?>
@@ -153,6 +162,10 @@ $firstTab = $tabs[0]['id'] ?? '';
                     </div>
                 </div>
             </div>
+
+            <?php if ($productId) {
+                \seo\Content::renderModifications(get_post($productId));
+            } ?>
 
             <?php if (!empty($tabs)) : ?>
                 <div class="gkb-card gkb-product__tabs">
@@ -191,6 +204,11 @@ $firstTab = $tabs[0]['id'] ?? '';
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
+
+            <?php if ($productId) {
+                \seo\Content::renderFaq(\seo\Content::faqRows(get_post($productId)));
+                \seo\Content::renderSimilar(get_post($productId));
+            } ?>
 
         </div>
     </section>

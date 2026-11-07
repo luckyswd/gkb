@@ -17,6 +17,14 @@ $fields = (new Helpers)->get_field_multi_lang();
                     <?= $fields['title'] ?>
                 </h1>
             <?php endif; ?>
+            <?php $regionPages = (new Helpers)->getLang() === 'en' ? [] : \seo\Regions::all(); ?>
+            <?php if ($regionPages) : ?>
+                <nav class="gkb-region__others dealers__region-links" aria-label="Дилеры по областям">
+                    <?php foreach ($regionPages as $regionSlug => $regionPage) : ?>
+                        <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(\seo\Regions::url($regionSlug)) ?>"><?= esc_html($regionPage['name']) ?></a>
+                    <?php endforeach; ?>
+                </nav>
+            <?php endif; ?>
             <?php if (!empty($fields['regions'])) : ?>
             <div class="dealers__wrapper">
                 <div class="dealers__regions">

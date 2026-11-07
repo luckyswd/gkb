@@ -11,6 +11,7 @@ include 'hooks_filters/acf_blocks_editor.php';
 include 'hooks_filters/cache_purge.php';
 
 require_once 'helpers/Helpers.php';
+require_once 'seo/seo.php';
 require_once 'authorization/Authorization.php';
 require_once 'ajax/Ajax.php';
 require_once 'googleApi/GoogleClient.php';
