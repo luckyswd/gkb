@@ -53,7 +53,7 @@ class Llms
                 $facts = array_filter([
                     Context::productSubtitle($p),
                     ProductData::powerRange($s),
-                    $s['count'] > 1 ? $s['count'] . ' модификаций' : '',
+                    $s['count'] > 1 ? $s['count'] . ' модификац' . (in_array($s['count'] % 10, [2, 3, 4], true) && !in_array($s['count'] % 100, [12, 13, 14], true) ? 'ии' : 'ий') : '',
                     $s['min_price'] !== null ? 'цена от ' . ProductData::money($s['min_price']) . ' BYN' : '',
                 ]);
                 $L[] = '- [' . Context::productTitle($p) . '](' . trailingslashit(get_permalink($p)) . ')' . ($facts ? ': ' . implode(', ', $facts) : '');
