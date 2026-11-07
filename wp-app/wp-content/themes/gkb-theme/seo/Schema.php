@@ -60,7 +60,7 @@ class Schema
             'legalName' => $o['legal_name'],
             'alternateName' => ['GazKotelBel', 'Газкотелбел', 'gazkotelbel'],
             'url' => home_url('/'),
-            'description' => 'Производитель и поставщик котлов Житомир (ТМ АТЕМ), газовых конвекторов и колонок ВПГ в Беларуси.',
+            'description' => 'Официальный представитель украинского производителя АТЕМ в Беларуси: котлы Житомир, газовые конвекторы и колонки ВПГ.',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => $o['street'],
@@ -247,7 +247,7 @@ class Schema
             'name' => Context::productTitle($p),
             'url' => $url,
             'brand' => ['@type' => 'Brand', 'name' => 'АТЕМ'],
-            'manufacturer' => ['@id' => self::id('organization')],
+            'manufacturer' => ['@type' => 'Organization', 'name' => 'АТЕМ', 'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'UA']],
         ];
         if ($description !== '') {
             $node['description'] = mb_substr(preg_replace('/\s+/u', ' ', $description), 0, 1000);

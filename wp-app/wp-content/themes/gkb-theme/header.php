@@ -337,7 +337,7 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
 
             <form class="gkb-search__form" role="search" method="get" action="<?= esc_url($catalogUrl) ?>"
                   toolname="search_catalog" toolautosubmit
-                  tooldescription="Ищет модели в каталоге производителя котлов Житомир и колонок ВПГ (gazkotelbel.com) по названию или типу: «Житомир-3», «турбо», «колонка». Возвращает страницу каталога с найденными товарами.">
+                  tooldescription="Ищет модели в каталоге котлов Житомир и колонок ВПГ официального представителя АТЕМ в Беларуси (gazkotelbel.com) по названию или типу: «Житомир-3», «турбо», «колонка». Возвращает страницу каталога с найденными товарами.">
                 <?= $searchIcon ?>
                 <input type="search" name="search" class="gkb-search__input" autocomplete="off"
                        value="<?= esc_attr($_GET['search'] ?? '') ?>"

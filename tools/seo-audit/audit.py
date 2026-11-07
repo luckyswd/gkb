@@ -339,9 +339,9 @@ def audit_page(url: str, base: str):
         w = img.get("width", "")
         if w.isdigit() and int(w) <= 72:
             continue
+        # alt="" — осознанно декоративное изображение (спека seo-content);
+        # нарушение — только отсутствие атрибута
         if "alt" not in img:
-            empty_alt += 1
-        elif not img["alt"].strip():
             empty_alt += 1
     if empty_alt:
         iss.append(("warn", "alt", f"содержательных изображений без alt: {empty_alt}"))

@@ -1,0 +1,690 @@
+{
+ "base": "https://gazkotelbel.com",
+ "date": "2026-11-07 11:35",
+ "urls": [
+  "https://gazkotelbel.com/",
+  "https://gazkotelbel.com/about/",
+  "https://gazkotelbel.com/catalog/",
+  "https://gazkotelbel.com/contact/",
+  "https://gazkotelbel.com/price-list/",
+  "https://gazkotelbel.com/where-to-buy/",
+  "https://gazkotelbel.com/documentation/",
+  "https://gazkotelbel.com/products/vpg-20t/",
+  "https://gazkotelbel.com/products/hsv-20m/",
+  "https://gazkotelbel.com/products/hsv-20tm/",
+  "https://gazkotelbel.com/products/hsv-20/",
+  "https://gazkotelbel.com/products/zhytomyr-5/",
+  "https://gazkotelbel.com/products/zhytomyr-9/",
+  "https://gazkotelbel.com/products/zhytomyr/",
+  "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+  "https://gazkotelbel.com/products/zhytomyr-m/",
+  "https://gazkotelbel.com/products/zhytomyr-turbo/",
+  "https://gazkotelbel.com/products/zhytomyr-10/",
+  "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+  "https://gazkotelbel.com/products/zhytomyr-3/",
+  "https://gazkotelbel.com/product-category/geysers/",
+  "https://gazkotelbel.com/product-category/gas-convectors/",
+  "https://gazkotelbel.com/product-category/gas-boilers/",
+  "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+  "https://gazkotelbel.com/product-category/universal-boilers/",
+  "https://gazkotelbel.com/where-to-buy/minsk/",
+  "https://gazkotelbel.com/where-to-buy/minsk-region/",
+  "https://gazkotelbel.com/where-to-buy/brest/",
+  "https://gazkotelbel.com/where-to-buy/vitebsk/",
+  "https://gazkotelbel.com/where-to-buy/gomel/",
+  "https://gazkotelbel.com/where-to-buy/grodno/",
+  "https://gazkotelbel.com/where-to-buy/mogilev/"
+ ],
+ "issues": [
+  {
+   "level": "error",
+   "rule": "h1",
+   "url": "https://gazkotelbel.com/about/",
+   "msg": "h1 на странице: 0"
+  },
+  {
+   "level": "error",
+   "rule": "typo",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "опечатка «диллер»"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "msg": "содержательных изображений без alt: 4"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "msg": "содержательных изображений без alt: 1"
+  },
+  {
+   "level": "warn",
+   "rule": "alt",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "содержательных изображений без alt: 4"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/",
+   "msg": "LCP 2.78 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "мобильная производительность 88"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/catalog/",
+   "msg": "LCP 2.87 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "msg": "LCP 2.87 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "msg": "LCP 2.94 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "доступность 92"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "msg": "LCP 3.08 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "msg": "LCP 2.81 с"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "мобильная производительность 84"
+  },
+  {
+   "level": "warn",
+   "rule": "lighthouse",
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "msg": "LCP 4.09 с"
+  }
+ ],
+ "lighthouse": [
+  {
+   "path": "/",
+   "preset": "mobile",
+   "performance": 93,
+   "accessibility": 96,
+   "best-practices": 75,
+   "seo": 100,
+   "lcp_s": 2.78,
+   "cls": 0,
+   "tbt_ms": 71
+  },
+  {
+   "path": "/",
+   "preset": "desktop",
+   "performance": 95,
+   "accessibility": 96,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 1.23,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/catalog/",
+   "preset": "mobile",
+   "performance": 88,
+   "accessibility": 96,
+   "best-practices": 75,
+   "seo": 100,
+   "lcp_s": 2.87,
+   "cls": 0,
+   "tbt_ms": 298
+  },
+  {
+   "path": "/catalog/",
+   "preset": "desktop",
+   "performance": 91,
+   "accessibility": 96,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 1.83,
+   "cls": 0.003,
+   "tbt_ms": 28
+  },
+  {
+   "path": "/product-category/gas-boilers/",
+   "preset": "mobile",
+   "performance": 94,
+   "accessibility": 96,
+   "best-practices": 75,
+   "seo": 100,
+   "lcp_s": 2.87,
+   "cls": 0,
+   "tbt_ms": 95
+  },
+  {
+   "path": "/product-category/gas-boilers/",
+   "preset": "desktop",
+   "performance": 94,
+   "accessibility": 96,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 1.41,
+   "cls": 0.003,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-3/",
+   "preset": "mobile",
+   "performance": 93,
+   "accessibility": 97,
+   "best-practices": 79,
+   "seo": 100,
+   "lcp_s": 2.94,
+   "cls": 0,
+   "tbt_ms": 90
+  },
+  {
+   "path": "/products/zhytomyr-3/",
+   "preset": "desktop",
+   "performance": 93,
+   "accessibility": 97,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 1.47,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-10/",
+   "preset": "mobile",
+   "performance": 92,
+   "accessibility": 92,
+   "best-practices": 79,
+   "seo": 92,
+   "lcp_s": 3.08,
+   "cls": 0,
+   "tbt_ms": 83
+  },
+  {
+   "path": "/products/zhytomyr-10/",
+   "preset": "desktop",
+   "performance": 96,
+   "accessibility": 92,
+   "best-practices": 78,
+   "seo": 92,
+   "lcp_s": 1.14,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/products/zhytomyr-turbo/",
+   "preset": "mobile",
+   "performance": 93,
+   "accessibility": 97,
+   "best-practices": 79,
+   "seo": 100,
+   "lcp_s": 2.81,
+   "cls": 0,
+   "tbt_ms": 112
+  },
+  {
+   "path": "/products/zhytomyr-turbo/",
+   "preset": "desktop",
+   "performance": 96,
+   "accessibility": 97,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 1.09,
+   "cls": 0.002,
+   "tbt_ms": 0
+  },
+  {
+   "path": "/where-to-buy/",
+   "preset": "mobile",
+   "performance": 84,
+   "accessibility": 97,
+   "best-practices": 79,
+   "seo": 100,
+   "lcp_s": 4.09,
+   "cls": 0,
+   "tbt_ms": 112
+  },
+  {
+   "path": "/where-to-buy/",
+   "preset": "desktop",
+   "performance": 84,
+   "accessibility": 97,
+   "best-practices": 78,
+   "seo": 100,
+   "lcp_s": 2.47,
+   "cls": 0.003,
+   "tbt_ms": 0
+  }
+ ],
+ "pages": [
+  {
+   "url": "https://gazkotelbel.com/",
+   "status": 200,
+   "title": "Газовые котлы Житомир от производителя в Беларуси — ГазКотелБел",
+   "desc": "Газовые котлы Житомир от производителя в Беларуси: напольные дымоходные и турбированные, твердотопливные и универсальные котлы, конвекторы и колонки ВПГ. Цены в BYN.",
+   "types": [
+    "Organization",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/about/",
+   "status": 200,
+   "title": "О производстве котлов Житомир в Беларуси | ГазКотелБел",
+   "desc": "ГазКотелБел — производитель и поставщик котлов Житомир (ТМ АТЕМ) в Беларуси: производство, контроль качества, официальная гарантия и сервис по всей стране.",
+   "types": [
+    "AboutPage",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/catalog/",
+   "status": 200,
+   "title": "Каталог котлов Житомир и колонок ВПГ — цены от производителя",
+   "desc": "Каталог продукции ГазКотелБел: газовые, твердотопливные и универсальные котлы Житомир, газовые конвекторы и колонки ВПГ. Цены от производителя в BYN.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/contact/",
+   "status": 200,
+   "title": "Контакты ГазКотелБел — производитель котлов Житомир в Беларуси",
+   "desc": "Контакты ООО «ГазКотелБел»: адрес в Мачулищах (Минский район), телефоны отдела продаж, email и часы работы. Консультации по подбору котла Житомир.",
+   "types": [
+    "BreadcrumbList",
+    "ContactPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/price-list/",
+   "status": 200,
+   "title": "Прайс-лист на котлы Житомир и колонки ВПГ — цены в BYN | ГазКотелБел",
+   "desc": "Актуальный прайс-лист ГазКотелБел: розничные цены с НДС в BYN на газовые котлы Житомир-3, Житомир-10, Житомир-Турбо, Житомир-М, конвекторы и колонки ВПГ.",
+   "types": [
+    "BreadcrumbList",
+    "Organization",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Беларуси — официальные дилеры | ГазКотелБел",
+   "desc": "Официальные дилеры котлов Житомир и колонок ВПГ в Минске и всех областях Беларуси: адреса, телефоны и часы работы магазинов, доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "Organization",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/documentation/",
+   "status": 200,
+   "title": "Документация и паспорта котлов Житомир — скачать PDF | ГазКотелБел",
+   "desc": "Паспорта, инструкции по монтажу и эксплуатации котлов Житомир, газовых конвекторов и колонок ВПГ в PDF. Официальная документация производителя.",
+   "types": [
+    "BreadcrumbList",
+    "Organization",
+    "WebPage",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/vpg-20t/",
+   "status": 200,
+   "title": "ВПГ-20Т — Газовый проточный водонагреватель турбо | ГазКотелБел",
+   "desc": "ВПГ-20Т — газовый проточный водонагреватель турбо. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20m/",
+   "status": 200,
+   "title": "ВПГ-20M — Газовый проточный водонагреватель | ГазКотелБел",
+   "desc": "ВПГ-20M — газовый проточный водонагреватель. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20tm/",
+   "status": 200,
+   "title": "ВПГ-20TM — Газовый проточный водонагреватель | ГазКотелБел",
+   "desc": "ВПГ-20TM — газовый проточный водонагреватель. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/hsv-20/",
+   "status": 200,
+   "title": "ВПГ-20 — Газовый проточный водонагреватель | ГазКотелБел",
+   "desc": "ВПГ-20 — газовый проточный водонагреватель. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-5/",
+   "status": 200,
+   "title": "ЖИТОМИР-5 — Газовые конвекторы | ГазКотелБел",
+   "desc": "ЖИТОМИР-5 — газовые конвекторы. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-9/",
+   "status": 200,
+   "title": "ЖИТОМИР-9 — Универсальный котел газ/твердое топливо | ГазКотелБел",
+   "desc": "ЖИТОМИР-9 — универсальный котел газ/твердое топливо. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr/",
+   "status": 200,
+   "title": "ЖИТОМИР — Твердотопливные котлы | ГазКотелБел",
+   "desc": "ЖИТОМИР — твердотопливные котлы. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-aotv-aktv/",
+   "status": 200,
+   "title": "ЖИТОМИР АОТВ/АКТВ — Твердотопливные котлы | ГазКотелБел",
+   "desc": "ЖИТОМИР АОТВ/АКТВ — твердотопливные котлы. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-m/",
+   "status": 200,
+   "title": "ЖИТОМИР-М — Газовые котлы парапетного типа | ГазКотелБел",
+   "desc": "ЖИТОМИР-М — газовые котлы парапетного типа. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-turbo/",
+   "status": 200,
+   "title": "ЖИТОМИР-ТУРБО — Газовые турбо котлы | ГазКотелБел",
+   "desc": "ЖИТОМИР-ТУРБО — газовые турбо котлы. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-10/",
+   "status": 200,
+   "title": "ЖИТОМИР-10 — Газовые дымоходные котлы с колонкой | ГазКотелБел",
+   "desc": "ЖИТОМИР-10 — газовые дымоходные котлы с колонкой. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-3-with-teno/",
+   "status": 200,
+   "title": "ЖИТОМИР-3 С ТЭНОМ — Электро-Газовые котлы | ГазКотелБел",
+   "desc": "ЖИТОМИР-3 С ТЭНОМ — электро-Газовые котлы. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/products/zhytomyr-3/",
+   "status": 200,
+   "title": "ЖИТОМИР-3 — Газовые дымоходные котлы от 7 до 200 кВт | ГазКотелБел",
+   "desc": "ЖИТОМИР-3 — газовые дымоходные котлы от 7 до 200 кВт. Официальная гарантия производителя. Дилеры по всей Беларуси. Доставка и монтаж через официальных дилеров.",
+   "types": [
+    "BreadcrumbList",
+    "ItemPage",
+    "Organization",
+    "Product",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/geysers/",
+   "status": 200,
+   "title": "Газовые колонки Житомир — купить в Беларуси, цены от производителя",
+   "desc": "Газовые колонки Житомир от производителя: 4 модели. Официальная гарантия, дилеры по всей Беларуси. Официальная гарантия производителя.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/gas-convectors/",
+   "status": 200,
+   "title": "Газовые конвекторы Житомир — купить в Беларуси, цены от производителя",
+   "desc": "Газовые конвекторы Житомир от производителя: 1 модель. Официальная гарантия, дилеры по всей Беларуси. Официальная гарантия производителя.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/gas-boilers/",
+   "status": 200,
+   "title": "Газовые котлы Житомир — купить в Беларуси, цены от производителя",
+   "desc": "Газовые котлы Житомир от производителя: 5 моделей. Официальная гарантия, дилеры по всей Беларуси. Официальная гарантия производителя.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/solid-fuel-boilers/",
+   "status": 200,
+   "title": "Твердотопливные котлы Житомир — цены от производителя | ГазКотелБел",
+   "desc": "Твердотопливные котлы Житомир от производителя: 2 модели. Официальная гарантия, дилеры по всей Беларуси. Официальная гарантия производителя.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/product-category/universal-boilers/",
+   "status": 200,
+   "title": "Универсальные котлы Житомир — купить в Беларуси, цены от производителя",
+   "desc": "Универсальные котлы Житомир от производителя: 1 модель. Официальная гарантия, дилеры по всей Беларуси. Официальная гарантия производителя.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/minsk/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Минске — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Минске: 11 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/minsk-region/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Минской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Минской области: 5 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/brest/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Брестской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Брестской области: 7 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/vitebsk/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Витебской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Витебской области: 5 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/gomel/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Гомельской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Гомельской области: 5 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/grodno/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Гродненской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Гродненской области: 5 официальных дилеров — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  },
+  {
+   "url": "https://gazkotelbel.com/where-to-buy/mogilev/",
+   "status": 200,
+   "title": "Где купить котлы Житомир в Могилёвской области — дилеры | ГазКотелБел",
+   "desc": "Где купить котлы Житомир и колонки ВПГ в Могилёвской области: 3 официальных дилера — адреса, телефоны, часы работы. Доставка и монтаж.",
+   "types": [
+    "BreadcrumbList",
+    "CollectionPage",
+    "Organization",
+    "WebSite"
+   ]
+  }
+ ]
+}

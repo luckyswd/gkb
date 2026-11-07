@@ -186,8 +186,8 @@ class Fields
                 self::f('prices_review_date', 'Следующий пересмотр цен', 'date_picker', ['display_format' => 'd.m.Y', 'return_format' => 'Y-m-d', 'instructions' => 'priceValidUntil в разметке. Пусто — конец следующего года.']),
 
                 self::tab('texts', 'Тексты'),
-                self::f('about_title', 'Главная: заголовок блока «О производителе»', 'text'),
-                self::f('about_text', 'Главная: текст блока «О производителе»', 'wysiwyg', ['media_upload' => 0]),
+                self::f('about_title', 'Главная: заголовок блока «О компании»', 'text'),
+                self::f('about_text', 'Главная: текст блока «О компании»', 'wysiwyg', ['media_upload' => 0]),
                 self::f('about_points', 'Главная: преимущества', 'repeater', [
                     'layout' => 'table',
                     'max' => 5,

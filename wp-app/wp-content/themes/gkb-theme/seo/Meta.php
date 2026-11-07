@@ -18,8 +18,8 @@ class Meta
     /** Шаблоны title и description для страниц по slug. */
     private const PAGES = [
         'catalog' => [
-            'Каталог котлов Житомир и колонок ВПГ — цены от производителя | ГазКотелБел',
-            'Каталог продукции ГазКотелБел: газовые, твердотопливные и универсальные котлы Житомир, газовые конвекторы и колонки ВПГ. Цены от производителя в BYN.',
+            'Каталог котлов Житомир и колонок ВПГ — официальные цены | ГазКотелБел',
+            'Каталог продукции ГазКотелБел: газовые, твердотопливные и универсальные котлы Житомир, газовые конвекторы и колонки ВПГ. Официальные цены в BYN.',
         ],
         'where-to-buy' => [
             'Где купить котлы Житомир в Беларуси — официальные дилеры | ГазКотелБел',
@@ -30,25 +30,25 @@ class Meta
             'Актуальный прайс-лист ГазКотелБел: розничные цены с НДС в BYN на газовые котлы Житомир-3, Житомир-10, Житомир-Турбо, Житомир-М, конвекторы и колонки ВПГ.',
         ],
         'about' => [
-            'О производстве котлов Житомир в Беларуси | ГазКотелБел',
-            'ГазКотелБел — производитель и поставщик котлов Житомир (ТМ АТЕМ) в Беларуси: производство, контроль качества, официальная гарантия и сервис по всей стране.',
+            'О производителе котлов Житомир — АТЕМ | ГазКотелБел',
+            'Котлы Житомир выпускает украинская компания АТЕМ с 1988 года. ГазКотелБел — её официальный представитель в Беларуси: поставки, гарантия и дилеры по всей стране.',
         ],
         'documentation' => [
             'Документация и паспорта котлов Житомир — скачать PDF | ГазКотелБел',
             'Паспорта, инструкции по монтажу и эксплуатации котлов Житомир, газовых конвекторов и колонок ВПГ в PDF. Официальная документация производителя.',
         ],
         'contact' => [
-            'Контакты ГазКотелБел — производитель котлов Житомир в Беларуси',
+            'Контакты ГазКотелБел — котлы Житомир в Беларуси',
             'Контакты ООО «ГазКотелБел»: адрес в Мачулищах (Минский район), телефоны отдела продаж, email и часы работы. Консультации по подбору котла Житомир.',
         ],
         Context::CALCULATOR_SLUG => [
             'Калькулятор мощности газового котла по площади дома | ГазКотелБел',
-            'Рассчитайте мощность газового котла для дома по площади, высоте потолков и утеплению. Подберите подходящий котёл Житомир с ценой от производителя.',
+            'Рассчитайте мощность газового котла для дома по площади, высоте потолков и утеплению. Подберите подходящий котёл Житомир с официальной ценой в BYN.',
         ],
     ];
 
     private const FILLERS = [
-        ' Официальная гарантия производителя.',
+        ' Официальная гарантия.',
         ' Дилеры по всей Беларуси.',
         ' Доставка и монтаж через официальных дилеров.',
     ];
@@ -95,8 +95,8 @@ class Meta
         switch ($ctx['type']) {
             case 'front':
                 return $en
-                    ? ['Zhytomyr gas boilers from the manufacturer in Belarus — GazKotelBel']
-                    : ['Газовые котлы Житомир от производителя в Беларуси — ГазКотелБел'];
+                    ? ['Zhytomyr gas boilers in Belarus — official ATEM representative']
+                    : ['Газовые котлы Житомир — официальный представитель АТЕМ в Беларуси'];
 
             case 'product':
                 $name = Context::productTitle($ctx['object']);
@@ -125,9 +125,9 @@ class Meta
                 return $en
                     ? ["$name Zhytomyr — buy in Belarus | $brand", "$name | $brand"]
                     : [
-                        "$name Житомир — купить в Беларуси, цены от производителя | $brand",
-                        "$name Житомир — купить в Беларуси, цены от производителя",
-                        "$name Житомир — цены от производителя | $brand",
+                        "$name Житомир — купить в Беларуси, официальные цены | $brand",
+                        "$name Житомир — купить в Беларуси, официальные цены",
+                        "$name Житомир — официальные цены | $brand",
                     ];
 
             case 'search':
@@ -185,8 +185,8 @@ class Meta
         switch ($ctx['type']) {
             case 'front':
                 $d = $en
-                    ? 'GazKotelBel — manufacturer of Zhytomyr gas, solid fuel and universal boilers, gas convectors and VPG water heaters in Belarus. Official warranty and dealers nationwide.'
-                    : 'Газовые котлы Житомир от производителя в Беларуси: напольные дымоходные и турбированные, твердотопливные и универсальные котлы, конвекторы и колонки ВПГ. Цены в BYN.';
+                    ? 'GazKotelBel — official representative of ATEM: Zhytomyr gas, solid fuel and universal boilers, gas convectors and VPG water heaters in Belarus. Official warranty and dealers nationwide.'
+                    : 'Газовые котлы Житомир от официального представителя АТЕМ в Беларуси: дымоходные и турбированные, твердотопливные и универсальные котлы, конвекторы и колонки ВПГ.';
                 break;
 
             case 'product':
@@ -195,7 +195,7 @@ class Meta
                 $sub = Context::productSubtitle($p);
                 $s = ProductData::summary($p->ID);
                 if ($en) {
-                    $d = "$name — $sub. Official manufacturer warranty, dealers across Belarus.";
+                    $d = "$name — $sub. Official warranty, dealers across Belarus.";
                     break;
                 }
                 $parts = [$name . ($sub !== '' ? ' — ' . mb_strtolower(mb_substr($sub, 0, 1)) . mb_substr($sub, 1) : '') . '.'];
@@ -205,7 +205,7 @@ class Meta
                 if ($s['min_price'] !== null) {
                     $parts[] = 'Цена от ' . ProductData::money($s['min_price']) . "\u{00A0}BYN.";
                 }
-                $parts[] = 'Официальная гарантия производителя.';
+                $parts[] = 'Официальная гарантия, дилеры по всей Беларуси.';
                 $d = implode(' ', $parts);
                 break;
 
@@ -213,11 +213,11 @@ class Meta
                 $term = $ctx['object'];
                 $name = Context::termName($term);
                 if ($en) {
-                    $d = "$name Zhytomyr from the manufacturer GazKotelBel: models, specifications and documentation. Dealers across Belarus.";
+                    $d = "$name Zhytomyr from GazKotelBel, official ATEM representative: models, specifications and documentation. Dealers across Belarus.";
                     break;
                 }
                 $ts = ProductData::termSummary($term);
-                $parts = ["$name Житомир от производителя: " . $ts['count'] . ' модел' . self::plural($ts['count'], 'ь', 'и', 'ей')];
+                $parts = ["$name Житомир от официального представителя АТЕМ: " . $ts['count'] . ' модел' . self::plural($ts['count'], 'ь', 'и', 'ей')];
                 if ($ts['power_min'] !== null) {
                     $parts[0] .= ', мощность ' . ProductData::powerRange(['power_min' => $ts['power_min'], 'power_max' => $ts['power_max']]);
                 }
@@ -240,7 +240,7 @@ class Meta
                 break;
 
             case 'articles':
-                $d = 'Статьи ГазКотелБел о выборе и расчёте газового котла, расходе газа, требованиях к котельной и дымоходу в Беларуси. Советы производителя котлов Житомир.';
+                $d = 'Статьи ГазКотелБел о выборе и расчёте газового котла, расходе газа, требованиях к котельной и дымоходу в Беларуси. Советы официального представителя котлов Житомир.';
                 break;
         }
 
@@ -248,7 +248,7 @@ class Meta
             if (!$en && isset(self::PAGES[$ctx['slug']])) {
                 $d = self::PAGES[$ctx['slug']][1];
             } else {
-                $d = get_the_title($ctx['object']) . ' — ГазКотелБел, производитель котлов Житомир в Беларуси.';
+                $d = get_the_title($ctx['object']) . ' — ГазКотелБел, официальный представитель котлов Житомир в Беларуси.';
             }
         }
 

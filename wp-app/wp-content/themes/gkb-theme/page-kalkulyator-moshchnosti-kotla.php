@@ -36,7 +36,7 @@ $crumbs = Context::crumbs();
         <div class="gkb-calc__layout">
             <form class="gkb-card gkb-calc__form" method="get" action="<?= esc_url(get_permalink()) ?>#raschet" novalidate
                   toolname="calculate_boiler_power" toolautosubmit
-                  tooldescription="Рассчитывает мощность газового котла для частного дома в Беларуси по площади, высоте потолков, утеплению и потребности в горячей воде. Возвращает рекомендуемую мощность в кВт и подходящие модели котлов Житомир с ценой от производителя и ссылками. Ничего не отправляет владельцу сайта.">
+                  tooldescription="Рассчитывает мощность газового котла для частного дома в Беларуси по площади, высоте потолков, утеплению и потребности в горячей воде. Возвращает рекомендуемую мощность в кВт и подходящие модели котлов Житомир с официальной ценой в BYN и ссылками. Ничего не отправляет владельцу сайта.">
                 <div class="gkb-calc__field<?= isset($errors['area']) ? ' gkb-field--error' : '' ?>">
                     <label class="gkb-label" for="calc-area">Отапливаемая площадь, м²</label>
                     <input class="gkb-field" id="calc-area" name="area" type="number" inputmode="decimal" min="10" max="1000" step="1" required

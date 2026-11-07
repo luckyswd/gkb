@@ -2,7 +2,7 @@
 get_header();
 the_content();
 
-/* Частые вопросы страницы (размечаются FAQPage) и блок «О производителе» на главной */
+/* Частые вопросы страницы (размечаются FAQPage) и блок «О компании» на главной */
 $gkbPage = get_queried_object();
 if ($gkbPage instanceof WP_Post) {
     $gkbFaq = \seo\Content::faqRows($gkbPage);
