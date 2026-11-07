@@ -10,8 +10,10 @@
     <?php endforeach; ?>
     <?php wp_head(); ?>
     <?php if (home_url() == 'https://gazkotelbel.com' ) :?>
-    <!-- Yandex.Metrika counter: загружается после первого действия посетителя
-         или когда браузер свободен (не позже ~3,5 с), чтобы не мешать отрисовке.
+    <!-- Yandex.Metrika counter: загружается при первом действии посетителя
+         (прокрутка, касание, клавиша) или через 4 с после загрузки страницы.
+         Инициализация с вебвизором занимает ~370 мс основного потока — так она
+         не попадает на первые секунды, когда посетитель начинает взаимодействовать.
          Вызовы ym() до загрузки копятся в очереди и не теряются. -->
     <script>
         (function (m, e, t, r, i) {
@@ -31,7 +33,7 @@
                 m.addEventListener(ev, load, {once: true, passive: true});
             });
             m.addEventListener('load', function () {
-                (m.requestIdleCallback || function (cb) { return setTimeout(cb, 1500); })(load, {timeout: 3500});
+                setTimeout(load, 4000);
             });
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 

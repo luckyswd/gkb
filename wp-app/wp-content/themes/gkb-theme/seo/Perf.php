@@ -29,7 +29,16 @@ class Perf
         add_filter('max_srcset_image_width', static fn () => 2000);
 
         add_action('wp_head', [self::class, 'early'], 2);
-        add_action('wp_head', [self::class, 'speculation'], 40);
+        // Speculation Rules выводит ядро WordPress (6.8+): настраиваем его, а не дублируем
+        add_filter('wp_speculation_rules_configuration', static function ($config) {
+            return is_user_logged_in() ? null : ['mode' => 'prefetch', 'eagerness' => 'moderate'];
+        });
+        add_filter('wp_speculation_rules_href_exclude_paths', static function ($paths) {
+            return array_merge((array) $paths, ['/login/*', '/registration/*', '/*.pdf']);
+        });
+        if (!function_exists('wp_get_speculation_rules_configuration')) {
+            add_action('wp_head', [self::class, 'speculation'], 40); // старое ядро без встроенных правил
+        }
         add_filter('wp_resource_hints', [self::class, 'hints'], 10, 2);
     }
 
