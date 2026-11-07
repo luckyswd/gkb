@@ -48,6 +48,13 @@
     line-height: var(--gkb-lh-tight);
 }
 
+.gkb-mods__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-sm);
+    margin-top: var(--gkb-gap-lg);
+}
+
 .gkb-mods__note {
     margin-top: var(--gkb-gap-md);
     color: var(--gkb-text-secondary);

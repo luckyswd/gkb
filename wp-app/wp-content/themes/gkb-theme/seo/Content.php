@@ -138,18 +138,16 @@ class Content
                     </tbody>
                 </table>
             </div>
-            <p class="gkb-mods__note">
-                <?php if ($hasPrice && Org::pricesDateHuman() !== '') : ?>
-                    <?= esc_html(($en ? 'Retail prices incl. VAT, valid from ' : 'Розничные цены с НДС, действительны с ') . Org::pricesDateHuman() . '.') ?>
-                <?php endif; ?>
-                <a href="<?= esc_url(home_url('/price-list/')) ?>"><?= esc_html($en ? 'Price list' : 'Цены — в прайс-листе') ?></a>
-                ·
-                <a href="<?= esc_url(home_url('/where-to-buy/')) ?>"><?= esc_html($en ? 'Where to buy' : 'Где купить') ?></a>
+            <?php if ($hasPrice && Org::pricesDateHuman() !== '') : ?>
+                <p class="gkb-mods__note"><?= esc_html(($en ? 'Retail prices incl. VAT, valid from ' : 'Розничные цены с НДС, действительны с ') . Org::pricesDateHuman() . '.') ?></p>
+            <?php endif; ?>
+            <div class="gkb-mods__actions">
+                <a class="gkb-btn gkb-btn--primary gkb-btn--sm" href="<?= esc_url(home_url('/where-to-buy/')) ?>"><?= esc_html($en ? 'Where to buy' : 'Где купить') ?></a>
+                <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(home_url('/price-list/')) ?>"><?= esc_html($en ? 'Price list' : 'Цены — в прайс-листе') ?></a>
                 <?php if (Context::calculatorUrl()) : ?>
-                    ·
-                    <a href="<?= esc_url(Context::calculatorUrl()) ?>"><?= esc_html($en ? 'Boiler power calculator' : 'Калькулятор мощности') ?></a>
+                    <a class="gkb-btn gkb-btn--secondary gkb-btn--sm" href="<?= esc_url(Context::calculatorUrl()) ?>"><?= esc_html($en ? 'Boiler power calculator' : 'Калькулятор мощности') ?></a>
                 <?php endif; ?>
-            </p>
+            </div>
         </section>
         <?php
     }
