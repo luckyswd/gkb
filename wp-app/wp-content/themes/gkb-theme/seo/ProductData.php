@@ -144,6 +144,11 @@ class ProductData
     {
         $out = [];
         foreach (get_posts(['post_type' => 'products', 'post_status' => 'publish', 'posts_per_page' => -1]) as $p) {
+            // калькулятор подбирает котлы: конвекторы и колонки не в счёт
+            $cat = Context::productCategory($p);
+            if ($cat && in_array($cat->slug, ['gas-convectors', 'geysers'], true)) {
+                continue;
+            }
             $best = null;
             foreach (self::summary($p->ID)['rows'] as $row) {
                 if ($row['power_kw'] === null || $row['power_kw'] < $kw) {

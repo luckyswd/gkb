@@ -21,6 +21,7 @@ require_once __DIR__ . '/Fields.php';
 require_once __DIR__ . '/Articles.php';
 require_once __DIR__ . '/Calculator.php';
 require_once __DIR__ . '/Agents.php';
+require_once __DIR__ . '/Import.php';
 
 seo\Fields::register();
 seo\ProductData::register();
@@ -32,6 +33,7 @@ seo\Redirects::register();
 seo\Perf::register();
 seo\Articles::register();
 seo\Agents::register();
+seo\Import::register();
 
 /*
  * All in One SEO на время перехода: пока плагин активен, его вывод в head,
