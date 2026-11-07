@@ -9,7 +9,7 @@ use WP_Term;
 /**
  * Контентные блоки SEO-слоя, общие для шаблонов: FAQ, вводный текст
  * категории, таблица модификаций, похожие модели, блок «О компании»,
- * цена «от» в карточке.
+ * мощность в карточке.
  */
 class Content
 {
@@ -113,7 +113,7 @@ class Content
         $hasPrice = $s['min_price'] !== null;
         ?>
         <section class="gkb-card gkb-mods" id="modifications" aria-labelledby="gkb-mods-title">
-            <h2 class="gkb-mods__title" id="gkb-mods-title"><?= esc_html($en ? 'Models and prices' : 'Модификации и цены') ?></h2>
+            <h2 class="gkb-mods__title" id="gkb-mods-title"><?= esc_html($en ? 'Models' : 'Модификации') ?></h2>
             <div class="gkb-table-scroll">
                 <table>
                     <thead>
@@ -142,6 +142,8 @@ class Content
                 <?php if ($hasPrice && Org::pricesDateHuman() !== '') : ?>
                     <?= esc_html(($en ? 'Retail prices incl. VAT, valid from ' : 'Розничные цены с НДС, действительны с ') . Org::pricesDateHuman() . '.') ?>
                 <?php endif; ?>
+                <a href="<?= esc_url(home_url('/price-list/')) ?>"><?= esc_html($en ? 'Price list' : 'Цены — в прайс-листе') ?></a>
+                ·
                 <a href="<?= esc_url(home_url('/where-to-buy/')) ?>"><?= esc_html($en ? 'Where to buy' : 'Где купить') ?></a>
                 <?php if (Context::calculatorUrl()) : ?>
                     ·

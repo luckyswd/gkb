@@ -35,17 +35,12 @@
 
 ### Requirement: Product на странице товара
 
-Страница товара SHALL содержать `Product` со свойствами `name`, `description`, `image` (все изображения галереи), `brand` (`Brand` «АТЕМ»), `manufacturer` → организация, `category` и `url`. Если у товара заданы цены модификаций, Product SHALL содержать `offers` типа `AggregateOffer` с `priceCurrency` `BYN`, `lowPrice`, `highPrice`, `offerCount`, `availability` и `priceValidUntil` (дата следующего пересмотра прайса), а также `seller` → организация. Без цен `offers` не выводится. `aggregateRating` и `review` SHALL выводиться только при наличии реальных отзывов на странице.
+Страница товара SHALL содержать `Product` со свойствами `name`, `description`, `image` (все изображения галереи), `brand` (`Brand` «АТЕМ»), `manufacturer` (организация АТЕМ, Украина), `category`, `url` и диапазоном номинальной мощности (`additionalProperty`). Цены на сайте публикуются только в прайс-листе, поэтому `offers` MUST NOT выводиться. `aggregateRating` и `review` SHALL выводиться только при наличии реальных отзывов на странице.
 
-#### Scenario: Товар с ценами
+#### Scenario: Товар без цены в разметке
 
-- **WHEN** у «Житомир-3» заданы модификации от 1 338 до 4 614 BYN
-- **THEN** Product содержит AggregateOffer с `lowPrice` 1338, `highPrice` 4614, `priceCurrency` BYN
-
-#### Scenario: Проверка расширенных результатов
-
-- **WHEN** URL товара проверяют в Google Rich Results Test
-- **THEN** «Товар» определяется без ошибок
+- **WHEN** валидатор разбирает страницу «Житомир-3»
+- **THEN** он находит Product с брендом АТЕМ и мощностью 7–40 кВт и не находит `offers`
 
 #### Scenario: Нет выдуманного рейтинга
 

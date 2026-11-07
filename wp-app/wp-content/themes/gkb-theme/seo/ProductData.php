@@ -11,7 +11,14 @@ use WP_Post;
  */
 class ProductData
 {
-    private const TRANSIENT = 'gkb_product_summary_';
+    /**
+     * Цены на сайте публикуются только в прайс-листе (отдельная страница),
+     * поэтому цены модификаций нигде не выводятся: ни в карточках, ни в
+     * title, ни в разметке. Включить — true.
+     */
+    public const SHOW_PRICES = false;
+
+    private const TRANSIENT = 'gkb_product_summary_v2_';
 
     public static function register(): void
     {
@@ -47,7 +54,7 @@ class ProductData
                 'power_kw' => self::num($row['power_kw'] ?? null),
                 'area_m2' => self::num($row['area_m2'] ?? null),
                 'dhw' => !empty($row['dhw']),
-                'price_byn' => self::num($row['price_byn'] ?? null),
+                'price_byn' => self::SHOW_PRICES ? self::num($row['price_byn'] ?? null) : null,
             ];
         }
         usort($rows, static fn ($a, $b) => ($a['power_kw'] ?? 0) <=> ($b['power_kw'] ?? 0));

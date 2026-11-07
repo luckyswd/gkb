@@ -107,10 +107,10 @@ class Fields
 
         acf_add_local_field_group([
             'key' => 'group_gkb_product_mods',
-            'title' => 'Модификации и цены',
+            'title' => 'Модификации',
             'fields' => [
                 self::f('modifications', 'Модификации', 'repeater', [
-                    'instructions' => 'Цены — розничные с НДС из прайс-листа. По ним строятся «цена от» в title, карточках и разметке, llms.txt и калькулятор мощности.',
+                    'instructions' => 'Мощность и отапливаемая площадь — из таблицы характеристик. Выводятся таблицей на странице товара, в карточках и llms.txt. Цены здесь не указываются: они только в прайс-листе.',
                     'layout' => 'table',
                     'button_label' => 'Добавить модификацию',
                     'sub_fields' => [
@@ -118,7 +118,6 @@ class Fields
                         self::f('power_kw', 'Мощность, кВт', 'number', ['key' => 'field_gkb_mod_power', 'step' => '0.1', 'min' => 0]),
                         self::f('area_m2', 'Площадь, м²', 'number', ['key' => 'field_gkb_mod_area', 'step' => 1, 'min' => 0]),
                         self::f('dhw', 'ГВС', 'true_false', ['key' => 'field_gkb_mod_dhw', 'ui' => 1]),
-                        self::f('price_byn', 'Цена, BYN', 'number', ['key' => 'field_gkb_mod_price', 'step' => '0.01', 'min' => 0]),
                     ],
                 ]),
                 self::f('similar_products', 'Похожие модели (вручную)', 'relationship', [
@@ -180,10 +179,6 @@ class Fields
                 self::f('org_hours', 'Часы работы (для людей)', 'text', ['placeholder' => 'пн–пт 9:00–18:00']),
                 self::f('org_logo', 'Логотип для разметки', 'image', ['return_format' => 'array', 'instructions' => 'Пусто — логотип из шапки.']),
                 self::f('og_default_image', 'Изображение для соцсетей по умолчанию', 'image', ['return_format' => 'array', 'instructions' => '1200×630, для страниц без своего изображения.']),
-
-                self::tab('prices', 'Цены'),
-                self::f('prices_valid_from', 'Цены действительны с', 'date_picker', ['display_format' => 'd.m.Y', 'return_format' => 'Y-m-d', 'instructions' => 'Дата из шапки прайс-листа. Выводится под таблицами модификаций и в llms.txt.']),
-                self::f('prices_review_date', 'Следующий пересмотр цен', 'date_picker', ['display_format' => 'd.m.Y', 'return_format' => 'Y-m-d', 'instructions' => 'priceValidUntil в разметке. Пусто — конец следующего года.']),
 
                 self::tab('texts', 'Тексты'),
                 self::f('about_title', 'Главная: заголовок блока «О компании»', 'text'),
