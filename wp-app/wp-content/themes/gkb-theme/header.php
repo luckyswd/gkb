@@ -155,9 +155,10 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                         <?php if (empty($social['url']) || empty($social['icon'])) {
                             continue;
                         } ?>
+                        <?php $socialName = \seo\Content::socialName($social['url']); ?>
                         <a href="<?= esc_url($social['url']) ?>" class="gkb-btn gkb-btn--icon"
-                           title="<?= esc_attr($social['icon']['title'] ?? '') ?>" rel="noopener" target="_blank">
-                            <img src="<?= esc_url($social['icon']['url']) ?>" alt="<?= esc_attr($social['icon']['title'] ?? '') ?>" width="20" height="20">
+                           title="<?= esc_attr($socialName) ?>" aria-label="<?= esc_attr($socialName) ?>" rel="noopener" target="_blank">
+                            <img src="<?= esc_url($social['icon']['url']) ?>" alt="" width="20" height="20">
                         </a>
                     <?php endforeach; ?>
                 </div>
@@ -290,9 +291,10 @@ $logoutLabel = $fields['logout'] ?? ($lang === 'en' ? 'Log out' : 'Выйти');
                             <?php if (empty($social['url']) || empty($social['icon'])) {
                                 continue;
                             } ?>
+                            <?php $socialName = \seo\Content::socialName($social['url']); ?>
                             <a href="<?= esc_url($social['url']) ?>" class="gkb-btn gkb-btn--icon"
-                               title="<?= esc_attr($social['icon']['title'] ?? '') ?>" rel="noopener" target="_blank">
-                                <img src="<?= esc_url($social['icon']['url']) ?>" alt="<?= esc_attr($social['icon']['title'] ?? '') ?>" width="20" height="20">
+                               title="<?= esc_attr($socialName) ?>" aria-label="<?= esc_attr($socialName) ?>" rel="noopener" target="_blank">
+                                <img src="<?= esc_url($social['icon']['url']) ?>" alt="" width="20" height="20">
                             </a>
                         <?php endforeach; ?>
                     </div>

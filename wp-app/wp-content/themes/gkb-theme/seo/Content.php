@@ -254,6 +254,24 @@ class Content
         return preg_replace_callback('#<img\b(?![^>]*\balt=)([^>]*)>#i', static fn ($m) => '<img alt="' . esc_attr($alt) . '"' . $m[1] . '>', $html) ?? $html;
     }
 
+    /** Название соцсети по адресу ссылки — для alt и aria-label иконок. */
+    public static function socialName(string $url): string
+    {
+        $map = [
+            'instagram' => 'Instagram', 'facebook' => 'Facebook', 'vk.com' => 'ВКонтакте',
+            'youtube' => 'YouTube', 'youtu.be' => 'YouTube', 't.me' => 'Telegram', 'telegram' => 'Telegram',
+            'tiktok' => 'TikTok', 'ok.ru' => 'Одноклассники', 'viber' => 'Viber', 'msngr.link/vi' => 'Viber',
+            'wa.me' => 'WhatsApp', 'whatsapp' => 'WhatsApp',
+        ];
+        $u = strtolower($url);
+        foreach ($map as $needle => $name) {
+            if (str_contains($u, $needle)) {
+                return $name;
+            }
+        }
+        return 'Мы в соцсетях';
+    }
+
     /** alt изображения: из медиатеки, иначе из запасного текста. */
     public static function alt(int $attachmentId, string $fallback): string
     {

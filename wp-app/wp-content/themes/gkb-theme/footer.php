@@ -86,11 +86,20 @@ $termName = static function ($term) use ($lang): string {
                         <?php if (empty($social['url']) || empty($social['icon'])) {
                             continue;
                         } ?>
-                        <a href="<?= esc_url($social['url']) ?>" title="<?= esc_attr($social['icon']['title'] ?? '') ?>" rel="noopener" target="_blank">
-                            <img src="<?= esc_url($social['icon']['url']) ?>" alt="<?= esc_attr($social['icon']['title'] ?? '') ?>" width="22" height="22">
+                        <?php $socialName = \seo\Content::socialName($social['url']); ?>
+                        <a href="<?= esc_url($social['url']) ?>" title="<?= esc_attr($socialName) ?>" aria-label="<?= esc_attr($socialName) ?>" rel="noopener" target="_blank">
+                            <img src="<?= esc_url($social['icon']['url']) ?>" alt="" width="22" height="22">
                         </a>
                     <?php endforeach; ?>
                     <?php foreach ($infoIcons as $icon) : ?>
+                        <?php
+                        /* У иконки из редактора пустой alt — ссылке нужна подпись для
+                           скринридеров и ИИ-агентов: берём название сети из адреса. */
+                        if (stripos($icon, 'aria-label=') === false && preg_match('#href="([^"]+)"#i', $icon, $hrefMatch)) {
+                            $label = \seo\Content::socialName($hrefMatch[1]);
+                            $icon = preg_replace('#<a\b#i', '<a aria-label="' . esc_attr($label) . '"', $icon, 1);
+                        }
+                        ?>
                         <?= $icon ?>
                     <?php endforeach; ?>
                 </div>
