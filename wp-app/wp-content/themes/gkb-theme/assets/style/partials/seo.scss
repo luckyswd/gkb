@@ -109,14 +109,37 @@
 }
 
 /* --- Текст категории и каталога --- */
+/* ряд ссылок на категории: перебивает маркеры и отступы списков .gkb-content */
+.gkb-content .gkb-seo-text__links,
 .gkb-seo-text__links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--gkb-gap-xs) var(--gkb-gap-md);
+    gap: var(--gkb-gap-sm);
     margin-top: var(--gkb-gap-md);
+    padding-left: 0;
+    list-style: none;
+
+    li,
+    li + li {
+        margin: 0;
+    }
 
     a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 var(--gkb-gap-md);
+        border-radius: var(--gkb-r-pill);
+        background: var(--gkb-accent-soft);
         color: var(--gkb-accent-dark);
+        font-size: var(--gkb-fs-sm);
+        font-weight: 500;
+        text-decoration: none;
+        transition: background var(--gkb-t-fast);
+
+        &:hover {
+            background: var(--gkb-accent-soft-strong);
+        }
     }
 }
 
