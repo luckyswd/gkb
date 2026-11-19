@@ -820,12 +820,19 @@ class SiteEdits2611
 
     private const EXTRA_BACKUP = 'gkb_site_edits_2611_extra_backup';
 
-    /** FAQ товаров: slug => [[from, to]]. */
+    /**
+     * Доп. правки: slug => ['faq' => [ops], 'block' => [поле => [ops]]].
+     * Применённые ранее: 19.11.2026 FAQ Житомир-3 «на 45 кВт» → «на 40 кВт».
+     */
     public static function extraPlan(): array
     {
         return [
-            // FAQ Житомир-3: мощность верхней модели — как в руководстве 2026 (КС-Г-045 — 40 кВт)
-            'zhytomyr-3' => [['r', 'у модели на 45 кВт', 'у модели на 40 кВт']],
+            'zhytomyr-3' => [
+                // газовый клапан КС-Г-035 СН — ответ владельца 19.11.2026
+                'block' => ['specifications' => [['t', 'КС-Г 035', [
+                    ['cell', 'Газовый клапан', 8, '—', '710 MINISIT'],
+                ]]]],
+            ],
         ];
     }
 
@@ -833,23 +840,61 @@ class SiteEdits2611
     {
         $log = [];
         $jobs = [];
-        foreach (self::extraPlan() as $slug => $ops) {
+        foreach (self::extraPlan() as $slug => $plan) {
             $post = self::product($slug);
             if (!$post) {
                 $log[] = [false, "{$slug}: товар не найден"];
                 continue;
             }
-            $rows = self::plainRepeater(get_field('faq', $post->ID));
-            $jobs[] = [$post->ID, $rows, self::textRows($rows, $ops, $log, "{$slug}/faq")];
+            $job = ['id' => $post->ID, 'content_before' => $post->post_content, 'faq_before' => null];
+            if (!empty($plan['faq'])) {
+                $rows = self::plainRepeater(get_field('faq', $post->ID));
+                $job['faq_before'] = $rows;
+                $job['faq'] = self::textRows($rows, $plan['faq'], $log, "{$slug}/faq");
+            }
+            if (!empty($plan['block'])) {
+                $blocks = parse_blocks($post->post_content);
+                foreach ($blocks as $bi => $bl) {
+                    if (($bl['blockName'] ?? '') !== 'acf/product') {
+                        continue;
+                    }
+                    $data = $bl['attrs']['data'] ?? [];
+                    foreach ($plan['block'] as $field => $ops) {
+                        $keys = self::blockKey($data, $field);
+                        if (count($keys) !== 1) {
+                            $log[] = [false, "{$slug}/{$field}: ключей " . count($keys)];
+                            continue;
+                        }
+                        [$data[$keys[0]], $flog] = self::applyOps((string) $data[$keys[0]], $ops);
+                        foreach ($flog as $l) {
+                            $log[] = [$l[0], "{$slug}/{$field}: {$l[1]}"];
+                        }
+                    }
+                    $blocks[$bi]['attrs']['data'] = $data;
+                    $job['content'] = serialize_blocks($blocks);
+                    break;
+                }
+                if (!isset($job['content'])) {
+                    $log[] = [false, "{$slug}: блок acf/product не найден"];
+                }
+            }
+            $jobs[] = $job;
         }
-        $allOk = !in_array(false, array_column($log, 0), true);
+        $allOk = $log && !in_array(false, array_column($log, 0), true);
         if (!$write || !$allOk) {
             return [$log, $allOk, false];
         }
         $backup = (array) get_option(self::EXTRA_BACKUP, []);
-        foreach ($jobs as [$id, $before, $after]) {
-            $backup[$id] = $backup[$id] ?? $before;
-            update_field('faq', $after, $id);
+        foreach ($jobs as $job) {
+            $id = $job['id'];
+            $backup[$id] = ($backup[$id] ?? []) + ['content' => $job['content_before'], 'faq' => $job['faq_before']];
+            if (isset($job['content'])) {
+                wp_update_post(wp_slash(['ID' => $id, 'post_content' => $job['content']]));
+            }
+            if (isset($job['faq'])) {
+                update_field('faq', $job['faq'], $id);
+            }
+            ProductData::flush($id);
         }
         update_option(self::EXTRA_BACKUP, $backup, false);
         self::flushCaches();
@@ -1080,7 +1125,7 @@ class SiteEdits2611
             echo '<p>Правки уже применены (есть резервная копия). Повторное применение заблокировано.</p>';
         }
 
-        echo '<h2 style="margin-top:32px">Доп. правки</h2><p>FAQ Житомир-3: «на 45 кВт» → «на 40 кВт» (как в руководстве 2026).</p>';
+        echo '<h2 style="margin-top:32px">Доп. правки</h2><p>Житомир-3, таблица характеристик: газовый клапан КС-Г-035 СН — 710 MINISIT. (Применено ранее: FAQ «на 40 кВт».)</p>';
         echo '<form method="post" style="display:flex;gap:8px">';
         wp_nonce_field('gkb_site_edits_2611');
         echo '<button class="button" name="gkb_action" value="extra-check">Проверить доп. правки</button>';
