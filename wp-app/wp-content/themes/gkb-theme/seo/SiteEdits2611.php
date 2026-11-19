@@ -814,6 +814,49 @@ class SiteEdits2611
     /* Фото «Электрорезерв» — отдельный шаг, после согласования ретуши     */
     /* ------------------------------------------------------------------ */
 
+    /* ------------------------------------------------------------------ */
+    /* Доп. правки после основного применения (решения владельца)          */
+    /* ------------------------------------------------------------------ */
+
+    private const EXTRA_BACKUP = 'gkb_site_edits_2611_extra_backup';
+
+    /** FAQ товаров: slug => [[from, to]]. */
+    public static function extraPlan(): array
+    {
+        return [
+            // FAQ Житомир-3: мощность верхней модели — как в руководстве 2026 (КС-Г-045 — 40 кВт)
+            'zhytomyr-3' => [['r', 'у модели на 45 кВт', 'у модели на 40 кВт']],
+        ];
+    }
+
+    public static function runExtra(bool $write): array
+    {
+        $log = [];
+        $jobs = [];
+        foreach (self::extraPlan() as $slug => $ops) {
+            $post = self::product($slug);
+            if (!$post) {
+                $log[] = [false, "{$slug}: товар не найден"];
+                continue;
+            }
+            $rows = self::plainRepeater(get_field('faq', $post->ID));
+            $jobs[] = [$post->ID, $rows, self::textRows($rows, $ops, $log, "{$slug}/faq")];
+        }
+        $allOk = !in_array(false, array_column($log, 0), true);
+        if (!$write || !$allOk) {
+            return [$log, $allOk, false];
+        }
+        $backup = (array) get_option(self::EXTRA_BACKUP, []);
+        foreach ($jobs as [$id, $before, $after]) {
+            $backup[$id] = $backup[$id] ?? $before;
+            update_field('faq', $after, $id);
+        }
+        update_option(self::EXTRA_BACKUP, $backup, false);
+        self::flushCaches();
+        $log[] = [true, 'записано'];
+        return [$log, true, true];
+    }
+
     private const PHOTO_BACKUP = 'gkb_site_edits_2611_photos_backup';
 
     /** Галерея: путь исходника в uploads → русская версия в seo/site-edits-2611/. */
@@ -996,6 +1039,8 @@ class SiteEdits2611
         if ($action && check_admin_referer('gkb_site_edits_2611')) {
             if ($action === 'rollback') {
                 $notice = self::rollback();
+            } elseif (str_starts_with($action, 'extra')) {
+                [$log, $ok, $written] = self::runExtra($action === 'extra-apply');
             } elseif ($action === 'photos-rollback') {
                 $notice = self::rollbackPhotos();
             } elseif (str_starts_with($action, 'photos')) {
@@ -1034,6 +1079,13 @@ class SiteEdits2611
         if ($hasBackup) {
             echo '<p>Правки уже применены (есть резервная копия). Повторное применение заблокировано.</p>';
         }
+
+        echo '<h2 style="margin-top:32px">Доп. правки</h2><p>FAQ Житомир-3: «на 45 кВт» → «на 40 кВт» (как в руководстве 2026).</p>';
+        echo '<form method="post" style="display:flex;gap:8px">';
+        wp_nonce_field('gkb_site_edits_2611');
+        echo '<button class="button" name="gkb_action" value="extra-check">Проверить доп. правки</button>';
+        echo '<button class="button button-primary" name="gkb_action" value="extra-apply">Применить доп. правки</button>';
+        echo '</form>';
 
         echo '<h2 style="margin-top:32px">Фото «Электрорезерв»</h2>';
         echo '<p>Только после того, как заказчик одобрил ретушь. Новые файлы загружаются в медиатеку, старые остаются.</p>';
