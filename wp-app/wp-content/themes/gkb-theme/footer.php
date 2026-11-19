@@ -112,6 +112,11 @@ $termName = static function ($term) use ($lang): string {
                 <?php foreach ($fieldsHeader['links'] as $menuItem) : ?>
                     <?php if (empty($menuItem['link']['url']) || empty($menuItem['link']['title'])) {
                         continue;
+                    }
+                    /* Прайс-лист остаётся в шапке, но в подвале его нет (правки заказчика 11.2026). */
+                    $menuPath = trim((string) wp_parse_url($menuItem['link']['url'], PHP_URL_PATH), '/');
+                    if ($menuPath === 'price-list' || str_ends_with($menuPath, '/price-list')) {
+                        continue;
                     } ?>
                     <a href="<?= esc_url($menuItem['link']['url']) ?>" target="<?= esc_attr($menuItem['link']['target'] ?? '') ?>">
                         <?= esc_html($menuItem['link']['title']) ?>
