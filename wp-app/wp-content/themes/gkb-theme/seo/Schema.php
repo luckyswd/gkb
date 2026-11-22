@@ -7,7 +7,7 @@ use WP_Post;
 
 /**
  * JSON-LD: один блок с @graph на каждой странице. Organization, WebSite,
- * WebPage, BreadcrumbList всегда; Product/AggregateOffer, ItemList, FAQPage,
+ * WebPage, BreadcrumbList всегда; Product/AggregateOffer (только при ценах), ItemList, FAQPage,
  * Article и Store — по типу страницы. Значения совпадают с видимыми.
  */
 class Schema
@@ -171,8 +171,14 @@ class Schema
         switch ($ctx['type']) {
             case 'product':
                 $product = self::product($ctx['object'], $url);
-                $graph[] = $product;
-                $page['mainEntity'] = ['@id' => $product['@id']];
+                // Google признаёт Product только с offers, review или aggregateRating,
+                // иначе это критическая ошибка «Описания товара». Цены на карточках не
+                // публикуются (ProductData::SHOW_PRICES), отзывов нет — поэтому без цен
+                // узел Product не выводим; страница остаётся ItemPage с крошками и FAQ.
+                if (!empty($product['offers'])) {
+                    $graph[] = $product;
+                    $page['mainEntity'] = ['@id' => $product['@id']];
+                }
                 break;
 
             case 'category':
