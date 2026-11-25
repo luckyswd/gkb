@@ -98,6 +98,10 @@ class Fields
                     'media_upload' => 0,
                 ])],
                 [self::faqField('term')],
+                [self::f('seo_brand', 'Бренд категории', 'text', [
+                    'instructions' => 'Подставляется в title и список категорий: «{Категория} {Бренд} — купить в Беларуси». Пусто — «Житомир». Для категорий GKB — «GKB», для колонок двух марок — «ВПГ».',
+                    'maxlength' => 30,
+                ])],
                 $seoFields('term')
             ),
             'location' => [[['param' => 'taxonomy', 'operator' => '==', 'value' => 'product-category']]],
@@ -108,6 +112,12 @@ class Fields
             'key' => 'group_gkb_product_mods',
             'title' => 'Модификации',
             'fields' => [
+                self::f('brand', 'Бренд', 'select', [
+                    'instructions' => 'Бренд и производитель в разметке и в описании категории.',
+                    'choices' => ['atem' => 'АТЕМ', 'gkb' => 'GKB (ГазКотелБел)'],
+                    'default_value' => 'atem',
+                    'allow_null' => 0,
+                ]),
                 self::f('modifications', 'Модификации', 'repeater', [
                     'instructions' => 'Мощность и отапливаемая площадь — из таблицы характеристик. Выводятся таблицей на странице товара, в карточках и llms.txt. Цены здесь не указываются: они только в прайс-листе.',
                     'layout' => 'table',

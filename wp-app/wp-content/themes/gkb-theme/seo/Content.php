@@ -76,7 +76,7 @@ class Content
         if (!is_wp_error($terms) && $terms) {
             echo '<ul class="gkb-seo-text__links">';
             foreach ($terms as $t) {
-                echo '<li><a href="' . esc_url(get_term_link($t)) . '">' . esc_html($t->name) . ' Житомир</a></li>';
+                echo '<li><a href="' . esc_url(get_term_link($t)) . '">' . esc_html($t->name . ' ' . ProductData::termBrand($t)) . '</a></li>';
             }
             if (Context::calculatorUrl()) {
                 echo '<li><a href="' . esc_url(Context::calculatorUrl()) . '">Калькулятор мощности котла</a></li>';

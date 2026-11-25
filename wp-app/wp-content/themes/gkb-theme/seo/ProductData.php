@@ -112,6 +112,42 @@ class ProductData
         return $withUnit ? $range . "\u{00A0}кВт" : $range;
     }
 
+    /** Бренды товаров (поле «Бренд» у товара): пусто — АТЕМ. */
+    public const BRAND_ATEM = 'atem';
+    public const BRAND_GKB = 'gkb';
+
+    public static function brand(int $postId): string
+    {
+        $v = function_exists('get_field') ? (string) get_field('brand', $postId) : '';
+        return $v === self::BRAND_GKB ? self::BRAND_GKB : self::BRAND_ATEM;
+    }
+
+    /**
+     * Бренд категории для title и списков: поле терма «Бренд категории»,
+     * пусто — «Житомир». В EN кириллические обозначения транслитерируются.
+     */
+    public static function termBrand(\WP_Term $term, bool $en = false): string
+    {
+        $v = function_exists('get_field') ? trim((string) get_field('seo_brand', $term)) : '';
+        if ($v === '') {
+            return $en ? 'Zhytomyr' : 'Житомир';
+        }
+        return $en ? strtr($v, ['ВПГ' => 'VPG', 'Житомир' => 'Zhytomyr']) : $v;
+    }
+
+    /** Бренды опубликованных товаров категории: подмножество [atem, gkb] в этом порядке. */
+    public static function termMakers(\WP_Term $term): array
+    {
+        $found = [];
+        foreach (self::termSummary($term)['products'] as $p) {
+            $found[self::brand($p->ID)] = true;
+        }
+        return array_values(array_filter([self::BRAND_ATEM, self::BRAND_GKB], static fn ($b) => isset($found[$b])));
+    }
+
+    /** Категории, которые калькулятор не считает котлами. */
+    public const NOT_BOILERS = ['gas-convectors', 'geysers', 'voltage-stabilizers', 'co-detectors'];
+
     /** Сводка для категории товаров: число моделей, мин. цена и диапазон мощностей. */
     public static function termSummary(\WP_Term $term): array
     {
@@ -151,9 +187,9 @@ class ProductData
     {
         $out = [];
         foreach (get_posts(['post_type' => 'products', 'post_status' => 'publish', 'posts_per_page' => -1]) as $p) {
-            // калькулятор подбирает котлы: конвекторы и колонки не в счёт
+            // калькулятор подбирает котлы: конвекторы, колонки, стабилизаторы и датчики не в счёт
             $cat = Context::productCategory($p);
-            if ($cat && in_array($cat->slug, ['gas-convectors', 'geysers'], true)) {
+            if ($cat && in_array($cat->slug, self::NOT_BOILERS, true)) {
                 continue;
             }
             $best = null;

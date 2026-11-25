@@ -252,9 +252,15 @@ class Schema
             '@id' => $url . '#product',
             'name' => Context::productTitle($p),
             'url' => $url,
-            'brand' => ['@type' => 'Brand', 'name' => 'АТЕМ'],
-            'manufacturer' => ['@type' => 'Organization', 'name' => 'АТЕМ', 'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'UA']],
         ];
+        if (ProductData::brand($p->ID) === ProductData::BRAND_GKB) {
+            // собственная торговая марка: производитель — организация сайта
+            $node['brand'] = ['@type' => 'Brand', 'name' => 'GKB'];
+            $node['manufacturer'] = ['@id' => self::id('organization')];
+        } else {
+            $node['brand'] = ['@type' => 'Brand', 'name' => 'АТЕМ'];
+            $node['manufacturer'] = ['@type' => 'Organization', 'name' => 'АТЕМ', 'address' => ['@type' => 'PostalAddress', 'addressCountry' => 'UA']];
+        }
         if ($description !== '') {
             $node['description'] = mb_substr(preg_replace('/\s+/u', ' ', $description), 0, 1000);
         }

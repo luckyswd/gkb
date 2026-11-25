@@ -122,11 +122,12 @@ class Meta
 
             case 'category':
                 $name = Context::termName($ctx['object']);
+                $tb = ProductData::termBrand($ctx['object'], $en);
                 return $en
-                    ? ["$name Zhytomyr — buy in Belarus | $brand", "$name | $brand"]
+                    ? ["$name $tb — buy in Belarus | $brand", "$name | $brand"]
                     : [
-                        "$name Житомир — купить в Беларуси | $brand",
-                        "$name Житомир — купить в Беларуси",
+                        "$name $tb — купить в Беларуси | $brand",
+                        "$name $tb — купить в Беларуси",
                     ];
 
             case 'search':
@@ -211,12 +212,20 @@ class Meta
             case 'category':
                 $term = $ctx['object'];
                 $name = Context::termName($term);
+                $makers = ProductData::termMakers($term);
+                $hasAtem = in_array(ProductData::BRAND_ATEM, $makers, true);
+                $hasGkb = in_array(ProductData::BRAND_GKB, $makers, true);
+                $tb = ProductData::termBrand($term, $en);
                 if ($en) {
-                    $d = "$name Zhytomyr from GazKotelBel, official ATEM representative: models, specifications and documentation. Dealers across Belarus.";
+                    $from = $hasAtem && $hasGkb ? 'ATEM and GKB brands from GazKotelBel'
+                        : ($hasGkb ? 'from GazKotelBel, owner of the GKB brand' : 'from GazKotelBel, official ATEM representative');
+                    $d = "$name $tb $from: models, specifications and documentation. Dealers across Belarus.";
                     break;
                 }
                 $ts = ProductData::termSummary($term);
-                $parts = ["$name Житомир от официального представителя АТЕМ: " . $ts['count'] . ' модел' . self::plural($ts['count'], 'ь', 'и', 'ей')];
+                $from = $hasAtem && $hasGkb ? 'марок АТЕМ и GKB от ГазКотелБел'
+                    : ($hasGkb ? 'от ООО «ГазКотелБел», собственная торговая марка' : 'от официального представителя АТЕМ');
+                $parts = ["$name $tb $from: " . $ts['count'] . ' модел' . self::plural($ts['count'], 'ь', 'и', 'ей')];
                 if ($ts['power_min'] !== null) {
                     $parts[0] .= ', мощность ' . ProductData::powerRange(['power_min' => $ts['power_min'], 'power_max' => $ts['power_max']]);
                 }
