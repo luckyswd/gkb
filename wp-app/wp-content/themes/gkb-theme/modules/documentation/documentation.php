@@ -48,9 +48,9 @@ $iconPDF = get_field('icon_pdf', 'option');
                         ?>
                         <?php if (!empty($files)) : ?>
                             <div class="documentation__product">
-                                <h3 class="documentation__product-title">
+                                <h2 class="documentation__product-title">
                                     <?= (new Helpers)->getProductTitle($product) ?>
-                                </h3>
+                                </h2>
                                 <div class="documentation__product-files">
                                     <?php foreach ($files as $file) : ?>
                                         <div class="documentation__product-file">

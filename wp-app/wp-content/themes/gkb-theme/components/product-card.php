@@ -2,6 +2,12 @@
 
 use helpers\Helpers;
 
+// Черновик или снятый товар в подборке (например, на главной) не выводим:
+// его адрес отдаёт 404, и ссылка на карточке была бы битой.
+if (!$product instanceof WP_Post || get_post_status($product) !== 'publish') {
+    return;
+}
+
 $helper = new Helpers();
 
 $link = get_permalink($product->ID);

@@ -4,10 +4,20 @@
 .registration-page,
 .login-page {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: var(--gkb-gap-lg);
     min-height: 60vh;
     padding: clamp(24px, 5vw, 64px) 0;
+
+    .auth-title {
+        color: var(--gkb-text);
+        font-size: var(--gkb-fs-h2);
+        font-weight: 700;
+        line-height: 1.15;
+        text-align: center;
+    }
 
     .message-after-register {
         width: 100%;

@@ -13,7 +13,7 @@ class Meta
 {
     public const TITLE_MAX = 70;
     public const DESC_MIN = 120;
-    public const DESC_MAX = 170;
+    public const DESC_MAX = 160; // SEO-аудит ShefTools: description от 50 до 160 символов
 
     /** Шаблоны title и description для страниц по slug. */
     private const PAGES = [
@@ -185,8 +185,8 @@ class Meta
         switch ($ctx['type']) {
             case 'front':
                 $d = $en
-                    ? 'GazKotelBel — official representative of ATEM: Zhytomyr gas, solid fuel and universal boilers, gas convectors and VPG water heaters in Belarus. Official warranty and dealers nationwide.'
-                    : 'Газовые котлы Житомир от официального представителя АТЕМ в Беларуси: дымоходные и турбированные, твердотопливные и универсальные котлы, конвекторы и колонки ВПГ.';
+                    ? 'GazKotelBel, official ATEM representative in Belarus: Zhytomyr gas, solid fuel and universal boilers, gas convectors and VPG water heaters. Official warranty.'
+                    : 'Газовые котлы Житомир от официального представителя АТЕМ в Беларуси: дымоходные, турбированные, твердотопливные и универсальные, конвекторы и колонки ВПГ.';
                 break;
 
             case 'product':

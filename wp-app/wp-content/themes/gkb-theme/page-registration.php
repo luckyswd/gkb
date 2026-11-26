@@ -4,6 +4,7 @@ get_header();
 ?>
 
 <div class="registration-page">
+    <h1 class="auth-title">Регистрация</h1>
     <form class="auth-form" id="auth-form">
         <span class="alert-message"></span>
         <ul>

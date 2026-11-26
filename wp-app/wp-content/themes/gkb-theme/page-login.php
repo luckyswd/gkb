@@ -5,6 +5,7 @@ get_header();
 ?>
 
 <div class="login-page">
+    <h1 class="auth-title">Вход</h1>
     <form class="auth-form" id="auth-form">
         <span class="alert-message"></span>
         <ul>
