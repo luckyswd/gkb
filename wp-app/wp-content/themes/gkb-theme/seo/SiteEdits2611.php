@@ -1061,6 +1061,223 @@ class SiteEdits2611
         return 'Фото возвращены. Новые вложения остались в медиатеке — их можно удалить вручную.';
     }
 
+    /* ------------------------------------------------------------------ */
+    /* Прайс-лист 15.07.2026 (доп. 21.09.2026) и реквизиты в «Контактах»   */
+    /* ------------------------------------------------------------------ */
+
+    private const PRICE_BACKUP = 'gkb_site_edits_2611_price_backup';
+
+    /**
+     * Таблицы price-{ru,en}.html и файлы для скачивания собраны из
+     * «15.07 Прайс ГКБ РРЦ + ОПТ.xlsx»: только РРЦ (столбец J), скрытые
+     * столбцы с #REF! и банковские реквизиты не переносятся.
+     */
+    public static function pricePlan(): array
+    {
+        return [
+            'subheadline' => [
+                'ru' => ['09.06.2025', 'цены действительны с 15.07.2026 г. (с дополнениями от 21.09.2026 г.)'],
+                'en' => ['22.06.2023', 'prices valid from 15.07.2026 (updated 21.09.2026)'],
+            ],
+            'files' => ['pdf' => 'prais-list-gazkotelbel.pdf', 'xlsx' => 'prais-list-gazkotelbel.xlsx'],
+            // скан страницы «Контакты» с пометками заказчика: счёт убрать, номер в Торговом реестре добавить
+            'contacts' => [
+                'ru' => ['#Текущий\s*\(расч[её]тный\)\s*:[^\n<]*?ALFABY2X#u', 'Регистрационный номер в Торговом реестре РБ №736317 от 03.12.2024 г.'],
+                'en' => ['#Current\s*\(settlement\)\s*:[^\n<]*?ALFABY2X#u', 'Registration number in the Trade Register of the Republic of Belarus: No. 736317 of 03.12.2024'],
+            ],
+        ];
+    }
+
+    /** Страницы, где на верхнем уровне стоит блок $name: [[post, blockIndex], ...]. */
+    private static function pagesWithBlock(string $name): array
+    {
+        $out = [];
+        foreach (get_posts(['post_type' => 'page', 'post_status' => 'any', 'numberposts' => -1]) as $p) {
+            if (!has_block($name, $p)) {
+                continue;
+            }
+            foreach (parse_blocks($p->post_content) as $i => $b) {
+                if (($b['blockName'] ?? '') === $name) {
+                    $out[] = [$p, $i];
+                }
+            }
+        }
+        return $out;
+    }
+
+    private static function langKeys(array $data, string $lang, string $suffix): array
+    {
+        return array_values(array_filter(array_keys($data), static fn ($k) => $k[0] !== '_'
+            && str_starts_with($k, $lang . '_language') && str_ends_with($k, '_' . $suffix)));
+    }
+
+    /** Загрузка файла из папки правок в медиатеку: [id, ошибка]. */
+    private static function sideloadFile(string $file): array
+    {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $tmp = wp_tempnam($file);
+        copy(self::photoDir() . $file, $tmp);
+        $id = media_handle_sideload(['name' => $file, 'tmp_name' => $tmp], 0, 'Прайс-лист ГазКотелБел');
+        if (is_wp_error($id)) {
+            @unlink($tmp);
+            return [0, $id->get_error_message()];
+        }
+        return [(int) $id, ''];
+    }
+
+    private static function kb(string $file): int
+    {
+        return max(1, (int) round(filesize(self::photoDir() . $file) / 1024));
+    }
+
+    private static function downloadLinks(string $lang, string $pdf, string $xlsx, array $files): string
+    {
+        $pdfKb = self::kb($files['pdf']);
+        $xlsxKb = self::kb($files['xlsx']);
+        $label = $lang === 'ru'
+            ? ["Скачать прайс-лист (PDF, {$pdfKb} КБ)", "Excel (XLSX, {$xlsxKb} КБ)"]
+            : ["Download price list (PDF in Russian, {$pdfKb} KB)", "Excel (XLSX, {$xlsxKb} KB)"];
+        return '<p class="price-list-download">'
+            . '<a class="gkb-btn gkb-btn--primary" href="' . esc_url($pdf) . '" download>' . $label[0] . '</a> '
+            . '<a class="gkb-btn gkb-btn--secondary" href="' . esc_url($xlsx) . '" download>' . $label[1] . '</a>'
+            . '</p>';
+    }
+
+    public static function runPrice(bool $write): array
+    {
+        $log = [];
+        $plan = self::pricePlan();
+
+        if (get_option(self::PRICE_BACKUP)) {
+            $log[] = [false, 'прайс и контакты уже применены (есть резервная копия) — сначала откат'];
+        }
+        foreach (array_merge(array_values($plan['files']), ['price-ru.html', 'price-en.html']) as $f) {
+            $ok = is_file(self::photoDir() . $f);
+            $log[] = [$ok, "{$f}: " . ($ok ? self::kb($f) . ' КБ' : 'НЕ НАЙДЕН')];
+        }
+
+        // прайс-лист
+        $price = self::pagesWithBlock('acf/price-list');
+        $log[] = [count($price) === 1, 'страниц с блоком «Прайс лист»: ' . count($price) . ', нужна 1'];
+        $priceJob = null;
+        if (count($price) === 1) {
+            [$post, $bi] = $price[0];
+            $data = parse_blocks($post->post_content)[$bi]['attrs']['data'] ?? [];
+            $priceJob = ['post' => $post, 'bi' => $bi, 'keys' => []];
+            foreach (['ru', 'en'] as $lang) {
+                foreach (['text', 'subheadline'] as $field) {
+                    $keys = self::langKeys($data, $lang, $field);
+                    $log[] = [count($keys) === 1, "«{$post->post_title}» #{$post->ID} {$lang}/{$field}: ключей " . count($keys) . ' (' . implode(', ', $keys) . ')'];
+                    $priceJob['keys'][$lang][$field] = $keys[0] ?? null;
+                }
+                [$old] = $plan['subheadline'][$lang];
+                $sub = (string) ($data[$priceJob['keys'][$lang]['subheadline'] ?? ''] ?? '');
+                $log[] = [str_contains($sub, $old), "{$lang}/подзаголовок сейчас «{$sub}», ожидалось с «{$old}»"];
+            }
+        }
+
+        // контакты
+        $contact = self::pagesWithBlock('acf/contact');
+        $log[] = [count($contact) >= 1, 'страниц с блоком контактов: ' . count($contact)];
+        $contactJobs = [];
+        foreach (['ru', 'en'] as $lang) {
+            [$re, $to] = $plan['contacts'][$lang];
+            $n = 0;
+            foreach ($contact as [$post, $bi]) {
+                $data = parse_blocks($post->post_content)[$bi]['attrs']['data'] ?? [];
+                foreach (self::langKeys($data, $lang, 'description') as $k) {
+                    $c = preg_match_all($re, (string) $data[$k]);
+                    if ($c) {
+                        $n += $c;
+                        $contactJobs[] = [$post->ID, $bi, $k, $re, $to];
+                        $log[] = [true, "«{$post->post_title}» #{$post->ID} {$k}: счёт → «{$to}»"];
+                    }
+                }
+            }
+            $log[] = [$n === 1, "контакты {$lang}: строк с расчётным счётом {$n}, нужна 1"];
+        }
+
+        // где ещё встречается счёт — для сведения, не блокирует
+        global $wpdb;
+        $where = [];
+        foreach ($wpdb->get_results("SELECT ID, post_type, post_title FROM {$wpdb->posts} WHERE post_content LIKE '%BY35ALFA%' AND post_type NOT IN ('revision') AND post_status <> 'trash'") as $r) {
+            $where[] = "{$r->post_type} #{$r->ID} «{$r->post_title}»";
+        }
+        foreach ($wpdb->get_col("SELECT option_name FROM {$wpdb->options} WHERE option_value LIKE '%BY35ALFA%'") as $o) {
+            $where[] = "опция {$o}";
+        }
+        foreach ($wpdb->get_results("SELECT post_id, meta_key FROM {$wpdb->postmeta} WHERE meta_value LIKE '%BY35ALFA%' LIMIT 20") as $r) {
+            $where[] = "мета #{$r->post_id} {$r->meta_key}";
+        }
+        $log[] = [true, 'счёт BY35ALFA… сейчас встречается: ' . ($where ? implode('; ', $where) : 'нигде')];
+
+        $allOk = !in_array(false, array_column($log, 0), true);
+        if (!$write || !$allOk) {
+            return [$log, $allOk, false];
+        }
+
+        // файлы в медиатеку
+        $ids = [];
+        foreach ($plan['files'] as $kind => $file) {
+            [$ids[$kind], $err] = self::sideloadFile($file);
+            $log[] = [$ids[$kind] > 0, "{$file}: " . ($ids[$kind] ? "загружен как #{$ids[$kind]} " . wp_get_attachment_url($ids[$kind]) : "ошибка: {$err}")];
+        }
+        if (in_array(0, $ids, true)) {
+            foreach (array_filter($ids) as $id) {
+                wp_delete_attachment($id, true);
+            }
+            return [$log, false, false];
+        }
+        $pdf = wp_get_attachment_url($ids['pdf']);
+        $xlsx = wp_get_attachment_url($ids['xlsx']);
+
+        $backup = ['posts' => [], 'attachments' => array_values($ids)];
+        $edits = []; // post_id => blocks
+        $post = $priceJob['post'];
+        $backup['posts'][$post->ID] = $post->post_content;
+        $edits[$post->ID] = parse_blocks($post->post_content);
+        foreach (['ru', 'en'] as $lang) {
+            $table = trim((string) file_get_contents(self::photoDir() . "price-{$lang}.html"));
+            $edits[$post->ID][$priceJob['bi']]['attrs']['data'][$priceJob['keys'][$lang]['text']] =
+                self::downloadLinks($lang, $pdf, $xlsx, $plan['files']) . "\n" . $table;
+            $edits[$post->ID][$priceJob['bi']]['attrs']['data'][$priceJob['keys'][$lang]['subheadline']] = $plan['subheadline'][$lang][1];
+        }
+        foreach ($contactJobs as [$id, $bi, $k, $re, $to]) {
+            if (!isset($edits[$id])) {
+                $backup['posts'][$id] = get_post($id)->post_content;
+                $edits[$id] = parse_blocks($backup['posts'][$id]);
+            }
+            $edits[$id][$bi]['attrs']['data'][$k] = preg_replace($re, $to, (string) $edits[$id][$bi]['attrs']['data'][$k]);
+        }
+
+        update_option(self::PRICE_BACKUP, $backup, false);
+        foreach ($edits as $id => $blocks) {
+            wp_update_post(wp_slash(['ID' => $id, 'post_content' => serialize_blocks($blocks)]));
+        }
+        self::flushCaches();
+        $log[] = [true, 'записано: прайс (RU и EN), файлы для скачивания, контакты'];
+        return [$log, true, true];
+    }
+
+    public static function rollbackPrice(): string
+    {
+        $b = get_option(self::PRICE_BACKUP);
+        if (!$b) {
+            return 'Резервной копии прайса и контактов нет.';
+        }
+        foreach ($b['posts'] as $id => $content) {
+            wp_update_post(wp_slash(['ID' => $id, 'post_content' => $content]));
+        }
+        foreach ($b['attachments'] as $id) {
+            wp_delete_attachment((int) $id, true);
+        }
+        delete_option(self::PRICE_BACKUP);
+        self::flushCaches();
+        return 'Прайс и контакты возвращены, загруженные файлы удалены.';
+    }
+
     private static function flushCaches(): void
     {
         if (function_exists('wpo_cache_flush')) {
@@ -1086,6 +1303,10 @@ class SiteEdits2611
                 $notice = self::rollback();
             } elseif (str_starts_with($action, 'extra')) {
                 [$log, $ok, $written] = self::runExtra($action === 'extra-apply');
+            } elseif ($action === 'price-rollback') {
+                $notice = self::rollbackPrice();
+            } elseif (str_starts_with($action, 'price')) {
+                [$log, $ok, $written] = self::runPrice($action === 'price-apply');
             } elseif ($action === 'photos-rollback') {
                 $notice = self::rollbackPhotos();
             } elseif (str_starts_with($action, 'photos')) {
@@ -1130,6 +1351,19 @@ class SiteEdits2611
         wp_nonce_field('gkb_site_edits_2611');
         echo '<button class="button" name="gkb_action" value="extra-check">Проверить доп. правки</button>';
         echo '<button class="button button-primary" name="gkb_action" value="extra-apply">Применить доп. правки</button>';
+        echo '</form>';
+
+        $hasPriceBackup = (bool) get_option(self::PRICE_BACKUP);
+        echo '<h2 style="margin-top:32px">Прайс-лист и контакты</h2>';
+        echo '<p>Прайс с 15.07.2026 (доп. 21.09.2026): таблица RU/EN, кнопки «Скачать» (PDF и XLSX в медиатеку). «Контакты»: вместо расчётного счёта — номер в Торговом реестре №736317 от 03.12.2024.</p>';
+        echo '<form method="post" style="display:flex;gap:8px">';
+        wp_nonce_field('gkb_site_edits_2611');
+        echo '<button class="button" name="gkb_action" value="price-check">Проверить прайс и контакты</button>';
+        if (!$hasPriceBackup) {
+            echo '<button class="button button-primary" name="gkb_action" value="price-apply" onclick="return confirm(\'Заменить прайс-лист и реквизиты?\')">Применить прайс и контакты</button>';
+        } else {
+            echo '<button class="button" name="gkb_action" value="price-rollback" onclick="return confirm(\'Вернуть прежний прайс и контакты?\')">Откатить прайс и контакты</button>';
+        }
         echo '</form>';
 
         echo '<h2 style="margin-top:32px">Фото «Электрорезерв»</h2>';

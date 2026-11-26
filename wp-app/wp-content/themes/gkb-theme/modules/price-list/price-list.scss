@@ -48,3 +48,52 @@
         font-size: var(--gkb-fs-sm);
     }
 }
+
+/* Кнопки «Скачать прайс-лист» над таблицей. Ссылки лежат в тексте
+   редактора, поэтому перебиваем подчёркивание и цвет ссылок .gkb-content. */
+.price-list .price-list-download {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gkb-gap-sm);
+
+    a.gkb-btn {
+        text-decoration: none;
+    }
+
+    a.gkb-btn--primary {
+        color: var(--gkb-text-inverse);
+    }
+
+    a.gkb-btn--secondary {
+        color: var(--gkb-text);
+    }
+}
+
+/* Таблица прайса из двух колонок: название и РРЦ. Цена справа и
+   без переноса, строка раздела — плашкой на всю ширину. */
+.price-list .gkb-price-table {
+    thead th,
+    thead th:first-child {
+        color: var(--gkb-text);
+        font-weight: 600;
+    }
+
+    th:last-child,
+    td:last-child {
+        padding-left: var(--gkb-gap-lg);
+        text-align: right;
+        white-space: nowrap;
+        overflow-wrap: normal;
+    }
+
+    td:first-child {
+        color: var(--gkb-text-secondary);
+    }
+
+    .table-subheadline td {
+        padding: 10px 14px;
+        border-radius: var(--gkb-r-md);
+        text-align: left;
+        white-space: normal;
+    }
+}
