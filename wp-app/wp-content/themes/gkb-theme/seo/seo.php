@@ -44,10 +44,3 @@ add_filter('aioseo_robots_meta', '__return_empty_array');
 add_filter('aioseo_canonical_url', '__return_empty_string');
 add_filter('aioseo_sitemap_enabled', '__return_false');
 add_filter('aioseo_robots_txt_enabled', '__return_false');
-
-/* Разовый сброс кеша страниц после смены подвала (плашка ShefCode). Убрать после срабатывания. */
-add_action('init', static function () {
-    if (add_option('gkb_cache_flush_2611_footer', (string) time(), '', false) && function_exists('wpo_cache_flush')) {
-        wpo_cache_flush();
-    }
-}, 30);
