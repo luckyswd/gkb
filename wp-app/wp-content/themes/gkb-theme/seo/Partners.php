@@ -53,7 +53,7 @@ class Partners
                     'text' => 'Зарплата, отпускные, больничный, детские пособия и дата выхода на пенсию. Бесплатно, с актуальными суммами.',
                 ],
                 [
-                    'name' => 'alimenty.by',
+                    'name' => 'Алименты',
                     'url' => 'https://alimenty.by/',
                     'host' => 'alimenty.by',
                     'logo' => 'alimenty.svg',
