@@ -417,3 +417,76 @@
         line-height: 1.4;
     }
 }
+
+/* --- Партнёры --- */
+.gkb-partners__lead {
+    max-width: 720px;
+    color: var(--gkb-text-secondary);
+    font-size: var(--gkb-fs-lead);
+}
+
+.gkb-partners__section {
+    margin-top: clamp(28px, 4vw, 48px);
+}
+
+.gkb-partners__heading {
+    margin-bottom: var(--gkb-gap-lg);
+    font-size: var(--gkb-fs-h2);
+    line-height: var(--gkb-lh-tight);
+}
+
+.gkb-partners__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gkb-gap-lg);
+}
+
+.gkb-partners__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gkb-gap-md);
+}
+
+.gkb-partners__name {
+    font-size: var(--gkb-fs-h3);
+    line-height: var(--gkb-lh-tight);
+
+    a {
+        color: var(--gkb-text);
+
+        &:hover {
+            color: var(--gkb-accent-dark);
+        }
+    }
+}
+
+.gkb-partners__text {
+    color: var(--gkb-text-secondary);
+}
+
+.gkb-partners__links {
+    display: grid;
+    gap: var(--gkb-gap-xs);
+
+    a {
+        color: var(--gkb-accent-dark);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+}
+
+/* кнопка прижата к низу карточки — в ряду карточки разной длины */
+.gkb-partners__go {
+    margin-top: auto;
+}
+
+.gkb-partners__extra {
+    margin-top: clamp(28px, 4vw, 48px);
+}
+
+@include _768 {
+    .gkb-partners__grid {
+        grid-template-columns: 1fr;
+    }
+}

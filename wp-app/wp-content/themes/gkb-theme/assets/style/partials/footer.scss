@@ -234,6 +234,20 @@
     font-size: var(--gkb-fs-xs);
 }
 
+.gkb-footer__dev {
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-xs);
+
+    a {
+        color: var(--gkb-text-secondary);
+        font-weight: 600;
+
+        &:hover {
+            color: var(--gkb-text);
+        }
+    }
+}
+
 .gkb-footer__up {
     color: var(--gkb-text-muted);
     font-size: var(--gkb-fs-xs);

@@ -127,6 +127,9 @@ $termName = static function ($term) use ($lang): string {
                     <?php if ($calcPage && $calcPage->post_status === 'publish') : ?>
                         <a href="<?= esc_url(get_permalink($calcPage)) ?>">Калькулятор мощности</a>
                     <?php endif; ?>
+                    <?php if (\seo\Partners::url()) : ?>
+                        <a href="<?= esc_url(\seo\Partners::url()) ?>">Партнёры</a>
+                    <?php endif; ?>
                 <?php endif; ?>
             </nav>
         <?php endif; ?>
@@ -147,6 +150,10 @@ $termName = static function ($term) use ($lang): string {
             <?php if (!empty($fields['copyright'])) : ?>
                 <span class="gkb-footer__copyright"><?= esc_html('© 1988-' . date('Y') . ' ' . $fields['copyright']) ?></span>
             <?php endif; ?>
+            <span class="gkb-footer__dev">
+                <?= esc_html($lang === 'en' ? 'Website by' : 'Разработка сайта —') ?>
+                <a href="<?= esc_url(\seo\Partners::DEVELOPER_URL) ?>" target="_blank" rel="noopener">ShefCode</a>
+            </span>
             <a href="#header" class="gkb-footer__up"><?= esc_html($lang === 'en' ? 'Back to top ↑' : 'Наверх ↑') ?></a>
         </div>
     </div>
