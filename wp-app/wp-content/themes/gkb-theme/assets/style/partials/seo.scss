@@ -441,6 +441,11 @@
     gap: var(--gkb-gap-lg);
 }
 
+/* одна карточка в разделе — на всю ширину, а не половина с пустотой справа */
+.gkb-partners__grid > :only-child {
+    grid-column: 1 / -1;
+}
+
 .gkb-partners__card {
     display: flex;
     flex-direction: column;
@@ -462,6 +467,7 @@
 }
 
 .gkb-partners__text {
+    max-width: 760px;
     color: var(--gkb-text-secondary);
 }
 
