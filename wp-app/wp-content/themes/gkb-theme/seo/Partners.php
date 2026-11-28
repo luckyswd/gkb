@@ -66,6 +66,39 @@ class Partners
         ],
     ];
 
+    /** Разовое создание страницы: wp-admin недоступен, страница заводится кодом. */
+    public static function register(): void
+    {
+        add_action('init', [self::class, 'ensurePage'], 20);
+    }
+
+    public static function ensurePage(): void
+    {
+        // add_option вставляет строку с уникальным именем: из параллельных
+        // запросов страницу создаст только один, остальные выйдут здесь.
+        if (!add_option('gkb_partners_page_created', (string) time(), '', false)) {
+            return;
+        }
+        if (get_page_by_path(self::SLUG)) {
+            return; // страницу уже завели руками — не трогаем
+        }
+        $admins = get_users(['role' => 'administrator', 'number' => 1, 'fields' => 'ID']);
+        $id = wp_insert_post([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Партнёры',
+            'post_name' => self::SLUG,
+            'post_content' => '',
+            'post_author' => (int) ($admins[0] ?? 1),
+            'comment_status' => 'closed',
+        ], true);
+        update_option('gkb_partners_page_created', is_wp_error($id) ? 'error: ' . $id->get_error_message() : 'page ' . $id, false);
+        // ссылка «Партнёры» в подвале есть на каждой странице — сбрасываем кеш целиком
+        if (!is_wp_error($id) && function_exists('wpo_cache_flush')) {
+            wpo_cache_flush();
+        }
+    }
+
     /** Адрес страницы, если она опубликована, иначе null. */
     public static function url(): ?string
     {

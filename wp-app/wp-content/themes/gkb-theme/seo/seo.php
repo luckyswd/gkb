@@ -31,6 +31,7 @@ seo\IndexNow::register();
 seo\Redirects::register();
 seo\Perf::register();
 seo\Agents::register();
+seo\Partners::register();
 
 /*
  * All in One SEO на время перехода: пока плагин активен, его вывод в head,
