@@ -234,18 +234,45 @@
     font-size: var(--gkb-fs-xs);
 }
 
+/* Плашка разработчика — как в подвале raschetnik.by и alimenty.by */
 .gkb-footer__dev {
-    color: var(--gkb-text-muted);
-    font-size: var(--gkb-fs-xs);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    a {
-        color: var(--gkb-text-secondary);
-        font-weight: 600;
+.gkb-dev-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px 8px 12px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    color: #111827;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
 
-        &:hover {
-            color: var(--gkb-text);
-        }
+    &:hover {
+        background: #f6f8fc;
+        color: #111827;
     }
+}
+
+.gkb-dev-badge__logo {
+    display: block;
+    flex: none;
+    width: auto;
+    height: 24px;
+}
+
+.gkb-dev-badge__accent {
+    background-image: linear-gradient(90deg, #2563eb, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .gkb-footer__up {

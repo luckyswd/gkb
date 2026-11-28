@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-62 0 456 456" width="64" height="64">
+  <path d="M29 241.416L167 172.416C173.667 171.083 181 172.749 189 177.416L294 221.416C310.667 227.416 321.333 238.083 326 253.416L174 303.416C164 300.083 154 296.416 144 292.416L29 241.416Z" fill="url(#shef-logo-0)"/>
+  <path d="M38 95.4159L228 5.41595C262 -12.584 302 17.4159 307 49.4159C309 59.4159 308 71.4159 308 81.4159C308 106.416 298 121.416 274 133.416L30 241.916C10 231.916 0 215.416 0 193.416V151.416C0 126.416 14 106.416 38 95.4159Z" fill="url(#shef-logo-1)"/>
+  <path d="M71 332.416L294 231.416C300 228.749 306 226.583 310 229.916C325 241.916 332 257.416 332 276.416L331 313.416C331 337.416 319 355.416 298 365.416L102 449.416C73 463.416 49 448.416 38 423.416C35.333 417.416 34 408.749 34 397.416V384.416C34 360.416 46 343.416 71 332.416Z" fill="url(#shef-logo-2)"/>
+  <defs>
+    <linearGradient id="shef-logo-0" x1="69" y1="181.416" x2="260" y2="293.416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1038C9"/>
+      <stop offset="0.46" stop-color="#283DEF"/>
+      <stop offset="1" stop-color="#6B2FEC"/>
+    </linearGradient>
+    <linearGradient id="shef-logo-1" x1="9" y1="106.416" x2="302" y2="158.416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17CCE7"/>
+      <stop offset="0.46" stop-color="#2B80FF"/>
+      <stop offset="1" stop-color="#7734FF"/>
+    </linearGradient>
+    <linearGradient id="shef-logo-2" x1="38" y1="356.416" x2="327" y2="339.416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16D2E8"/>
+      <stop offset="0.37" stop-color="#3495FC"/>
+      <stop offset="0.72" stop-color="#7448FF"/>
+      <stop offset="1" stop-color="#A126FA"/>
+    </linearGradient>
+  </defs>
+</svg>

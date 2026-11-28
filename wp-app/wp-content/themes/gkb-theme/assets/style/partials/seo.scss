@@ -441,50 +441,92 @@
     gap: var(--gkb-gap-lg);
 }
 
-/* одна карточка в разделе — на всю ширину, а не половина с пустотой справа */
-.gkb-partners__grid > :only-child {
-    grid-column: 1 / -1;
-}
-
+/* Карточка целиком — ссылка на сайт партнёра */
 .gkb-partners__card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: var(--gkb-gap-md);
+    border: 1px solid transparent;
+    color: var(--gkb-text);
+    transition: transform var(--gkb-t-fast), box-shadow var(--gkb-t-fast), border-color var(--gkb-t-fast);
+
+    &:hover {
+        transform: translateY(-3px);
+        border-color: var(--gkb-border);
+        box-shadow: var(--gkb-shadow-card);
+        color: var(--gkb-text);
+    }
+
+    &:hover .gkb-partners__arrow {
+        background: var(--gkb-accent-strong);
+        color: var(--gkb-text-inverse);
+        transform: translate(2px, -2px);
+    }
+}
+
+.gkb-partners__head {
+    display: flex;
+    align-items: center;
+    gap: var(--gkb-gap-lg);
+    margin-bottom: var(--gkb-gap-xs);
+}
+
+.gkb-partners__logo {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--gkb-r-lg);
+    background: var(--gkb-surface-sunken);
+
+    img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+}
+
+.gkb-partners__who {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gkb-gap-2xs);
+    min-width: 0;
 }
 
 .gkb-partners__name {
     font-size: var(--gkb-fs-h3);
+    font-weight: 700;
     line-height: var(--gkb-lh-tight);
+}
 
-    a {
-        color: var(--gkb-text);
+.gkb-partners__host {
+    color: var(--gkb-text-muted);
+    font-size: var(--gkb-fs-sm);
+}
 
-        &:hover {
-            color: var(--gkb-accent-dark);
-        }
-    }
+.gkb-partners__arrow {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: var(--gkb-surface-muted);
+    color: var(--gkb-text);
+    transition: background var(--gkb-t-fast), color var(--gkb-t-fast), transform var(--gkb-t-fast);
+}
+
+.gkb-partners__title {
+    font-size: var(--gkb-fs-md);
+    font-weight: 600;
+    line-height: 1.35;
 }
 
 .gkb-partners__text {
-    max-width: 760px;
     color: var(--gkb-text-secondary);
-}
-
-.gkb-partners__links {
-    display: grid;
-    gap: var(--gkb-gap-xs);
-
-    a {
-        color: var(--gkb-accent-dark);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-}
-
-/* кнопка прижата к низу карточки — в ряду карточки разной длины */
-.gkb-partners__go {
-    margin-top: auto;
+    line-height: 1.55;
 }
 
 .gkb-partners__extra {
@@ -494,5 +536,17 @@
 @include _768 {
     .gkb-partners__grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gkb-partners__card,
+    .gkb-partners__arrow {
+        transition: none;
+    }
+
+    .gkb-partners__card:hover,
+    .gkb-partners__card:hover .gkb-partners__arrow {
+        transform: none;
     }
 }

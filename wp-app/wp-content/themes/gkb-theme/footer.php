@@ -150,9 +150,13 @@ $termName = static function ($term) use ($lang): string {
             <?php if (!empty($fields['copyright'])) : ?>
                 <span class="gkb-footer__copyright"><?= esc_html('© 1988-' . date('Y') . ' ' . $fields['copyright']) ?></span>
             <?php endif; ?>
+            <?php /* Плашка разработчика — как в подвале raschetnik.by и alimenty.by */ ?>
             <span class="gkb-footer__dev">
-                <?= esc_html($lang === 'en' ? 'Website by' : 'Разработка сайта —') ?>
-                <a href="<?= esc_url(\seo\Partners::DEVELOPER_URL) ?>" target="_blank" rel="noopener">ShefCode</a>
+                <span class="gkb-footer__copyright"><?= esc_html($lang === 'en' ? 'Developed by:' : 'Разработали:') ?></span>
+                <a class="gkb-dev-badge" href="<?= esc_url(\seo\Partners::DEVELOPER_URL) ?>" rel="nofollow noopener" target="_blank">
+                    <img class="gkb-dev-badge__logo" src="<?= esc_url(\seo\Partners::logoUrl('shefcode.svg')) ?>" alt="" width="18" height="24">
+                    <span>Shef<span class="gkb-dev-badge__accent">Code</span></span>
+                </a>
             </span>
             <a href="#header" class="gkb-footer__up"><?= esc_html($lang === 'en' ? 'Back to top ↑' : 'Наверх ↑') ?></a>
         </div>

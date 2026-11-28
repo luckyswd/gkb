@@ -34,21 +34,22 @@ $extra = trim((string) get_the_content());
                 <h2 class="gkb-partners__heading"><?= esc_html($section['title']) ?></h2>
                 <div class="gkb-partners__grid">
                     <?php foreach ($section['items'] as $item) : ?>
-                        <article class="gkb-card gkb-partners__card">
-                            <span class="gkb-badge gkb-badge--green"><?= esc_html($item['label']) ?></span>
-                            <h3 class="gkb-partners__name">
-                                <a href="<?= esc_url($item['url']) ?>" target="_blank" rel="noopener"><?= esc_html($item['name']) ?></a>
-                            </h3>
-                            <p class="gkb-partners__text"><?= esc_html($item['text']) ?></p>
-                            <ul class="gkb-partners__links">
-                                <?php foreach ($item['links'] as [$title, $href]) : ?>
-                                    <li><a href="<?= esc_url($href) ?>" target="_blank" rel="noopener"><?= esc_html($title) ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                            <a class="gkb-btn gkb-btn--secondary gkb-btn--sm gkb-partners__go" href="<?= esc_url($item['url']) ?>" target="_blank" rel="noopener">
-                                Перейти на <?= esc_html($item['host']) ?> ↗
-                            </a>
-                        </article>
+                        <a class="gkb-card gkb-partners__card" href="<?= esc_url($item['url']) ?>" target="_blank" rel="noopener">
+                            <span class="gkb-partners__head">
+                                <span class="gkb-partners__logo">
+                                    <img src="<?= esc_url(Partners::logoUrl($item['logo'])) ?>" alt="" width="40" height="40" loading="lazy" decoding="async">
+                                </span>
+                                <span class="gkb-partners__who">
+                                    <span class="gkb-partners__name"><?= esc_html($item['name']) ?></span>
+                                    <span class="gkb-partners__host"><?= esc_html($item['host']) ?></span>
+                                </span>
+                                <span class="gkb-partners__arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 16 16" width="16" height="16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </span>
+                            <span class="gkb-partners__title"><?= esc_html($item['title']) ?></span>
+                            <span class="gkb-partners__text"><?= esc_html($item['text']) ?></span>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             </section>
