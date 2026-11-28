@@ -27,7 +27,7 @@ $extra = trim((string) get_the_content());
         </nav>
 
         <h1 class="gkb-seo-page__title"><?= esc_html(get_the_title()) ?></h1>
-        <p class="gkb-partners__lead">Кто сделал этот сайт и какие бесплатные онлайн-сервисы мы советуем жителям Беларуси.</p>
+        <p class="gkb-partners__lead">Компании и сервисы, которым мы доверяем и которые советуем.</p>
 
         <?php foreach (Partners::SECTIONS as $section) : ?>
             <section class="gkb-partners__section">

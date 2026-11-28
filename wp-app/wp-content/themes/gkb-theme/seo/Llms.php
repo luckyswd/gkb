@@ -80,7 +80,7 @@ class Llms
         $L[] = '- [Документация](' . home_url('/documentation/') . '): паспорта и инструкции в PDF';
         $L[] = '- [О производителе АТЕМ](' . home_url('/about/') . ')';
         if (Partners::url()) {
-            $L[] = '- [Партнёры](' . Partners::url() . '): разработчик сайта ShefCode и бесплатные калькуляторы для Беларуси — raschetnik.by и alimenty.by';
+            $L[] = '- [Партнёры](' . Partners::url() . '): студия разработки ShefCode и бесплатные калькуляторы для Беларуси — raschetnik.by и alimenty.by';
         }
         $L[] = '';
 
